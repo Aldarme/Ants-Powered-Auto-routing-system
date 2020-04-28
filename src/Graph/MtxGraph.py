@@ -155,6 +155,8 @@ class MtxGraph:
     def display_adjMtx(self, type_p="object"):
         """
         Display the adjacency matrix according to String parameter
+            "object": display edges objects
+            "ID": display attributs of edges
         """
         if type_p == "object":
             
