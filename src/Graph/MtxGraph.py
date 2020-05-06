@@ -125,15 +125,27 @@ class MtxGraph:
         """
         self.__adjMtx[self.get_vtxIdx(vtx_begin_p)][self.get_vtxIdx(vtx_end_p)] = None
     
-    def getNeighboor(self, edge_p):
+    def getNeighboor_EDG(self, edge_p):
         """
         Return a list of all the neighbors of the beginning Vertex of the given edge
         """
         neighboors = []
         for elmt in self.__adjMtx[self.get_vtxIdx(edge_p.get_vtx_begin())]:
-            #print(elmt)
             if elmt != None:
                 if self.exist_edg(edge_p.get_vtx_begin(), elmt.get_vtx_end()):
+                    neighboors.append(elmt)
+                else:
+                    print("echec")
+        return neighboors
+    
+    def getNeighboor_VTX(self, vtx_p):
+        """
+        Return a list of all the neighbors of the given Vertex
+        """
+        neighboors = []
+        for elmt in self.__adjMtx[self.get_vtxIdx(vtx_p)]:
+            if elmt != None:
+                if self.exist_edg(vtx_p, elmt.get_vtx_end()):
                     neighboors.append(elmt)
                 else:
                     print("echec")

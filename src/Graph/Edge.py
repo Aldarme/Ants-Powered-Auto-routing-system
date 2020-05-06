@@ -12,16 +12,16 @@ class Edge:
     __vtx_begin = vtx
     __vtx_end = vtx
     
-    def __init__(self, lgth_p = 0, vtx_beg_p = vtx, vtx_end_p = vtx):
-        self.__length = lgth_p
-        self.__vtx_begin = vtx_beg_p
+    def __init__(self, length_p = 0, vtx_begin_p = vtx, vtx_end_p = vtx):
+        self.__length = length_p
+        self.__vtx_begin = vtx_begin_p
         self.__vtx_end = vtx_end_p
     
-    def set_length(self, lgth_p):
+    def set_length(self, length_p):
         """
         Set the length value
         """
-        self.__length = lgth_p
+        self.__length = length_p
     
     def set_vtx_begin(self, vtx_p):
         """
