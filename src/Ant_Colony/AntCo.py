@@ -8,17 +8,16 @@ from Ant_Colony.CommonKnowledge import CommonKnowledge
 
 class AntCo:
     
-    antArray = []
-    
     def __init__(self, vtxBegin_p, vtx_toReach_p):
+        self.antArray = []
         self.create_ants(vtxBegin_p, vtx_toReach_p)
-        self.search()
+        
     
     def create_ants(self, vtxBegin_p, vtx_toReach_p):
         """
         Create an list containing all ants of the colony
         """
-        for i in range(0, len(CommonKnowledge.adjMtxGraph.size())):
+        for i in range(0, CommonKnowledge.adjMtxGraph.size()):
             self.antArray.append(Ant(i, vtxBegin_p, vtx_toReach_p))
     
     def search(self):
@@ -40,7 +39,7 @@ class AntCo:
         CommonKnowledge.get_vtxOptimalPath()
         
         print("Optimal path: {}".format(CommonKnowledge.optimalPath_VTX_toString()))
-        print("OPtimal length: {}".format(CommonKnowledge.optimalPath_length))
+        print("Optimal length: {}".format(CommonKnowledge.optimalPath_length))
     
     def getBack(self):
         """
@@ -57,7 +56,7 @@ class AntCo:
     
     def localSearch(self):
         """
-        Apply a local search, after an ant finished a tour
+        Apply a local search, after an ant finished a lap
         """
         pass
     
@@ -66,5 +65,4 @@ class AntCo:
         Display each ant of the colony and its list of vertices
         """
         for ant in self.antArray:
-            print("ant: {}".format(ant.get_antVertices_toString())
-            
+            print("ant: {}".format(ant.get_antVertices_toString()))
