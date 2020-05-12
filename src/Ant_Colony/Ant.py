@@ -12,23 +12,18 @@ import sys
 
 class Ant:
     
-    ID = 0
-    distTravelled = 0
-    vtx_begin     = Vertex()  #Vertex where the ant begin in the graph
-    vtx_end       = Vertex()  #Next Vertex in the graph the ant have to join
-    vtx_toReach   = Vertex()  #Destination that the ant have to reach in the graph
-    antState      = None
-    Stg_tabuList  = []        #Collection of all visited Vertices as ID, by the ant
-    edg_tabuList  = []        #Collection of all visited edges by the ant
-    Stg_toVisit   = []        #Collection of all remaining vertices as ID, of the graph to visit 
-    neigb_tabuList = []       #Collection of ant tested neighbors
-    
-    
-    def __init__(self, ID_p = -1, vtxBegin_p, vtx_toReach_p):
-        self.antState     = State.HANDLE
-        self.ID           = ID_p
-        self.vtx_begin    = vtxBegin_p
-        self.vtx_toReach  = vtx_toReach_p
+    def __init__(self, ID_p, vtxBegin_p, vtx_toReach_p):
+        self.ID             = ID_p
+        self.vtx_begin      = vtxBegin_p        #Vertex where the ant begin in the graph
+        self.vtx_toReach    = vtx_toReach_p     #Destination that the ant have to reach in the graph
+        self.antState       = State.HANDLE      #Define the state of the ant during the algorithm
+        self.vtx_end        = Vertex()          #Next Vertex in the graph the ant have to join
+        self.distTravelled  = 0                 #Distance travelled by an ant for a 
+        self.vtx_toVisit    = []                #Collection of all remaining vertices of the graph to visit 
+        self.vtx_tabuList   = []                #Collection of all visited Vertices, by the ant
+        self.edg_tabuList   = []                #Revoir cette element de dorigo prob, si vraiment utile ? Collection of all visited edges by the ant    
+        self.neigb_tabuList = []                #Collection of ant tested neighbors
+        
         self.toVisit()
     
     def run(self):
@@ -43,50 +38,55 @@ class Ant:
         """
         Define how an ant build a path between start & toReach vertex
         """
-        tmp_vtxBegin = self.vtx_begin
         
         #Return the heuristic destination determined by the DorigoProb
         self.vtx_end =  self.dorigo_prob(self.vtx_begin).get_vtx_end()
         
         #Test if the end vertex can be reach
-        if self.vtx_end.get_ID() in self.Stg_toVisit:
-            self.Stg_tabuList.append(self.vtx_begin.get_ID())
-            self.Stg_toVisit.remove(self.Stg_tabuList[-1])
+        if self.vtx_end in self.vtx_toVisit:
+            self.vtx_tabuList.append(self.vtx_begin)
+            self.vtx_toVisit.remove(self.vtx_begin)
             self.distTravelled += CommonKnowledge.adjMtxGraph.get_edglength(self.vtx_begin, self.vtx_end)
             
             #Stop the research if the ant find the Vertex to reach
             if(self.vtx_end.get_ID() == self.vtx_toReach.get_ID() ):
-                self.antState = State.RETURNING                     #put the ant in returning state
-                self.Stg_tabuList.append(self.vtx_end.get_ID())
-                self.Stg_toVisit.remove(self.Stg_tabuList[-1])
+                self.antState = State.RETURNING
+                self.vtx_tabuList.append(self.vtx_end)
+                self.vtx_toVisit.remove(self.vtx_end)
                 self.vtx_begin = self.vtx_end
                 #Debug line
-                #print("Ant: {}, Path: {}, length: {}".format(self.ID, self.Stg_tabuList, self.distTravelled))
+                #print("Ant: {}, Path: {}, length: {}".format(self.ID, self.vtx_tabuList, self.distTravelled))
                 return False
             
             #Kill the ant if the it is in dead end (No neighbors to visit)
-            if len(CommonKnowledge.adjMtxGraph.getNeighboor_VTX(self.vtx_end)) == 0:
+            if len(CommonKnowledge.adjMtxGraph.getNeighboor_VTX(self.vtx_end)) == 0: #Warning, this case work only for directed graph 
                 self.antState   = State.KILLED
-                self.vtx_begin  = tmp_vtxBegin   #think about it
-                del self.Stg_tabuList[:]
-                del self.Stg_toVisit[:]
-                self.distTravelled = sys.maxint
+                self.vtx_begin  = CommonKnowledge.vtx_begin
+                del self.vtx_tabuList[:]        #flush the tabu list
+                del self.vtx_toVisit[:]         #flush the to visit list
+                self.distTravelled = sys.maxint #flush the total dist. travel
                 return False
         
-            self.vtx_begin = self.vtx_end
-            self.vtx_end = None
+            self.vtx_begin = self.vtx_end   #the ant have to find the next vertex to reach
+            self.vtx_end = None             
             return True
         
-        else:
-            #test if the number of tested neighbor is inf. to the number of neighbors & was not previously tested
+        else: #The vertex can't be reach, have to find a new one
+            
+            #Fill the tabu list of tested neighbors
             if len(self.neigb_tabuList) < len(CommonKnowledge.adjMtxGraph.getNeighboor_VTX(self.vtx_begin)
                 and self.vtx_end not in self.neigb_tabuList):
                 self.neigb_tabuList.append(self.vtx_end)
                 return True
             
             else:
-                #Kill the current ant, it already tested all neighbors
+                #The tested neighbors list is full, we kill the ant
                 self.antState = State.KILLED
+                self.vtx_begin  = CommonKnowledge.vtx_begin
+                del self.vtx_tabuList[:]        #flush the tabu list
+                del self.vtx_toVisit[:]         #flush the to visit list
+                del self.neigb_tabuList[:]      #flush the tested neighbors tabu list
+                self.distTravelled = sys.maxint #flush the total dist. travel
                 return False                
             
     
@@ -94,55 +94,59 @@ class Ant:
         """
         Calculate the probability for the next destination 
         """
-        neighbors   = CommonKnowledge.adjMtxGraph.getNeighboor_VTX(vtx_p)
-        dico_neigbProb = {}
-        PhLg_tab    = []
-        DorigoProb  = []
-        neighborSum = 0.0;
-        rtEdge      = Edge
+        neighbors_EDGE  = CommonKnowledge.adjMtxGraph.getNeighboor_VTX(vtx_p)
+        PhLg_tab        = []
+        PhLg_Sum        = 0.0
+        DorigoProb      = []
+        DorigoProb_sum  = 0.0
+        bundMark_tab    = []
+        rtEdge          = Edge
         
-        #Calculate PhLg ratio for all neighbor of the current Vertex
-        for elmt in neighbors:
+        #Calculate Pheromones/Length ratio define as Tij * (Nij) for all neighbor of the current Vertex
+        #with Tij = pheromone trail strength ; Nij = 1/Distance between vtxA, vtxB 
+        for elmt in neighbors_EDGE:
             tmp = CommonKnowledge.get_pheromones(CommonKnowledge.adjMtxGraph.get_vtxIdx(elmt.get_vtx_begin()),
                                                  CommonKnowledge.adjMtxGraph.get_vtxIdx(elmt.get_vtx_end())
-                                                 )/ (1.0 / float(elmt.get_length()))
-        PhLg_tab.add(tmp);
-        neighborSum += tmp;
+                                                 )* (1.0 / float(elmt.get_length()))
+            PhLg_tab.append(tmp);
+            PhLg_Sum += tmp;
         
         #Calculate the Dorigo probability for all neighbor of the current vertex
-        for i in range (0, len(neighbors)):
-            if neighborSum == 0:
-                DorigoProb.append(0.0)
-            else:
-                dico_neigbProb[PhLg_tab[i] / neighborSum] = neighbors[i]
-                DorigoProb.append(PhLg_tab[i] / neighborSum)
-        
-        if neighborSum == 0:
-            rand = random.randint(neighborSum, len(neighbors)) # [0;X]
-            randEdg = neighbors[rand]
-            self.__edg_tabuList.append(neighbors[randEdg])
+        for i in range (0, len(neighbors_EDGE)):
+            if PhLg_Sum != 0:
+                DorigoProb.append(PhLg_tab[i] / PhLg_Sum)
+                DorigoProb_sum += PhLg_tab[i] / PhLg_Sum            #according to proba. calc. the sum should == 1
+           
+        #ToDebug     
+        #Generate a random edge according to the Dorigo prob
+        if PhLg_Sum == 0:
+            rand = random.randint(0, (len(neighbors_EDGE)-1) ) #rand between [0; nbrOfNeighbors 
+            rtEdge = neighbors_EDGE[rand]
+            self.edg_tabuList.append(rtEdge)
         else:
-            #Sort Dorigo Prob List
-            DorigoProb.sort()
+            rand = random.random() #random number between [0.0; 1.0]
             
-            #Generate random number
-            randNbr = float(random.randint(int(neighborSum), int(round(DorigoProb[len(DorigoProb)-1], 0))) ) / 100.0 # [0;X]
-        
-            #Use generated random number to define the next Vertex to reach
-            for PhLg_ratio in DorigoProb:
-                if randNbr <= PhLg_ratio:
-                    rtEdge = dico_neigbProb.get(PhLg_ratio)
-                    self.__edg_tabuList.append(rtEdge)
+            #Generate boundary markers
+            for i in range(0, len(DorigoProb)):
+                if i == 0:
+                    bundMark_tab.append( DorigoProb[i] )
+                else:
+                    bundMark_tab.append( bundMark_tab[i-1] + DorigoProb[i] )            
+            
+            #Select an edge according to boundary marker
+            for i in range(0, len(neighbors_EDGE)):
+                if rand <= bundMark_tab[i]:
+                    rtEdge = neighbors_EDGE[i]
+                    self.edg_tabuList.append(neighbors_EDGE[i])
                     break
-        
+                        
         return rtEdge
     
     def toVisit(self):
         """
         Create the vtx_toVisit collection for each ant
         """
-        for elmt in CommonKnowledge.adjMtxGraph.get_Vertices():
-            self.vtx_toVisit.append(elmt)
+        self.vtx_toVisit = CommonKnowledge.adjMtxGraph.get_Vertices()
     
     def get_antVertices_toString(self):
         """
