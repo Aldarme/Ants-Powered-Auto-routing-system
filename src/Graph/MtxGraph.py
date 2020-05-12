@@ -9,11 +9,11 @@ from Graph.Numbering import Numbering
 
 
 class MtxGraph:
-    __adjMtx = []
-    __numbering = Numbering()
-    
+
     def __init__(self, size_p):
-        self.__adjMtx = [[None for x in range(size_p)] for y in range(size_p)] 
+        self.__adjMtx       = []
+        self.__numbering    = Numbering()
+        self.__adjMtx       = [[None for x in range(size_p)] for y in range(size_p)]
     
     def size(self):
         """
@@ -150,8 +150,13 @@ class MtxGraph:
                 else:
                     print("echec")
         return neighboors
-        
-        
+    
+    def contain_vtx(self, ID_p):
+        if Numbering.contain(self, ID_p):
+            return Numbering.get_vtxFromID(self, ID_p)
+        else:
+            print("error: No vertex ID: {} in the adjacency matrix".format(ID_p))  
+    
     def get_Vertices(self):
         """
         Return a list of all Vertices in the adjacency  matrix

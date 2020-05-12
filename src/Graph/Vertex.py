@@ -6,8 +6,6 @@ Created on 27 avr. 2020
 
 class Vertex:
     
-    __ID = ""
-    
     def __init__(self, ID_p = "empty"):
         self.__ID = ID_p
     

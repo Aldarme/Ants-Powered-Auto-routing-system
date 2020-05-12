@@ -6,12 +6,10 @@ Created on 27 avr. 2020
 
 class Numbering:
     
-    __cnt = 0
-    __dicVtxIdx = {}
-    __arrayVtx = []
-    
     def __init__(self):
-        self.__cnt = -1
+        self.__cnt          = -1
+        self.__dicVtxIdx    = {}    #[Vertex, Index] dictionary
+        self.__arrayVtx     = []     #List of vertices
     
     def size(self):
         """
@@ -37,6 +35,12 @@ class Numbering:
         """
         return self.__dicVtxIdx[vtx_p]
     
+    def get_vtx(self, Key_p):
+        """
+        Return a vertex according to its index/key
+        """
+        return self.__dicVtxIdx.get(Key_p)
+    
     def get_vtxAt(self, idx_p):
         """
         Return the Vertex at the given index 
@@ -47,5 +51,16 @@ class Numbering:
         """
         Return the list of vertices
         """
-        return self.__arrayVtx
-            
+        return self.__arrayVtx[:]
+    
+    def contain(self,ID_p):
+        for vtx in Numbering.__arrayVtx:
+            if vtx.get_ID() == ID_p:
+                return True
+            else:
+                return False
+    
+    def get_vtxFromID(self, ID_p):
+        for vtx in self.__arrayVtx:
+            if vtx.get_ID() == ID_p:
+                return vtx

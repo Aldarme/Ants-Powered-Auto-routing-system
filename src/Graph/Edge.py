@@ -8,14 +8,10 @@ import Vertex as vtx
 
 class Edge:
     
-    __length = 0
-    __vtx_begin = vtx
-    __vtx_end = vtx
-    
     def __init__(self, length_p = 0, vtx_begin_p = vtx, vtx_end_p = vtx):
-        self.__length = length_p
-        self.__vtx_begin = vtx_begin_p
-        self.__vtx_end = vtx_end_p
+        self.__length       = length_p
+        self.__vtx_begin    = vtx_begin_p
+        self.__vtx_end      = vtx_end_p
     
     def set_length(self, length_p):
         """
