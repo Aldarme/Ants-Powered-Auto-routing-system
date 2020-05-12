@@ -54,6 +54,9 @@ class Numbering:
         return self.__arrayVtx[:]
     
     def contain(self,ID_p):
+        """
+        Test if the given vertex exist in the numbering class
+        """
         for vtx in Numbering.__arrayVtx:
             if vtx.get_ID() == ID_p:
                 return True
@@ -61,6 +64,9 @@ class Numbering:
                 return False
     
     def get_vtxFromID(self, ID_p):
+        """
+        Return a vertex according to the given ID
+        """
         for vtx in self.__arrayVtx:
             if vtx.get_ID() == ID_p:
                 return vtx

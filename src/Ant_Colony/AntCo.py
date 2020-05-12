@@ -53,6 +53,8 @@ class AntCo:
                                                    CommonKnowledge.adjMtxGraph.get_vtxIdx(edg.get_vtx_end()),
                                                    CommonKnowledge.dorigo_evaporation(edg, ant.distTravelled)
                                                    )
+        
+        #apply evaporation rate
     
     def localSearch(self):
         """

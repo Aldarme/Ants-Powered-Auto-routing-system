@@ -16,7 +16,9 @@ class AntEngine:
     
     
     def __init__(self, ID_vtx_begin_p, ID_vtx_toReach_p):
-        
+        """
+        Initialize the graph for the ant colony
+        """
         self.vtxList = []
         self.edgList = []
                 
@@ -58,9 +60,10 @@ class AntEngine:
         
         
     def AE_start(self, itNumb):
-        
+        """
+        Ant colony application core
+        """
         for i in range(0, itNumb):
-            
             CommonKnowledge.incr_IntNumber()
             print("iteration number: {}".format(CommonKnowledge.iterationNbr))
             

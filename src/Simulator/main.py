@@ -5,8 +5,9 @@ Created on 27 avr. 2020
 '''
 
 from Simulator.AntEngine import AntEngine
+from Ant_Colony.Term_Condition.EnvBasedTerm import EnvBasedTerm
 
 antEngine = AntEngine("0", "7")
 
-
-antEngine.AE_start(2)
+tmp = EnvBasedTerm.termCond()
+antEngine.AE_start(tmp)

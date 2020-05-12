@@ -59,7 +59,7 @@ class Ant:
                 return False
             
             #Kill the ant if the it is in dead end (No neighbors to visit)
-            if len(CommonKnowledge.adjMtxGraph.getNeighboor_VTX(self.vtx_end)) == 0: #Warning, this case work only for directed graph 
+            if len(CommonKnowledge.adjMtxGraph.get_Neighboor_VTX(self.vtx_end)) == 0: #Warning, this case work only for directed graph 
                 self.antState   = State.KILLED
                 self.vtx_begin  = CommonKnowledge.vtx_begin
                 del self.vtx_tabuList[:]        #flush the tabu list
@@ -74,7 +74,7 @@ class Ant:
         else: #The vertex can't be reach, have to find a new one
             
             #Fill the tabu list of tested neighbors
-            if len(self.neigb_tabuList) < len(CommonKnowledge.adjMtxGraph.getNeighboor_VTX(self.vtx_begin)
+            if len(self.neigb_tabuList) < len(CommonKnowledge.adjMtxGraph.get_Neighboor_VTX(self.vtx_begin)
                 and self.vtx_end not in self.neigb_tabuList):
                 self.neigb_tabuList.append(self.vtx_end)
                 return True
@@ -94,7 +94,7 @@ class Ant:
         """
         Calculate the probability for the next destination 
         """
-        neighbors_EDGE  = CommonKnowledge.adjMtxGraph.getNeighboor_VTX(vtx_p)
+        neighbors_EDGE  = CommonKnowledge.adjMtxGraph.get_Neighboor_VTX(vtx_p)
         PhLg_tab        = []
         PhLg_Sum        = 0.0
         DorigoProb      = []

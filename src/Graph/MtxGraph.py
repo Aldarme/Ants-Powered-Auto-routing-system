@@ -125,7 +125,7 @@ class MtxGraph:
         """
         self.__adjMtx[self.get_vtxIdx(vtx_begin_p)][self.get_vtxIdx(vtx_end_p)] = None
     
-    def getNeighboor_EDG(self, edge_p):
+    def get_Neighboor_EDG(self, edge_p):
         """
         Return a list of all the neighbors of the beginning Vertex of the given edge
         """
@@ -138,7 +138,7 @@ class MtxGraph:
                     print("echec")
         return neighboors
     
-    def getNeighboor_VTX(self, vtx_p):
+    def get_Neighboor_VTX(self, vtx_p):
         """
         Return a list of all the neighbors of the given Vertex
         """
@@ -151,7 +151,23 @@ class MtxGraph:
                     print("echec")
         return neighboors
     
+    def get_nbrOfNeigb(self, vtx_p):
+        """
+        Return the number of neighbors for the given vertex
+        """
+        nbrOfNeigb = 0
+        for elmt in self.__adjMtx[self.get_vtxIdx(vtx_p)]:
+            if elmt != None:
+                if self.exist_edg(vtx_p, elmt.get_vtx_end()):
+                    nbrOfNeigb += 1    
+                else:
+                    print("echec")
+        return nbrOfNeigb 
+    
     def contain_vtx(self, ID_p):
+        """
+        Test the existence of the given vertex in the adjacency matrix
+        """
         if Numbering.contain(self, ID_p):
             return Numbering.get_vtxFromID(self, ID_p)
         else:
@@ -162,6 +178,12 @@ class MtxGraph:
         Return a list of all Vertices in the adjacency  matrix
         """ 
         return self.__numbering.get_vtxArray()
+    
+    def get_nbrOfVertices(self):
+        """
+        Return the numbre of vertices in the adjacency  matrix
+        """ 
+        return len(self.__numbering.get_vtxArray())
     
     def get_adjMtx(self):
         """

@@ -73,6 +73,9 @@ class CommonKnowledge:
     
     @staticmethod
     def incr_IntNumber():
+        """
+        Increment the iteration number
+        """
         CommonKnowledge.iterationNbr += 1
     
     @staticmethod
