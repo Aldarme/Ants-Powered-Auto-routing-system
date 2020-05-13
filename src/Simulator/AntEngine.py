@@ -38,7 +38,7 @@ class AntEngine:
         self.edgList.append(Edge(3, self.vtxList[4], self.vtxList[5]))
         self.edgList.append(Edge(1, self.vtxList[6], self.vtxList[7]))
         self.edgList.append(Edge(2, self.vtxList[5], self.vtxList[7]))
-        
+                
         #instantiate the adjacency matrix
         CommonKnowledge.adjMtxGraph = MtxGraph(len(self.vtxList))
         
@@ -59,11 +59,11 @@ class AntEngine:
         CommonKnowledge.commonKnldg_init(self.vtxList[0], self.vtxList[7])  #CommonKnowledge.adjMtxGraph.contain_vtx(ID_vtx_begin_p) #CommonKnowledge.adjMtxGraph.contain_vtx(ID_vtx_toReach_p)
         
         
-    def AE_start(self, itNumb):
+    def ACO_start(self, itNbr):
         """
-        Ant colony application core
+        Ant Colony Optimization application core
         """
-        for i in range(0, itNumb):
+        for i in range(0, itNbr):
             CommonKnowledge.incr_IntNumber()
             print("iteration number: {}".format(CommonKnowledge.iterationNbr))
             
@@ -81,7 +81,11 @@ class AntEngine:
             # All ants return to their beginning point
             antCo.getBack()
         
-        
+        def ACS_start(self, itNbr):
+            """
+            Ant Colony System application core
+            """
+            pass
     
     
     

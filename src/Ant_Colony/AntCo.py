@@ -43,19 +43,21 @@ class AntCo:
     
     def getBack(self):
         """
-        Allow to all ants that have finished its tour, to get back at the beginning point
-        & apply pheromones to their path
+        Update the pheromone strength of all edges in the graph
+        Allow each ant to add pheromone on the arcs it has visited
+        Put in return state, all ants that have finished its tour
         """
+        
+        CommonKnowledge.pheromone_lowering()
+        
         for ant in self.antArray:
             if ant.antState == State.RETURNING:
                 for edg in ant.edg_tabuList:
                     CommonKnowledge.set_pheromones(CommonKnowledge.adjMtxGraph.get_vtxIdx(edg.get_vtx_begin()),
                                                    CommonKnowledge.adjMtxGraph.get_vtxIdx(edg.get_vtx_end()),
-                                                   CommonKnowledge.dorigo_evaporation(edg, ant.distTravelled)
+                                                   CommonKnowledge.pheromone_update(edg, ant.distTravelled)
                                                    )
-        
-        #apply evaporation rate
-    
+
     def localSearch(self):
         """
         Apply a local search, after an ant finished a lap

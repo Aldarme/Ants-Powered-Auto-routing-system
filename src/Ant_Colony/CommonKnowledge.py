@@ -15,12 +15,13 @@ class CommonKnowledge:
     vtx_toReach         = Vertex    #Vertex to reach for all ants
     nbrOfVtx            = 0         #Total number of vertices in the graph
     iterationNbr        = 0         #Current number of iteration for the ant colony algorithm
-    evaporation_rate    = 0         #Evaporation coefficient used to update pheromone strength
+    evaporation_rate    = 0.8       #Evaporation coefficient ]0;1] used to update pheromone strength
     optimalPath_length  = 0         #Length of the best path find by an ant
     optimalPath_edg     = []        #Collection of edges making up the best path 
     optimalPath_vtx     = []        #Collection of vertices making up the best path
-    adjPheroMtx         = []        #Adjacency pheromone matrix
     adjMtxGraph         = MtxGraph  #Adjacency matrix
+    adjPheroMtx         = []        #Adjacency pheromone matrix
+    
     
     @staticmethod
     def commonKnldg_init(vtxBegin_p, vtx_toReach_p):
@@ -64,12 +65,22 @@ class CommonKnowledge:
                 CommonKnowledge.optimalPath_vtx.append(edg.get_vtx_end())
     
     @staticmethod
-    def dorigo_evaporation(edg_p, iterationLength_p):
+    def pheromone_lowering():
         """
-        Calculate the evaporation rate of pheromones for the given edge
+        Lowering the pheromone strength on all arcs by a constant factor
         """
-        phero = CommonKnowledge.adjPheroMtx[CommonKnowledge.adjMtxGraph.get_vtxIdx(edg_p.get_vtx_begin())][CommonKnowledge.adjMtxGraph.get_vtxIdx(edg_p.get_vtx_end())]
-        return (((1.0-CommonKnowledge.evaporation_rate) * phero) + (1.0 / iterationLength_p))
+        for i in range (0, len(CommonKnowledge.adjPheroMtx)):
+            for j in range(0, len(CommonKnowledge.adjPheroMtx)):
+                CommonKnowledge.adjPheroMtx[i][j] = CommonKnowledge.adjPheroMtx[i][j] * CommonKnowledge.evaporation_rate
+    
+    @staticmethod
+    def pheromone_update(edg_p, iterationLength_p):
+        """
+        Calculate the evaporation rate of pheromones for the given edge, according to the following equation:
+        [(1-p) * PheromoneStrength] + lapSize
+        """
+        pheromeij = CommonKnowledge.adjPheroMtx[CommonKnowledge.adjMtxGraph.get_vtxIdx(edg_p.get_vtx_begin())][CommonKnowledge.adjMtxGraph.get_vtxIdx(edg_p.get_vtx_end())]
+        return (((1.0-CommonKnowledge.evaporation_rate) * pheromeij) + (1.0 / iterationLength_p))
     
     @staticmethod
     def incr_IntNumber():

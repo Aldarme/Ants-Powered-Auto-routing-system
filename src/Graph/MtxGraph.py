@@ -11,7 +11,6 @@ from Graph.Numbering import Numbering
 class MtxGraph:
 
     def __init__(self, size_p):
-        self.__adjMtx       = []
         self.__numbering    = Numbering()
         self.__adjMtx       = [[None for x in range(size_p)] for y in range(size_p)]
     
