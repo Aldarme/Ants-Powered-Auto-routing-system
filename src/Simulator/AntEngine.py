@@ -26,6 +26,7 @@ class AntEngine:
         for i in range(0, 8):
             self.vtxList.append(Vertex(i))
         
+        """
         self.edgList.append(Edge(8, self.vtxList[0], self.vtxList[1]))
         self.edgList.append(Edge(4, self.vtxList[0], self.vtxList[2]))
         self.edgList.append(Edge(1, self.vtxList[2], self.vtxList[1]))
@@ -38,7 +39,28 @@ class AntEngine:
         self.edgList.append(Edge(3, self.vtxList[4], self.vtxList[5]))
         self.edgList.append(Edge(1, self.vtxList[6], self.vtxList[7]))
         self.edgList.append(Edge(2, self.vtxList[5], self.vtxList[7]))
-                
+        """
+              
+        self.edgList.append(Edge(8, self.vtxList[0], self.vtxList[1]))
+        self.edgList.append(Edge(4, self.vtxList[0], self.vtxList[2]))
+        self.edgList.append(Edge(8, self.vtxList[1], self.vtxList[0]))
+        self.edgList.append(Edge(1, self.vtxList[1], self.vtxList[2]))
+        self.edgList.append(Edge(5, self.vtxList[1], self.vtxList[3]))
+        self.edgList.append(Edge(4, self.vtxList[2], self.vtxList[0]))
+        self.edgList.append(Edge(1, self.vtxList[2], self.vtxList[1]))
+        self.edgList.append(Edge(2, self.vtxList[2], self.vtxList[4]))
+        self.edgList.append(Edge(5, self.vtxList[3], self.vtxList[1]))
+        self.edgList.append(Edge(7, self.vtxList[3], self.vtxList[5]))
+        self.edgList.append(Edge(3, self.vtxList[3], self.vtxList[6]))
+        self.edgList.append(Edge(2, self.vtxList[4], self.vtxList[2]))
+        self.edgList.append(Edge(4, self.vtxList[4], self.vtxList[3]))
+        self.edgList.append(Edge(3, self.vtxList[4], self.vtxList[5]))
+        self.edgList.append(Edge(3, self.vtxList[5], self.vtxList[3]))
+        self.edgList.append(Edge(2, self.vtxList[5], self.vtxList[7]))
+        self.edgList.append(Edge(1, self.vtxList[6], self.vtxList[7]))
+        self.edgList.append(Edge(9, self.vtxList[7], self.vtxList[3]))
+        self.edgList.append(Edge(2, self.vtxList[7], self.vtxList[5]))
+        
         #instantiate the adjacency matrix
         CommonKnowledge.adjMtxGraph = MtxGraph(len(self.vtxList))
         
