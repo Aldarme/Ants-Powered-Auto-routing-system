@@ -77,8 +77,11 @@ class AntEngine:
         for elmt in CommonKnowledge.adjMtxGraph.get_adjMtx():
             print("{}".format(elmt))
         
+        #feed the land mark list of the CommonKnowledge
+        CommonKnowledge.landmarkList = []
+        
         #define the beginning point and the point to reach for the ants
-        CommonKnowledge.commonKnldg_init(self.vtxList[0], self.vtxList[7])  #CommonKnowledge.adjMtxGraph.contain_vtx(ID_vtx_begin_p) #CommonKnowledge.adjMtxGraph.contain_vtx(ID_vtx_toReach_p)
+        CommonKnowledge.commonKnldg_init(self.vtxList[0], self.vtxList[0])  #CommonKnowledge.adjMtxGraph.contain_vtx(ID_vtx_begin_p) #CommonKnowledge.adjMtxGraph.contain_vtx(ID_vtx_toReach_p)
         
         
     def ACO_start(self, itNbr):

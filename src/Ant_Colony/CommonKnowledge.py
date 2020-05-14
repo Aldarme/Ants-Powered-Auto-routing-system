@@ -21,6 +21,7 @@ class CommonKnowledge:
     optimalPath_vtx     = []        #Collection of vertices making up the best path
     adjMtxGraph         = MtxGraph  #Adjacency matrix
     adjPheroMtx         = []        #Adjacency pheromone matrix
+    landmarkList        = []        #List of all landmark an ant have to reach during a lap
     
     
     @staticmethod
