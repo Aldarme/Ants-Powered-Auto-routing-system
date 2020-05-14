@@ -45,11 +45,21 @@ class Ant:
         
         #Test if the end vertex can be reach
         if self.vtx_end in self.vtx_toVisit:
-            self.vtx_tabuList.append(self.vtx_begin)    #from the beginning, the starting point is set in the taboo list
+            self.vtx_tabuList.append(self.vtx_begin)
             self.vtx_toVisit.remove(self.vtx_begin)
             self.distTravelled += CommonKnowledge.adjMtxGraph.get_edglength(self.vtx_begin, self.vtx_end)
             
-            #Kill the ant in the case it arrive in dead end (No neighbors to visit)
+            #Stop the research if the ant find the Vertex to reach
+            if(self.vtx_end.get_ID() == self.vtx_toReach.get_ID() ):
+                self.antState = State.RETURNING
+                self.vtx_tabuList.append(self.vtx_end)
+                self.vtx_toVisit.remove(self.vtx_end)
+                self.vtx_begin = self.vtx_end
+                #Debug line
+                #print("Ant: {}, Path: {}, length: {}".format(self.ID, self.vtx_tabuList, self.distTravelled))
+                return False
+            
+            #Kill the ant if the it is in dead end (No neighbors to visit)
             if len(CommonKnowledge.adjMtxGraph.get_Neighboor_VTX(self.vtx_end)) == 0: #Warning, this case work only for directed graph 
                 self.antState   = State.KILLED
                 self.vtx_begin  = CommonKnowledge.vtx_begin
@@ -57,18 +67,10 @@ class Ant:
                 del self.vtx_toVisit[:]         #flush the to visit list
                 self.distTravelled = sys.maxint #flush the total dist. travel
                 return False
-            
+        
             self.vtx_begin = self.vtx_end   #the ant have to find the next vertex to reach
             self.vtx_end = None             
             return True
-        
-        #Stop the research if the ant find the Vertex to reach
-        elif(self.vtx_end.get_ID() == self.vtx_toReach.get_ID() #test if the end point is reach and the landmark list is clear 
-              and not self.vtx_landMark):
-                self.antState = State.RETURNING
-                self.vtx_begin = self.vtx_end
-                self.vtx_end = None
-                return False
         
         else: #The vertex can't be reach, have to find a new one
             
@@ -86,8 +88,7 @@ class Ant:
                 del self.vtx_toVisit[:]         #flush the to visit list
                 del self.neigb_tabuList[:]      #flush the tested neighbors tabu list
                 self.distTravelled = sys.maxint #flush the total dist. travel
-                return False                
-            
+                return False             
     
     def dorigo_prob(self, vtx_p):
         """
@@ -164,3 +165,55 @@ class State:
     SEARCHING_PATH  = 2
     RETURNING       = 3
     KILLED          = 4
+    
+"""
+def toReach(self):
+        
+        #Return the heuristic destination determined by the DorigoProb
+        self.vtx_end =  self.dorigo_prob(self.vtx_begin).get_vtx_end()
+        
+        #Test if the end vertex can be reach
+        if self.vtx_end in self.vtx_toVisit:
+            self.vtx_tabuList.append(self.vtx_begin)    #from the beginning, the starting point is set in the taboo list
+            self.vtx_toVisit.remove(self.vtx_begin)
+            self.distTravelled += CommonKnowledge.adjMtxGraph.get_edglength(self.vtx_begin, self.vtx_end)
+            
+            #Kill the ant in the case it arrive in dead end (No neighbors to visit)
+            if len(CommonKnowledge.adjMtxGraph.get_Neighboor_VTX(self.vtx_end)) == 0: #Warning, this case work only for directed graph 
+                self.antState   = State.KILLED
+                self.vtx_begin  = CommonKnowledge.vtx_begin
+                del self.vtx_tabuList[:]        #flush the tabu list
+                del self.vtx_toVisit[:]         #flush the to visit list
+                self.distTravelled = sys.maxint #flush the total dist. travel
+                return False
+            
+            self.vtx_begin = self.vtx_end   #the ant have to find the next vertex to reach
+            self.vtx_end = None             
+            return True
+        
+        #Stop the research if the ant find the Vertex to reach
+        elif(self.vtx_end.get_ID() == self.vtx_toReach.get_ID() #test if the end point is reach and the landmark list is clear 
+              and not self.vtx_landMark):
+                self.antState = State.RETURNING
+                self.vtx_begin = self.vtx_end
+                self.vtx_end = None
+                return False
+        
+        else: #The vertex can't be reach, have to find a new one
+            
+            #Fill the tabu list of tested neighbors
+            if len(self.neigb_tabuList) < len(CommonKnowledge.adjMtxGraph.get_Neighboor_VTX(self.vtx_begin)
+                and self.vtx_end not in self.neigb_tabuList):
+                self.neigb_tabuList.append(self.vtx_end)
+                return True
+            
+            else:
+                #The tested neighbors list is full, we kill the ant
+                self.antState = State.KILLED
+                self.vtx_begin  = CommonKnowledge.vtx_begin
+                del self.vtx_tabuList[:]        #flush the tabu list
+                del self.vtx_toVisit[:]         #flush the to visit list
+                del self.neigb_tabuList[:]      #flush the tested neighbors tabu list
+                self.distTravelled = sys.maxint #flush the total dist. travel
+                return False
+"""
