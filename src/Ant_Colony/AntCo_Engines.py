@@ -3,7 +3,6 @@ Created on 6 mai 2020
 
 @author: promet
 '''
-from Ant_Colony.Ant import Ant
 from Graph.Vertex import Vertex
 from Graph.Edge import Edge
 from Ant_Colony.CommonKnowledge import CommonKnowledge
@@ -11,9 +10,7 @@ from Graph.MtxGraph import MtxGraph
 from Ant_Colony.AntCo import AntCo
 
 
-class AntEngine:
-    
-    
+class AntCo_Engines:
     
     def __init__(self, ID_vtx_begin_p, ID_vtx_toReach_p):
         """
@@ -26,6 +23,7 @@ class AntEngine:
         for i in range(0, 8):
             self.vtxList.append(Vertex(i))
         
+        #For this graph, the best path is [0, 2, 4, 5, 7], with size of 11
         """
         self.edgList.append(Edge(8, self.vtxList[0], self.vtxList[1]))
         self.edgList.append(Edge(4, self.vtxList[0], self.vtxList[2]))
@@ -61,6 +59,7 @@ class AntEngine:
         self.edgList.append(Edge(9, self.vtxList[7], self.vtxList[3]))
         self.edgList.append(Edge(2, self.vtxList[7], self.vtxList[5]))
         
+        
         #instantiate the adjacency matrix
         CommonKnowledge.adjMtxGraph = MtxGraph(len(self.vtxList))
         
@@ -81,7 +80,7 @@ class AntEngine:
         CommonKnowledge.landmarkList = []
         
         #define the beginning point and the point to reach for the ants
-        CommonKnowledge.commonKnldg_init(self.vtxList[0], self.vtxList[0])  #CommonKnowledge.adjMtxGraph.contain_vtx(ID_vtx_begin_p) #CommonKnowledge.adjMtxGraph.contain_vtx(ID_vtx_toReach_p)
+        CommonKnowledge.commonKnldg_init(self.vtxList[0], self.vtxList[7])  #CommonKnowledge.adjMtxGraph.contain_vtx(ID_vtx_begin_p) #CommonKnowledge.adjMtxGraph.contain_vtx(ID_vtx_toReach_p)
         
         
     def ACO_start(self, itNbr):

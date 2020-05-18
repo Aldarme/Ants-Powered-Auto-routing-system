@@ -6,7 +6,7 @@ from Ant_Colony.CommonKnowledge import CommonKnowledge
 from math import ceil
 
 
-class EnvBasedTerm:
+class EnvBased:
     
     @staticmethod
     def termCond():
