@@ -75,8 +75,8 @@ class Ant:
         else: #The vertex can't be reach, have to find a new one
             
             #Fill the tabu list of tested neighbors
-            if len(self.neigb_tabuList) < len(CommonKnowledge.adjMtxGraph.get_Neighboor_VTX(self.vtx_begin)
-                and self.vtx_end not in self.neigb_tabuList):
+            if ( len(self.neigb_tabuList) < len(CommonKnowledge.adjMtxGraph.get_Neighboor_VTX(self.vtx_begin))
+                and (self.vtx_end not in self.neigb_tabuList) ):
                 self.neigb_tabuList.append(self.vtx_end)
                 return True
             
