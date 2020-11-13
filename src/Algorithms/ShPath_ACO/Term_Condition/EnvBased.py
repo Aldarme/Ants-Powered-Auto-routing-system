@@ -2,7 +2,7 @@
 Created on 12 mai 2020
 @author: promet
 '''
-from Ant_Colony.CommonKnowledge import CommonKnowledge
+from Algorithms.ShPath_ACO.ACO.CommonKnowledge import CommonKnowledge
 from math import ceil
 
 

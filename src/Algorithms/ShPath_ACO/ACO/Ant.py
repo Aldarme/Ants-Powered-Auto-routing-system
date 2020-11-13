@@ -5,7 +5,7 @@ Created on 4 mai 2020
 '''
 
 from Graph.Vertex import Vertex
-from Ant_Colony.CommonKnowledge import CommonKnowledge
+from Algorithms.ShPath_ACO.ACO.CommonKnowledge import CommonKnowledge
 from Graph.Edge import Edge
 import random
 import sys
@@ -21,7 +21,6 @@ class Ant:
         self.distTravelled  = 0                 #Distance travelled by an ant for a 
         self.vtx_toVisit    = []                #Collection of all remaining vertices of the graph to visit 
         self.vtx_tabuList   = []                #Collection of all visited Vertices, by the ant
-        self.vtx_landMark   = []                #Contain the landmark that an ant have to check during a lap
         self.edg_tabuList   = []                #Revoir cette element de dorigo prob, si vraiment utile ? Collection of all visited edges by the ant    
         self.neigb_tabuList = []                #Collection of ant tested neighbors
         
@@ -65,7 +64,7 @@ class Ant:
                 self.vtx_begin  = CommonKnowledge.vtx_begin
                 del self.vtx_tabuList[:]        #flush the tabu list
                 del self.vtx_toVisit[:]         #flush the to visit list
-                self.distTravelled = sys.maxint #flush the total dist. travel
+                self.distTravelled = sys.maxsize #flush the total dist. travel
                 return False
         
             self.vtx_begin = self.vtx_end   #the ant have to find the next vertex to reach
@@ -87,7 +86,7 @@ class Ant:
                 del self.vtx_tabuList[:]        #flush the tabu list
                 del self.vtx_toVisit[:]         #flush the to visit list
                 del self.neigb_tabuList[:]      #flush the tested neighbors tabu list
-                self.distTravelled = sys.maxint #flush the total dist. travel
+                self.distTravelled = sys.maxsize #flush the total dist. travel
                 return False             
     
     def dorigo_prob(self, vtx_p):
@@ -120,7 +119,7 @@ class Ant:
         #ToDebug     
         #Generate a random edge according to the Dorigo prob
         if PhLg_Sum == 0:
-            rand = random.randint(0, (len(neighbors_EDGE)-1) ) #rand between [0; nbrOfNeighbors 
+            rand = random.randint(0, (len(neighbors_EDGE)-1) ) #rand between [0; nbrOfNeighbors-1]
             rtEdge = neighbors_EDGE[rand]
             self.edg_tabuList.append(rtEdge)
         else:
@@ -148,7 +147,6 @@ class Ant:
         as both the list of all vertices of the graph and the list of landmark points
         """
         self.vtx_toVisit    = CommonKnowledge.adjMtxGraph.get_Vertices()
-        self.vtx_landMark   = CommonKnowledge.landmarkList[:] 
     
     def get_antVertices_toString(self):
         """
@@ -165,55 +163,3 @@ class State:
     SEARCHING_PATH  = 2
     RETURNING       = 3
     KILLED          = 4
-    
-"""
-def toReach(self):
-        
-        #Return the heuristic destination determined by the DorigoProb
-        self.vtx_end =  self.dorigo_prob(self.vtx_begin).get_vtx_end()
-        
-        #Test if the end vertex can be reach
-        if self.vtx_end in self.vtx_toVisit:
-            self.vtx_tabuList.append(self.vtx_begin)    #from the beginning, the starting point is set in the taboo list
-            self.vtx_toVisit.remove(self.vtx_begin)
-            self.distTravelled += CommonKnowledge.adjMtxGraph.get_edglength(self.vtx_begin, self.vtx_end)
-            
-            #Kill the ant in the case it arrive in dead end (No neighbors to visit)
-            if len(CommonKnowledge.adjMtxGraph.get_Neighboor_VTX(self.vtx_end)) == 0: #Warning, this case work only for directed graph 
-                self.antState   = State.KILLED
-                self.vtx_begin  = CommonKnowledge.vtx_begin
-                del self.vtx_tabuList[:]        #flush the tabu list
-                del self.vtx_toVisit[:]         #flush the to visit list
-                self.distTravelled = sys.maxint #flush the total dist. travel
-                return False
-            
-            self.vtx_begin = self.vtx_end   #the ant have to find the next vertex to reach
-            self.vtx_end = None             
-            return True
-        
-        #Stop the research if the ant find the Vertex to reach
-        elif(self.vtx_end.get_ID() == self.vtx_toReach.get_ID() #test if the end point is reach and the landmark list is clear 
-              and not self.vtx_landMark):
-                self.antState = State.RETURNING
-                self.vtx_begin = self.vtx_end
-                self.vtx_end = None
-                return False
-        
-        else: #The vertex can't be reach, have to find a new one
-            
-            #Fill the tabu list of tested neighbors
-            if len(self.neigb_tabuList) < len(CommonKnowledge.adjMtxGraph.get_Neighboor_VTX(self.vtx_begin)
-                and self.vtx_end not in self.neigb_tabuList):
-                self.neigb_tabuList.append(self.vtx_end)
-                return True
-            
-            else:
-                #The tested neighbors list is full, we kill the ant
-                self.antState = State.KILLED
-                self.vtx_begin  = CommonKnowledge.vtx_begin
-                del self.vtx_tabuList[:]        #flush the tabu list
-                del self.vtx_toVisit[:]         #flush the to visit list
-                del self.neigb_tabuList[:]      #flush the tested neighbors tabu list
-                self.distTravelled = sys.maxint #flush the total dist. travel
-                return False
-"""

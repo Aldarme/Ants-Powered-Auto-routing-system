@@ -3,8 +3,8 @@ Created on 4 mai 2020
 
 @author: promet
 '''
-from Ant_Colony.Ant import Ant, State
-from Ant_Colony.CommonKnowledge import CommonKnowledge
+from Algorithms.ShPath_ACO.ACO.Ant import Ant, State
+from Algorithms.ShPath_ACO.ACO.CommonKnowledge import CommonKnowledge
 
 class AntCo:
     
@@ -60,7 +60,7 @@ class AntCo:
 
     def localSearch(self):
         """
-        Apply a local search, after an ant finished a lap
+        Apply a local search, after an ant finished a turn
         """
         pass
     
@@ -70,3 +70,4 @@ class AntCo:
         """
         for ant in self.antArray:
             print("ant: {}".format(ant.get_antVertices_toString()))
+            

@@ -7,12 +7,11 @@ Created on 4 mai 2020
 from Graph.MtxGraph import MtxGraph
 from Graph.Vertex import Vertex
 import sys
-from __builtin__ import staticmethod
 
 class CommonKnowledge:
     
-    vtx_begin           = Vertex    #Beginning vertex of all ants
-    vtx_toReach         = Vertex    #Vertex to reach for all ants
+    vtx_begin           = Vertex    #Beginning vertex of all ants (of the AC(O/S) algorithm)
+    vtx_toReach         = Vertex    #Vertex to reach for all ants (of the AC(O/S) algorithm)
     nbrOfVtx            = 0         #Total number of vertices in the graph
     iterationNbr        = 0         #Current number of iteration for the ant colony algorithm
     evaporation_rate    = 0.8       #Evaporation coefficient ]0;1] used to update pheromone strength
@@ -21,14 +20,17 @@ class CommonKnowledge:
     optimalPath_vtx     = []        #Collection of vertices making up the best path
     adjMtxGraph         = MtxGraph  #Adjacency matrix
     adjPheroMtx         = []        #Adjacency pheromone matrix
-    landmarkList        = []        #List of all landmark an ant have to reach during a lap
+    landmarkList        = []        #List of all landmark an ant have to reach during a turn (list of Vertices)
+    turn                = []        #VRP turn (contain of vertex of the graph where the vehicle have to stops)
+    turnAsLandmark      = []        #VRP turn as a list of landmark
+    turn_distance       = 0
     
     
     @staticmethod
     def commonKnldg_init(vtxBegin_p, vtx_toReach_p):
         CommonKnowledge.vtx_begin = vtxBegin_p
         CommonKnowledge.vtx_toReach = vtx_toReach_p
-        CommonKnowledge.optimalPath_length = sys.maxint
+        CommonKnowledge.optimalPath_length = sys.maxsize
         
         #Init the adjacency pheromone matrix at the same size that the adjacency matrix, with all elements at "0.0"
         CommonKnowledge.adjPheroMtx = [[0.0 for x in range(CommonKnowledge.adjMtxGraph.size())] for y in range(CommonKnowledge.adjMtxGraph.size())]
@@ -78,13 +80,13 @@ class CommonKnowledge:
     def pheromone_update(edg_p, iterationLength_p):
         """
         Calculate the evaporation rate of pheromones for the given edge, according to the following equation:
-        [(1-p) * PheromoneStrength] + lapSize
+        [(1-p) * PheromoneStrength] + turnSize
         """
         pheromeij = CommonKnowledge.adjPheroMtx[CommonKnowledge.adjMtxGraph.get_vtxIdx(edg_p.get_vtx_begin())][CommonKnowledge.adjMtxGraph.get_vtxIdx(edg_p.get_vtx_end())]
         return (((1.0-CommonKnowledge.evaporation_rate) * pheromeij) + (1.0 / iterationLength_p))
     
     @staticmethod
-    def incr_IntNumber():
+    def incr_Interation():
         """
         Increment the iteration number
         """
@@ -97,7 +99,7 @@ class CommonKnowledge:
             the adjacency matrix
             the adjacency pheromone matrix        
         """
-        CommonKnowledge.optimalPath_length = sys.maxint
+        CommonKnowledge.optimalPath_length = sys.maxsize
         del CommonKnowledge.optimalPath_edg[:]
         del CommonKnowledge.optimalPath_vtx[:]
         del CommonKnowledge.__optimalPath_vtx_tmp[:]
