@@ -14,12 +14,19 @@ class CommonKnowledge:
     vtx_init            = Vertex        #Beginning vertex of all ants (of the AC(O/S) algorithm)
     nbrOfVtx            = 0             #Total number of vertices in the graph
     iterationNbr        = 0             #Current number of iteration for the ant colony algorithm
+    #Param. of Ant Colony Algo. 
     evaporation_rate    = 0             #Evaporation coefficient ]0;1] used to update pheromone strength
     optimalPath_length  = 0             #Length of the best path find by an ant
     optimalPath_edg     = []            #Collection of edges making up the best path 
     optimalPath_vtx     = []            #Collection of vertices making up the best path
     adjMtxGraph         = MtxGraph      #Adjacency matrix
     adjPheroMtx         = []            #Adjacency pheromone matrix
+    #Param. of SOC & SOH algorithm
+    nrjAntInitCapacity  = 1
+    nrjCapacityMin      = 0.20
+    nrjCapacityMin      = 0.80
+    nrjCostEdgeAvrg     = 0,1           #0.25 is for test app. thanks to Romain's data.
+    
     
     
     @staticmethod

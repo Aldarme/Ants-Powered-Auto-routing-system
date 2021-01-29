@@ -11,24 +11,25 @@ from Algorithms.VRP.ACO.AntCo import AntCo
 class VRP_Engines:
     
     @staticmethod
-    def ECHVRP():
+    #ESCSHVRP: Electric State of Charge, State of Health Vehicle Routing Problem 
+    def ESCSHVRP():
         """
         SOC & SOH Vehicle Routing Problem
         """
-        #define the convenable number of iteration
+        #determine the appropriate number of iterations
         for i in range(0, EnvBased.termCond()):
             
             CommonKnowledge.interationCnt()
             print("iteration: {}".format(CommonKnowledge.iterationNbr))
             
             #Instantiate the ant colony
-            antCo = AntCo(CommonKnowledge.vtx_init)
+            antCo = AntCo()
             
             #let all ants construct a turn (one by one)
             antCo.search()
             
             #Check all ants to find the best turn according to specified criterion(s)
-            antCo.Scoring()
+            ##antCo.Scoring()
             
             #Set all ants to the initial location
-            antCo.getBack()
+            ##antCo.getBack()

@@ -10,9 +10,11 @@ from Algorithms.VRP.VRP_Engines import VRP_Engines
 '''
 Create the graph and initialized the common Knowledge
 '''
-GpTest.create()
+warehouse_vertex = 4
+
+GpTest.create(warehouse_vertex)
 
 '''
 Start the ECHVRP algorithm
 '''
-VRP_Engines.ECHVRP()
+VRP_Engines.ESCSHVRP()

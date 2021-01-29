@@ -17,11 +17,12 @@ class Ant:
         self.vtx_current    = CommonKnowledge.vtx_init
         self.antState       = State.HANDLE      #Define the state of the ant during the algorithm
         self.vtx_Next       = Vertex()          #Next Vertex in the graph the ant have to join
-        self.distTravelled  = 0                 #Distance travelled by an ant for a 
+        self.distTravelled  = 0                 #Distance travelled by an ant
         self.vtx_toVisit    = []                #Collection of reachable vertices in the graph
         self.vtx_tabuList   = []                #Collection of all visited Vertices, by the ant
         self.edg_tabuList   = []                #Revoir cette element de dorigo prob, si vraiment utile ? Collection of all visited edges by the ant    
         self.neigb_tabuList = []                #Collection of ant tested neighbors
+        self.nrj_capacity   = CommonKnowledge.nrjAntInitCapacity #Energy capacity of the electric vehicle, [20;80]
         
         self.toVisit()
     
@@ -41,7 +42,7 @@ class Ant:
         #Return the heuristic edge destination determined by the DorigoProb
         self.vtx_Next = self.dorigo_prob(self.vtx_current).get_vtx_end()
         
-        #Test if the end vertex can be reach
+        #Test if the next vertex can be reach
         if self.vtx_Next in self.vtx_toVisit:
             
             if self.vtx_Next.get_ID == CommonKnowledge.vtx_init.get_ID():
@@ -54,8 +55,18 @@ class Ant:
                     self.vtx_tabuList.append(self.vtx_current)
                     self.vtx_toVisit.remove(self.vtx_current)
                     self.distTravelled += CommonKnowledge.adjMtxGraph.get_edglength(self.vtx_current, self.vtx_Next)
-                    #enregistrer le temps aussi ?
-                    #calculer et stocker un ratio dist/tps ?
+                    self.nrj_capacity -= CommonKnowledge.adjMtxGraph.get_edgNrjCost(self.vtx_current, self.vtx_Next)
+                    
+                    #Kill the current ant if its nrj capacity get lower than 20%
+                    if(self.nrj_capacity <= CommonKnowledge.nrjCapacityMin):
+                        print("Current ant Kill, due to nrj Capacity Min < 20%")
+                        self.antState   = State.KILLED
+                        self.vtx_current  = CommonKnowledge.vtx_init
+                        del self.vtx_tabuList[:]        #flush the tabu list
+                        del self.vtx_toVisit[:]         #flush the to visit list
+                        self.distTravelled = sys.maxsize #flush the total dist. travel
+                        return False
+                        
             
             #Stop the research if the ant return to the init. vertex
             if(self.vtx_Next.get_ID() == CommonKnowledge.vtx_init.get_ID() ):

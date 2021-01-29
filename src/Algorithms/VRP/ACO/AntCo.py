@@ -8,18 +8,18 @@ from Algorithms.VRP.ACO.CommonKnowledge import CommonKnowledge
 
 class AntCo:
     
-    def __init__(self, vtxInit_p):
+    def __init__(self):
         self.antArray = []
-        self.create_ants(vtxInit_p)
+        self.create_ants()
         
     
-    def create_ants(self, vtxInit_p):
+    def create_ants(self):
         """
-        Create an list containing all ants of the colony
+        Create an list containing all ants of the colony,
         the ant number is equals to the vertices number
         """
         for i in range(0, CommonKnowledge.adjMtxGraph.size()):
-            self.antArray.append(Ant(i, vtxInit_p))
+            self.antArray.append(Ant(i))
     
     def search(self):
         """
