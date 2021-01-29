@@ -103,6 +103,12 @@ class MtxGraph:
         """
         return self.__adjMtx[self.get_vtxIdx(vtx_begin_p)][self.get_vtxIdx(vtx_end_p)].get_length()
     
+    def get_edgNrjCost(self, vtx_begin_p, vtx_end_p):
+        """
+        Return the Nrj Cost of the given Edge
+        """
+        return self.__adjMtx[self.get_vtxIdx(vtx_begin_p)][self.get_vtxIdx(vtx_end_p)].get_nrj_cost()
+    
     def modify_length(self, edg_p, length_p):
         """
         Modify the length of the given edge
@@ -147,7 +153,7 @@ class MtxGraph:
                 if self.exist_edg(vtx_p, elmt.get_vtx_end()):
                     neighboors.append(elmt)
                 else:
-                    print("echec")
+                    print("echec, no neighboor")
         return neighboors
     
     def get_nbrOfNeigb(self, vtx_p):

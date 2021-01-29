@@ -21,7 +21,8 @@ class Numbering:
         """
         Add an new element to generate a [Vertex, Index] dictionary
         """
-        if not self.__dicVtxIdx.has_key(vtx_p):
+        #if not self.__dicVtxIdx.has_key(vtx_p): #haskey was reprequated, need to find new appropriate one
+        if not vtx_p in self.__dicVtxIdx:
             self.__cnt += 1
             self.__dicVtxIdx[vtx_p] = self.__cnt
             self.__arrayVtx.append(vtx_p)

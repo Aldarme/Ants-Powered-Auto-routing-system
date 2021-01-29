@@ -4,14 +4,19 @@ Created on 27 avr. 2020
 @author: promet
 '''
 
-import Vertex as vtx
+from Graph import Vertex as vtx
 
 class Edge:
     
-    def __init__(self, length_p = 0, vtx_begin_p = vtx, vtx_end_p = vtx):
-        self.__length       = length_p
+    """
+    Init object parameters value
+    By default, nrj_cost is init at 0,25 kwh/km, according to data exploitation
+    """
+    def __init__(self, length_p = 0, vtx_begin_p = vtx, vtx_end_p = vtx, nrj_cost_p = 0.25):
+        self.__length       = length_p      #distance Unit: Km
         self.__vtx_begin    = vtx_begin_p
-        self.__vtx_end      = vtx_end_p
+        self.__vtx_end      = vtx_end_p        
+        self.__nrj_cost     = nrj_cost_p    #Nrj unit: KWH/Km
     
     def set_length(self, length_p):
         """
@@ -48,6 +53,12 @@ class Edge:
         Get the ending vertex object
         """
         return  self.__vtx_end
+    
+    def get_nrj_cost(self):
+        """
+        Get the nrj cost of the edge
+        """
+        return self.__nrj_cost 
     
     def toString(self):
         """
