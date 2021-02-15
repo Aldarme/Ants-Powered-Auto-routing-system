@@ -15,10 +15,12 @@ class GpTest:
     vtxList = []
     edgList = []
     
+    DEBUG = False
+    
     @staticmethod
     def create( warehouse_p ):
         """
-        Initialize the graph for the ant colony
+        Initialize the graph test
         """
                
         #Create vertices
@@ -91,9 +93,10 @@ class GpTest:
             CommonKnowledge.adjMtxGraph.insert_edg_EDGE(edg)
         
         #debug
-        #display the adjacency matrix for verification
-        for elmt in CommonKnowledge.adjMtxGraph.get_adjMtx():
-            print("{}".format(elmt))
+        #display the adjacency matrix for check
+        if(GpTest.DEBUG):
+            for elmt in CommonKnowledge.adjMtxGraph.get_adjMtx():
+                print("{}".format(elmt))
         
         #Set the initial vertex of each ants
         #&& initialize common Knowledge

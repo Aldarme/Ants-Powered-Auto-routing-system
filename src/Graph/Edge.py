@@ -5,6 +5,7 @@ Created on 27 avr. 2020
 '''
 
 from Graph import Vertex as vtx
+#from Algorithms.VRP.ACO.CommonKnowledge import CommonKnowledge
 
 class Edge:
     
@@ -12,7 +13,7 @@ class Edge:
     Init object parameters value
     By default, nrj_cost is init at 0,25 kwh/km, according to data exploitation
     """
-    def __init__(self, length_p = 0, vtx_begin_p = vtx, vtx_end_p = vtx, nrj_cost_p = 0.25):
+    def __init__(self, length_p = 0, vtx_begin_p = vtx, vtx_end_p = vtx, nrj_cost_p = 0.1): #0.25 is for test app. thanks to Romain's data.
         self.__length       = length_p      #distance Unit: Km
         self.__vtx_begin    = vtx_begin_p
         self.__vtx_end      = vtx_end_p        
