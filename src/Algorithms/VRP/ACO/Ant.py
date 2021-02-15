@@ -22,7 +22,10 @@ class Ant:
         self.vtx_tabuList   = []                #Collection of all visited Vertices, by the ant
         self.edg_tabuList   = []                #Revoir cette element de dorigo prob, si vraiment utile ? Collection of all visited edges by the ant    
         self.neigb_tabuList = []                #Collection of ant tested neighbors
-        self.nrj_capacity   = CommonKnowledge.nrjAntInitCapacity #Energy capacity of the electric vehicle, [20;80]
+        self.nrj_capacity   = CommonKnowledge.AntInitNrjCapacity #Energy capacity of the electric vehicle, [20;80]
+        self.normNRJ        = 0
+        self.normDst        = 0
+        self.perfIdx        = 0
         
         self.toVisit()
     
@@ -170,13 +173,14 @@ class Ant:
         """
         self.vtx_toVisit = CommonKnowledge.adjMtxGraph.get_Vertices()
     
-    def get_antVertices_toString(self):
-        #TODO
+    def visitedVtx_toString(self):
         """
-        Return visited vertices of an Ant
+        Return all visited vertices of an Ant
         """
-        return "Beginning Vertex: {}, To reach Vertex: {}, ending Vertex: {}".format(self.vtx_init, self.vtx_toReach, self.vtx_Next)
-
+        str=""
+        for vtx in self.vtx_tabuList:
+            str += " {},".format(vtx.get_ID())
+        return str
 
 class State:
     """

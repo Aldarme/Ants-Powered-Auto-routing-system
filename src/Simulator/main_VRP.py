@@ -17,4 +17,4 @@ GpTest.create(warehouse_vertex)
 '''
 Start the ECHVRP algorithm
 '''
-VRP_Engines.ESCSHVRP()
+VRP_Engines.ESCSHVRP(2)

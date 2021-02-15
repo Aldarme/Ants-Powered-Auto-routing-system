@@ -22,15 +22,15 @@ class CommonKnowledge:
     adjMtxGraph         = MtxGraph      #Adjacency matrix
     adjPheroMtx         = []            #Adjacency pheromone matrix
     #Param. of SOC & SOH algorithm
-    nrjAntInitCapacity  = 1
+    AntInitNrjCapacity  = 1.0
     nrjCapacityMin      = 0.20
-    nrjCapacityMin      = 0.80
-    nrjCostEdgeAvrg     = 0,1           #0.25 is for test app. thanks to Romain's data.
+    nrjCapacityMax      = 0.80
+    
     
     
     
     @staticmethod
-    def comnKldg_init(vtx_init_p, evaporationRate_p = 0.8):
+    def comnKldg_init(vtx_init_p, evaporationRate_p = 0.2):
         CommonKnowledge.vtx_init = vtx_init_p
         CommonKnowledge.optimalPath_length = sys.maxsize
         CommonKnowledge.evaporation_rate = evaporationRate_p    #by default is 0.8
@@ -77,16 +77,16 @@ class CommonKnowledge:
         """
         for i in range (0, len(CommonKnowledge.adjPheroMtx)):
             for j in range(0, len(CommonKnowledge.adjPheroMtx)):
-                CommonKnowledge.adjPheroMtx[i][j] = CommonKnowledge.adjPheroMtx[i][j] * CommonKnowledge.evaporation_rate
+                CommonKnowledge.adjPheroMtx[i][j] = ((1.0-CommonKnowledge.evaporation_rate) * CommonKnowledge.adjPheroMtx[i][j])
     
     @staticmethod
-    def pheromone_update(edg_p, iterationLength_p):
+    def pheromone_update(edg_p, totalDist_p, SOC_p):
         """
         Calculate the evaporation rate of pheromones for the given edge, according to the following equation:
         [(1-p) * PheromoneStrength] + turnSize
         """
         pheromeij = CommonKnowledge.adjPheroMtx[CommonKnowledge.adjMtxGraph.get_vtxIdx(edg_p.get_vtx_begin())][CommonKnowledge.adjMtxGraph.get_vtxIdx(edg_p.get_vtx_end())]
-        return (((1.0-CommonKnowledge.evaporation_rate) * pheromeij) + (1.0 / iterationLength_p))
+        return (pheromeij + ( (totalDist_p) * (1.0 / SOC_p) ) )
     
     @staticmethod
     def interationCnt():
