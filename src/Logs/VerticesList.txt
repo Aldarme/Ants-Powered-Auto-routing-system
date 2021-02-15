@@ -1,0 +1,157 @@
+idx: 0, value: La Douce
+idx: 1, value: Signoret
+idx: 2, value: Schuman
+idx: 3, value: Bruxelles
+idx: 4, value: Jaurès Hôpital
+idx: 5, value: Strasbourg
+idx: 6, value: Colmar
+idx: 7, value: Roseraie
+idx: 8, value: Marché Vosges
+idx: 9, value: Salbert
+idx: 10, value: Rubans
+idx: 11, value: La Dame
+idx: 12, value: La Belle
+idx: 13, value: Acacias
+idx: 14, value: Argiésans Centre
+idx: 15, value: Zi de Bavilliers
+idx: 16, value: Rte d'Urcerey
+idx: 17, value: Route de Buc
+idx: 18, value: Bavilliers
+idx: 19, value: Pont Canal
+idx: 20, value: Mozart
+idx: 21, value: Bonneff
+idx: 22, value: Mieg
+idx: 23, value: Saget
+idx: 24, value: Ste Thérèse
+idx: 25, value: Grand' Combe
+idx: 26, value: Laurent Thierry
+idx: 27, value: Alstom Étang
+idx: 28, value: Techn' Hom Cravanche
+idx: 29, value: Les Perches
+idx: 30, value: Altkirch
+idx: 31, value: Sellier
+idx: 32, value: Parant
+idx: 33, value: Cimetière Militaire
+idx: 34, value: Laurencie
+idx: 35, value: CFA
+idx: 36, value: Bichat
+idx: 37, value: Hauts de Belfort
+idx: 38, value: Camus
+idx: 39, value: 1er RA
+idx: 40, value: Gare TGV
+idx: 41, value: Rte de Meroux
+idx: 42, value: Moval
+idx: 43, value: Hôpital NFC
+idx: 44, value: Sévenans UTBM
+idx: 45, value: Géhant
+idx: 46, value: Châtenois
+idx: 47, value: Complexe Sportif
+idx: 48, value: Châtenois Forges
+idx: 49, value: Rte de Vourvenans
+idx: 50, value: Trévenans
+idx: 51, value: Bascule
+idx: 52, value: Conforama
+idx: 53, value: Rte de Bermont
+idx: 54, value: OEufs Frais
+idx: 55, value: Port de Botans
+idx: 56, value: Andelnans Prés
+idx: 57, value: Grottes
+idx: 58, value: Éluard
+idx: 59, value: Jacquot
+idx: 60, value: Bosmont
+idx: 61, value: Varonne
+idx: 62, value: Techn' Hom 1 UTBM
+idx: 63, value: IUT
+idx: 64, value: Techn' Hom 2
+idx: 65, value: Techn' Hom 3
+idx: 66, value: Benoit Frachon
+idx: 67, value: Méchelle
+idx: 68, value: Berger
+idx: 69, value: L'assise
+idx: 70, value: St Antonin
+idx: 71, value: Pierre Engel
+idx: 72, value: Marcel Braun
+idx: 73, value: Chênois
+idx: 74, value: Poincaré
+idx: 75, value: Renan
+idx: 76, value: Molière
+idx: 77, value: Hôpital
+idx: 78, value: Mulhouse
+idx: 79, value: Bohn
+idx: 80, value: Madagascar
+idx: 81, value: Ferrette
+idx: 82, value: Parmentier
+idx: 83, value: Courbet
+idx: 84, value: Centre Commercial
+idx: 85, value: Romaine
+idx: 86, value: Ballon
+idx: 87, value: Moulin
+idx: 88, value: Champs Cerisiers
+idx: 89, value: Bois Joli
+idx: 90, value: Carrières
+idx: 91, value: Gardey
+idx: 92, value: Marseille
+idx: 93, value: Les Forges
+idx: 94, value: Champ de Mars
+idx: 95, value: Martinet
+idx: 96, value: Marchegay
+idx: 97, value: Pont Blanc
+idx: 98, value: Paquis
+idx: 99, value: Savoureuse
+idx: 100, value: Turenne
+idx: 101, value: Nallet
+idx: 102, value: Beurrerie
+idx: 103, value: Prés d'Aumont
+idx: 104, value: Mermoz
+idx: 105, value: Aubépines
+idx: 106, value: Rosemontoise
+idx: 107, value: Route de Sermamagny
+idx: 108, value: Eloie
+idx: 109, value: Verdoyeux
+idx: 110, value: Chaume
+idx: 111, value: Schweitzer
+idx: 112, value: Cravanche Centre
+idx: 113, value: Cravanchoise
+idx: 114, value: Haut des Près
+idx: 115, value: La Forêt
+idx: 116, value: Bas du Village
+idx: 117, value: Frezard
+idx: 118, value: Pins
+idx: 119, value: Terrasses
+idx: 120, value: Clinique
+idx: 121, value: Haute Miotte
+idx: 122, value: Deshaie
+idx: 123, value: Picard
+idx: 124, value: As de Trèfle
+idx: 125, value: Mairie
+idx: 126, value: Blumberg
+idx: 127, value: 1re Armée
+idx: 128, value: Paul Bert
+idx: 129, value: Briand
+idx: 130, value: Miotte
+idx: 131, value: Atria
+idx: 132, value: Clemenceau
+idx: 133, value: Rabin
+idx: 134, value: République
+idx: 135, value: Foch
+idx: 136, value: Schwob
+idx: 137, value: Denfert Rochereau
+idx: 138, value: Strotz
+idx: 139, value: 4 As
+idx: 140, value: Hatry
+idx: 141, value: Dubail
+idx: 142, value: Follereau
+idx: 143, value: Guidon
+idx: 144, value: Madrid
+idx: 145, value: Blum
+idx: 146, value: Fg de Lyon
+idx: 147, value: Gare
+idx: 148, value: Sernan
+idx: 149, value: Colbert
+idx: 150, value: Multiplexe
+idx: 151, value: Le Nôtre
+idx: 152, value: La Poste
+idx: 153, value: Essert
+idx: 154, value: De Gaulle
+idx: 155, value: Chemin de la ferme
+idx: 156, value: Ballinamuck
