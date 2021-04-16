@@ -44,11 +44,13 @@ class GpBelfort:
         GpBelfort.vtxList.append(Vertex("La Dame"))
         GpBelfort.vtxList.append(Vertex("La Belle"))        
         #SecondLine - Argiésans -> Bavilliers
+        '''
         GpBelfort.vtxList.append(Vertex("Acacias"))
         GpBelfort.vtxList.append(Vertex("Argiésans Centre"))
         GpBelfort.vtxList.append(Vertex("Zi de Bavilliers"))
         GpBelfort.vtxList.append(Vertex("Rte d'Urcerey"))
-        GpBelfort.vtxList.append(Vertex("Route de Buc"))        
+        GpBelfort.vtxList.append(Vertex("Route de Buc"))
+        '''
         #SecondLine - Bavilliers -> Bonneff
         GpBelfort.vtxList.append(Vertex("Bavilliers"))
         GpBelfort.vtxList.append(Vertex("Pont Canal"))
@@ -111,9 +113,11 @@ class GpBelfort:
         
         
         #FourthLine - Froideval -> Molière
+        '''
         GpBelfort.vtxList.append(Vertex("Berger"))
         GpBelfort.vtxList.append(Vertex("L'assise"))
         GpBelfort.vtxList.append(Vertex("St Antonin"))
+        '''
         GpBelfort.vtxList.append(Vertex("Pierre Engel"))
         GpBelfort.vtxList.append(Vertex("Marcel Braun"))
         GpBelfort.vtxList.append(Vertex("Chênois"))
@@ -174,14 +178,16 @@ class GpBelfort:
         
         
         #NinthLine - Miotte -> République
+        '''
         GpBelfort.vtxList.append(Vertex("Clinique"))
         GpBelfort.vtxList.append(Vertex("Haute Miotte"))
         GpBelfort.vtxList.append(Vertex("Deshaie"))
         GpBelfort.vtxList.append(Vertex("Picard"))
         GpBelfort.vtxList.append(Vertex("As de Trèfle"))
+        '''
         
         
-        #Bus station common to multi-line (De haut en bas)
+        #Common Bus stop station (North to South)
         GpBelfort.vtxList.append(Vertex("Mairie"))
         GpBelfort.vtxList.append(Vertex("Blumberg"))
         GpBelfort.vtxList.append(Vertex("1re Armée"))
@@ -205,7 +211,7 @@ class GpBelfort:
         GpBelfort.vtxList.append(Vertex("Blum"))
         GpBelfort.vtxList.append(Vertex("Fg de Lyon"))
         GpBelfort.vtxList.append(Vertex("Gare"))
-        GpBelfort.vtxList.append(Vertex("Sernan"))
+        GpBelfort.vtxList.append(Vertex("Sernam"))
         GpBelfort.vtxList.append(Vertex("Colbert"))
         GpBelfort.vtxList.append(Vertex("Multiplexe"))
         GpBelfort.vtxList.append(Vertex("Le Nôtre"))
@@ -283,17 +289,21 @@ class GpBelfort:
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Bavilliers"), GpBelfort.getVtx("La Belle")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("La Belle"), GpBelfort.getVtx("La Dame")))
             #ARGIESANS -> Bavilliers
+        '''
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Acacias"), GpBelfort.getVtx("Argiésans Centre")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Argiésans Centre"), GpBelfort.getVtx("Zi de Bavilliers")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Zi de Bavilliers"), GpBelfort.getVtx("Rte d'Urcerey")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Rte d'Urcerey"), GpBelfort.getVtx("Route de Buc")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Route de Buc"), GpBelfort.getVtx("Bavilliers")))
+        '''
             #Bavilliers -> ARGIESANS
+        '''
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Bavilliers"), GpBelfort.getVtx("Route de Buc")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Route de Buc"), GpBelfort.getVtx("Rte d'Urcerey")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Rte d'Urcerey"), GpBelfort.getVtx("Zi de Bavilliers")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Zi de Bavilliers"), GpBelfort.getVtx("Argiésans Centre")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Argiésans Centre"), GpBelfort.getVtx("Acacias")))
+        '''
             #Bavilliers -> Le Nôtre
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Bavilliers"), GpBelfort.getVtx("Pont Canal")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Pont Canal"), GpBelfort.getVtx("Mozart")))
@@ -397,9 +407,11 @@ class GpBelfort:
         
         #FourthLine - PurpleLine
             #FROIDEVAL -> Le Nôtre
+        '''
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Berger"), GpBelfort.getVtx("L'assise")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("L'assise"), GpBelfort.getVtx("St Antonin")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("St Antonin"), GpBelfort.getVtx("Pierre Engel")))
+        '''
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Pierre Engel"), GpBelfort.getVtx("Marcel Braun")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Marcel Braun"), GpBelfort.getVtx("Chênois")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Chênois"), GpBelfort.getVtx("Poincaré")))
@@ -413,9 +425,11 @@ class GpBelfort:
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Poincaré"), GpBelfort.getVtx("Chênois")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Chênois"), GpBelfort.getVtx("Marcel Braun")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Marcel Braun"), GpBelfort.getVtx("Pierre Engel")))
+        '''
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Pierre Engel"), GpBelfort.getVtx("St Antonin")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("St Antonin"), GpBelfort.getVtx("L'assise")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("L'assise"), GpBelfort.getVtx("Berger")))
+        '''
             #Rabin -> OFFEMONT
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Rabin"), GpBelfort.getVtx("Hôpital")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Hôpital"), GpBelfort.getVtx("Mulhouse")))
@@ -540,6 +554,7 @@ class GpBelfort:
         
         
         #NinthLine - BrownLineEst
+        '''
             #République -> Miotte
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("République"), GpBelfort.getVtx("Atria")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Atria"), GpBelfort.getVtx("Miotte")))
@@ -553,10 +568,17 @@ class GpBelfort:
             #République -> Miotte
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Miotte"), GpBelfort.getVtx("Atria")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Atria"), GpBelfort.getVtx("République")))
+        '''
         
         
         
-        #CommonLines - CityCenter
+        
+        #####################################################
+        #
+        #    CommonLines - CityCenter
+        #
+        #####################################################
+        
             #Valdoie area
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Blumberg"), GpBelfort.getVtx("Mairie")))
             #Est area (Ballinamuck -> La Poste)
@@ -608,16 +630,17 @@ class GpBelfort:
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Madrid"), GpBelfort.getVtx("Fg de Lyon")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Fg de Lyon"), GpBelfort.getVtx("Gare")))
             #Gare/Multiplexe
-        GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Gare"), GpBelfort.getVtx("Sernan")))
+        GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Gare"), GpBelfort.getVtx("Sernam")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Sernan"), GpBelfort.getVtx("Colbert")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Colbert"), GpBelfort.getVtx("Multiplexe")))
-        #Gare/Multiplexe
+            #Multiplexe/Gare
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Multiplexe"), GpBelfort.getVtx("Colbert")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Colbert"), GpBelfort.getVtx("Sernan")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Sernan"), GpBelfort.getVtx("Gare")))
-        #interLineConnexion
+            #interLineConnexion
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Madrid"), GpBelfort.getVtx("Dubail")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Dubail"), GpBelfort.getVtx("Madrid")))
+        GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Savoureuse"), GpBelfort.getVtx("Mairie")))
         
         #Instantiate the adjacency matrix
         CommonKnowledge.adjMtxGraph = MtxGraph(len(GpBelfort.vtxList))
