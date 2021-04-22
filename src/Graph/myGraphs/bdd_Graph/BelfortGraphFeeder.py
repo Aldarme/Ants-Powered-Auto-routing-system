@@ -20,7 +20,7 @@ client = pymongo.MongoClient('localhost', DBPORT)
 myDb = client.GraphBelfort
 
 #target the working collection
-fstCollec = myDb.Optimo_meanDay
+myCollec = myDb.Optimo_meanDay
  
         
 ####################################################
@@ -63,7 +63,7 @@ with open(db_csv, 'r', encoding= result["encoding"]) as csvfile:
                     "line_nbr": row[5]
                     }
                     
-        fstCollec.insert_one(entry)
+        myCollec.insert_one(entry)
         
         # for j in fstCollec.find():
             # print(j)
