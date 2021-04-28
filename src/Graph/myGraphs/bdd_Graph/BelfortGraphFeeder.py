@@ -67,5 +67,6 @@ with open(db_csv, 'r', encoding= result["encoding"]) as csvfile:
         
         # for j in fstCollec.find():
             # print(j)
-
+            
+client.close()
         
