@@ -9,7 +9,7 @@ class Numbering:
     def __init__(self):
         self.__cnt          = -1
         self.__dicVtxIdx    = {}    #[Vertex, Index] dictionary
-        self.__arrayVtx     = []     #List of vertices
+        self.__arrayVtx     = []    #List of vertices
     
     def size(self):
         """

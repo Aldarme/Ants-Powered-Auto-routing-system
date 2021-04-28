@@ -44,12 +44,22 @@ class Edge:
         Set the ending vertex object
         """
         self.__vtx_end = vtx_p
+    
+    def get_nrj_cost(self):
+        """
+        Get the nrj cost of the edge
+        """
+        return self.__nrj_cost 
         
     def get_length(self):
         """
         Get the length value
         """
         return self.__length
+    
+    def get_time(self):
+        "Get the time value"
+        return self.__time
     
     def get_vtx_begin(self):
         """
@@ -63,14 +73,15 @@ class Edge:
         """
         return  self.__vtx_end
     
-    def get_nrj_cost(self):
-        """
-        Get the nrj cost of the edge
-        """
-        return self.__nrj_cost 
-    
-    def toString(self):
+    def toString(self, name_p = True, data_p = False):
         """
         Convert class properties into a String 
         """
-        return "This edge begin at: {}, end at: {}, with a cost of: {}".format(self.__vtx_begin, self.__vtx_end, self.__length)
+        if name_p == True and data_p == False:
+            return "This edge begin at: {}, end at: {}".format(self.__vtx_begin.get_ID(), self.__vtx_end.get_ID())
+        
+        if name_p == False and data_p == True :
+            return "This edge begin at: {}, end at: {}, nrj: {}, dist: {}, time: {}".format(self.__vtx_begin.get_ID(), self.__vtx_end.get_ID(), self.__nrj_cost, self.__length, self.__time)
+        
+        
+        

@@ -5,22 +5,20 @@ Created on 21 mai 2020
 '''
 
 from Graph.Vertex import Vertex
-from Graph.Edge import Edge 
-from Utilities.File import File
+from Graph.Edge import Edge
 from Algorithms.VRP.ACO.CommonKnowledge import CommonKnowledge
 from Graph.MtxGraph import MtxGraph
-from Graph.myGraphs.bdd_Graph.dbExploit import dbExploit
-
+from Graph.myGraphs.bdd_Graph.dbExploit import dbExploit, DBDEBUG
+from Simulator.DEBUG import DEBUG_MODE
 
 
 class GpBelfort:
     
     vtxList = []
     edgList = []
-    DEBUG = False
     
     @staticmethod
-    def create( ):
+    def create( warehouse_p ):
         '''
         Initialize the public transportation system graph of Belfort  
         
@@ -194,8 +192,8 @@ class GpBelfort:
         GpBelfort.vtxList.append(Vertex("1re Armée"))
         GpBelfort.vtxList.append(Vertex("Paul Bert"))
         GpBelfort.vtxList.append(Vertex("Briand"))
-        GpBelfort.vtxList.append(Vertex("Miotte"))
-        GpBelfort.vtxList.append(Vertex("Atria"))
+        #GpBelfort.vtxList.append(Vertex("Miotte"))
+        #GpBelfort.vtxList.append(Vertex("Atria"))
         GpBelfort.vtxList.append(Vertex("Clemenceau"))
         GpBelfort.vtxList.append(Vertex("Rabin"))
         GpBelfort.vtxList.append(Vertex("République"))
@@ -643,6 +641,9 @@ class GpBelfort:
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Dubail"), GpBelfort.getVtx("Madrid")                    ,dbExploit.section_getData("Dubail", "Madrid")))
         GpBelfort.edgList.append(Edge(GpBelfort.getVtx("Savoureuse"), GpBelfort.getVtx("Mairie")                ,dbExploit.section_getData("Savoureuse", "Mairie")))
         
+        #Close db access
+        dbExploit.db_close()
+        
         #Instantiate the adjacency matrix
         CommonKnowledge.adjMtxGraph = MtxGraph(len(GpBelfort.vtxList))
         
@@ -656,9 +657,13 @@ class GpBelfort:
             
         #DEBUG
         #Display the adjacency matrix for check
-        if(GpBelfort.DEBUG):
+        if(DEBUG_MODE):
             for elmt in CommonKnowledge.adjMtxGraph.get_adjMtx():
                 print("{}".format(elmt))
+                
+        #Set the initial vertex of each ants
+        #&& initialize common Knowledge
+        CommonKnowledge.comnKldg_init(GpBelfort.getVtx(warehouse_p))
         
     @staticmethod
     def getVtx(vtxId_p):
@@ -668,7 +673,7 @@ class GpBelfort:
         assert False, "element: **{}**,do not exist in the list".format(vtxId_p)
         
         
-if GpBelfort.DEBUG == True:
+if DBDEBUG:
     i=0
     dbExploit.init_connection()
     GpBelfort.create()

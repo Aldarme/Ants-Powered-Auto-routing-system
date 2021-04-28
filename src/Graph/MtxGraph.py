@@ -35,6 +35,12 @@ class MtxGraph:
         """
         return self.__numbering.get_Idx(vtx_p)
     
+    def get_vtx(self, vtx_ID_p):
+        """
+        return vtx thank to the given ID
+        """
+        return self.__numbering.get_vtxFromID(vtx_ID_p)
+    
     def insert_edg_VERTICES(self, vtx_begin_p, vtx_end_p, length_p):
         """
         Insert an edge into the adjacency matrix, thank to its begin & end vertices
