@@ -105,7 +105,7 @@ class MtxGraph:
     
     def get_edglength(self, vtx_begin_p, vtx_end_p):
         """
-        Return the length of the given Edge
+        Return the distance of the given Edge
         """
         return self.__adjMtx[self.get_vtxIdx(vtx_begin_p)][self.get_vtxIdx(vtx_end_p)].get_length()
     
@@ -114,6 +114,12 @@ class MtxGraph:
         Return the Nrj Cost of the given Edge
         """
         return self.__adjMtx[self.get_vtxIdx(vtx_begin_p)][self.get_vtxIdx(vtx_end_p)].get_nrj_cost()
+    
+    def get_edgTime(self, vtx_begin_p, vtx_end_p):
+        """
+        Return the time of the given Edge
+        """
+        return self.__adjMtx[self.get_vtxIdx(vtx_begin_p)][self.get_vtxIdx(vtx_end_p)].get_time()
     
     def modify_length(self, edg_p, length_p):
         """

@@ -31,12 +31,12 @@ class VRP_Engines:
             antCo.search()
             
             #log in console and file generated path of each ant (consolog, filog)
-            antCo.antRound_log(True, False)
+            antCo.antRound_log(False, False)
             
-            #Set all ants to the initial location
+            #Update pheromone trail and set all ants at the initial deposit location
             antCo.getBack()
             
             #Check all ants to find the most appropriate energy/distance couple
-            antCo.ScoringMultiObj(True)
+            antCo.ScoringMultiObj(True, False)
             
             
