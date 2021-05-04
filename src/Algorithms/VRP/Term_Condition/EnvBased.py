@@ -16,9 +16,9 @@ class EnvBased:
         nbrNeigbTotal = 0
         vtx_array = []
         
-        vtx_array = CommonKnowledge.adjMtxGraph.get_Vertices()
+        vtx_array = CommonKnowledge.adjMtxMidGraph.get_Vertices()
         
         for vtx in vtx_array:
-            nbrNeigbTotal += CommonKnowledge.adjMtxGraph.get_nbrOfNeigb(vtx)
+            nbrNeigbTotal += CommonKnowledge.adjMtxMidGraph.get_nbrOfNeigb(vtx)
         
-        return int(ceil(float(nbrNeigbTotal) / float(CommonKnowledge.adjMtxGraph.get_nbrOfVertices())))
+        return int(ceil(float(nbrNeigbTotal) / float(CommonKnowledge.adjMtxMidGraph.get_nbrOfVertices())))

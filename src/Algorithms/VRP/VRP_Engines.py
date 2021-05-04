@@ -7,6 +7,7 @@ Created on 18 mai 2020
 from Algorithms.VRP.Term_Condition.EnvBased import EnvBased
 from Algorithms.VRP.ACO.CommonKnowledge import CommonKnowledge 
 from Algorithms.VRP.ACO.AntCo import AntCo
+from Simulator.DEBUG import DEBUG_MODE
 
 class VRP_Engines:
     
@@ -18,10 +19,10 @@ class VRP_Engines:
         """
         #determine the appropriate number of iterations
         for i in range(0, EnvBased.termCond() * nbrOfCriterion_p):
-        #for i in range(0, 8): #Debug, just one iteration used
             
             CommonKnowledge.interationCnt()
-            print("iteration: {}".format(CommonKnowledge.iterationNbr))
+            if DEBUG_MODE:
+                print("iteration: {}".format(CommonKnowledge.iterationNbr))
             
             #Instantiate the ant colony
             antCo = AntCo(nbrOfCriterion_p)
@@ -29,7 +30,7 @@ class VRP_Engines:
             #let all ants construct a turn (one by one)
             antCo.search()
             
-            #log in console and file generated path of each ant
+            #log in console and file generated path of each ant (consolog, filog)
             antCo.antRound_log(True, False)
             
             #Set all ants to the initial location
@@ -37,3 +38,5 @@ class VRP_Engines:
             
             #Check all ants to find the most appropriate energy/distance couple
             antCo.ScoringMultiObj(True)
+            
+            

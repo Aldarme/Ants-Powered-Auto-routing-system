@@ -18,7 +18,7 @@ class GpBelfort:
     edgList = []
     
     @staticmethod
-    def create( warehouse_p ):
+    def create():  #def create( warehouse_p ):
         '''
         Initialize the public transportation system graph of Belfort  
         
@@ -663,7 +663,7 @@ class GpBelfort:
                 
         #Set the initial vertex of each ants
         #&& initialize common Knowledge
-        CommonKnowledge.comnKldg_init(GpBelfort.getVtx(warehouse_p))
+        #CommonKnowledge.comnKldg_init(GpBelfort.getVtx(warehouse_p))
         
     @staticmethod
     def getVtx(vtxId_p):

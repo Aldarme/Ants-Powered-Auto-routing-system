@@ -12,7 +12,7 @@ class Edge:
     Init object parameters value
     By default, nrj_cost is init at 0,25 kwh/km, according to data exploitation
     """
-    def __init__(self, vtx_begin_p = None, vtx_end_p = None, dataDict_p = None  ):
+    def __init__(self, vtx_begin_p = None, vtx_end_p = None, dataDict_p = None, path_vertices_p = None ):
         #nrj_Wh_p = None, dist_km_p = None, time_min_p = None
         assert vtx_begin_p  != None, "Empty vtx_begin_p, 'TRUBBLE' empty export from vtxList"
         assert vtx_end_p    != None, "Empty vtx_end_p, 'TRUBBLE' empty export from vtxList"
@@ -26,6 +26,7 @@ class Edge:
         self.__nrj_cost     = dataDict_p["NRJ_Wh"]      #Energy unit: kwh/km
         self.__length       = dataDict_p["Distance_km"] #distance unit: km
         self.__time         = dataDict_p["time_min"]    #time unit: minute
+        self.path_vertex    = path_vertices_p
     
     def set_length(self, length_p):
         """
@@ -60,6 +61,12 @@ class Edge:
     def get_time(self):
         "Get the time value"
         return self.__time
+    
+    def get_path_asString(self):
+        path = []
+        for elm in self.path_vertex:
+            path.append(elm)
+        return path
     
     def get_vtx_begin(self):
         """

@@ -5,14 +5,29 @@ Created on 13 nov. 2020
 '''
 
 from Graph.myGraphs.GpTest import GpTest
+from Graph.myGraphs.GpBelfort import GpBelfort
 from Algorithms.VRP.VRP_Engines import VRP_Engines
+from Graph.myGraphs.bdd_Graph.dbExploit import dbExploit
+from Graph.myGraphs.MiddleGraph import MiddleGraph
+
+'''
+Initialize connection to the graph database
+'''
+dbExploit.init_connection()
 
 '''
 Create the graph and initialized the common Knowledge
 '''
-warehouse_vertex = 4
+warehouse_vertex = "Gare"
 
-GpTest.create(warehouse_vertex)
+#GpTest.create(warehouse_vertex)
+GpBelfort.create()  #GpBelfort.create(warehouse_vertex)
+
+'''
+Create intermediate graph based on delivery points list
+'''
+deliveryList_p = ["Madrid", "Foch", "République", "Briand", "Mairie", "Follereau"]
+MiddleGraph.create(deliveryList_p, warehouse_vertex)
 
 '''
 Start the ECHVRP algorithm

@@ -9,6 +9,8 @@ from Algorithms.VRP.ACO.CommonKnowledge import CommonKnowledge
 from Graph.Edge import Edge
 import random
 import sys
+from Simulator.DEBUG import DEBUG_MODE
+
 
 class Ant:
     
@@ -37,7 +39,13 @@ class Ant:
         while(self.toReach()):
             pass
         
-    def toReach(self): #TODO
+        if DEBUG_MODE:
+            for elm in self.vtx_tabuList:
+                print(elm.get_ID())
+            print("#####################")
+            
+            
+    def toReach(self):
         """
         Define how an ant build a turn
         """
@@ -48,17 +56,20 @@ class Ant:
         #Test if the next vertex can be reach
         if self.vtx_Next in self.vtx_toVisit:
             
+            #check that the next point to reach is different from the starting one (deposit)
             if self.vtx_Next.get_ID == CommonKnowledge.vtx_init.get_ID():
-                self.distTravelled += CommonKnowledge.adjMtxGraph.get_edglength(self.vtx_current, self.vtx_Next)
+                self.distTravelled += CommonKnowledge.adjMtxMidGraph.get_edglength(self.vtx_current, self.vtx_Next)
             
             else:
+                #check if ant is at it starting point
                 if self.vtx_current.get_ID() == CommonKnowledge.vtx_init.get_ID():
-                    self.distTravelled += CommonKnowledge.adjMtxGraph.get_edglength(self.vtx_current, self.vtx_Next)
+                    self.distTravelled += CommonKnowledge.adjMtxMidGraph.get_edglength(self.vtx_current, self.vtx_Next)
+                    
                 else:
                     self.vtx_tabuList.append(self.vtx_current)
                     self.vtx_toVisit.remove(self.vtx_current)
-                    self.distTravelled += CommonKnowledge.adjMtxGraph.get_edglength(self.vtx_current, self.vtx_Next)
-                    self.nrj_capacity -= CommonKnowledge.adjMtxGraph.get_edgNrjCost(self.vtx_current, self.vtx_Next)
+                    self.distTravelled += CommonKnowledge.adjMtxMidGraph.get_edglength(self.vtx_current, self.vtx_Next)
+                    self.nrj_capacity -= CommonKnowledge.adjMtxMidGraph.get_edgNrjCost(self.vtx_current, self.vtx_Next)
                     
                     #Kill the current ant if its nrj capacity get lower than 20%
                     if(self.nrj_capacity <= CommonKnowledge.nrjCapacityMin):
@@ -81,7 +92,7 @@ class Ant:
             
             #Kill the ant if it is in dead end (No neighbors to visit)
             #Warning, this case work only for directed graph
-            if len(CommonKnowledge.adjMtxGraph.get_Neighboor_VTX(self.vtx_Next)) == 0:
+            if len(CommonKnowledge.adjMtxMidGraph.get_Neighboor_VTX(self.vtx_Next)) == 0:
                 self.antState   = State.KILLED
                 self.vtx_current  = CommonKnowledge.vtx_init
                 del self.vtx_tabuList[:]        #flush the tabu list
@@ -99,7 +110,7 @@ class Ant:
         else: #The vertex can't be reach, have to find a new one
             
             #Fill the tabu list of tested neighbors
-            if ( len(self.neigb_tabuList) < len(CommonKnowledge.adjMtxGraph.get_Neighboor_VTX(self.vtx_current))
+            if ( len(self.neigb_tabuList) < len(CommonKnowledge.adjMtxMidGraph.get_Neighboor_VTX(self.vtx_current))
                 and (self.vtx_Next not in self.neigb_tabuList) ):
                 self.neigb_tabuList.append(self.vtx_Next)
                 return True
@@ -119,7 +130,7 @@ class Ant:
         Calculate the probability for the next destination
         Return an edge
         """
-        neighbors_EDGE  = CommonKnowledge.adjMtxGraph.get_Neighboor_VTX(vtx_p) #get vertices neighbors of the given vtx
+        neighbors_EDGE  = CommonKnowledge.adjMtxMidGraph.get_Neighboor_VTX(vtx_p) #get vertices neighbors of the given vtx
         PhLg_tab        = []
         PhLg_Sum        = 0.0
         DorigoProb      = []
@@ -130,8 +141,8 @@ class Ant:
         #Calculate Pheromones/Length ratio define as Tij * (Nij) for all neighbor of the current Vertex
         #with Tij = pheromone trail strength ; Nij = 1/Distance between vtxA, vtxB 
         for elmt in neighbors_EDGE:
-            tmp = CommonKnowledge.get_pheromones(CommonKnowledge.adjMtxGraph.get_vtxIdx(elmt.get_vtx_begin()),
-                                                 CommonKnowledge.adjMtxGraph.get_vtxIdx(elmt.get_vtx_end())
+            tmp = CommonKnowledge.get_pheromones(CommonKnowledge.adjMtxMidGraph.get_vtxIdx(elmt.get_vtx_begin()),
+                                                 CommonKnowledge.adjMtxMidGraph.get_vtxIdx(elmt.get_vtx_end())
                                                  )* (1.0 / float(elmt.get_length()))
             PhLg_tab.append(tmp);
             PhLg_Sum += tmp;
@@ -171,7 +182,7 @@ class Ant:
         Create lists of vertices to visit for an ant,
         as both the list of all vertices of the graph and the list of landmark points
         """
-        self.vtx_toVisit = CommonKnowledge.adjMtxGraph.get_Vertices()
+        self.vtx_toVisit = CommonKnowledge.adjMtxMidGraph.get_Vertices()
     
     def visitedVtx_toString(self):
         """

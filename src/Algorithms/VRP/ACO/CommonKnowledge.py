@@ -8,7 +8,6 @@ from Graph.MtxGraph import MtxGraph
 from Graph.Vertex import Vertex
 import sys
 
-
 class CommonKnowledge:
     
     vtx_init            = Vertex        #Beginning vertex of all ants (of the AC(O/S) algorithm)
@@ -19,12 +18,13 @@ class CommonKnowledge:
     optimalPath_length  = 0             #Length of the best path find by an ant
     optimalPath_edg     = []            #Collection of edges making up the best path 
     optimalPath_vtx     = []            #Collection of vertices making up the best path
-    adjMtxGraph         = MtxGraph      #Adjacency matrix
+    adjMtxGraph         = MtxGraph      #Adjacency matrix of Belfort Graph
+    adjMtxMidGraph      = MtxGraph      #Adjacency matrix of Middle Graph
     adjPheroMtx         = []            #Adjacency pheromone matrix
     #Param. of SOC & SOH algorithm
-    AntInitNrjCapacity  = 1.0
-    nrjCapacityMin      = 0.20
-    nrjCapacityMax      = 0.80
+    AntInitNrjCapacity  = 64000         #Kona electri electric capacity (wh)
+    nrjCapacityMin      = 0.20          #minumum allowed % capacity
+    nrjCapacityMax      = 0.80          #maximum allowed % capacity
     
     
     
@@ -36,7 +36,7 @@ class CommonKnowledge:
         CommonKnowledge.evaporation_rate = evaporationRate_p    #by default is 0.8
         
         #Init the adjacency pheromone matrix at the same size that the adjacency matrix, with all elements at "0.0"
-        CommonKnowledge.adjPheroMtx = [[0.0 for x in range(CommonKnowledge.adjMtxGraph.size())] for y in range(CommonKnowledge.adjMtxGraph.size())]
+        CommonKnowledge.adjPheroMtx = [[0.0 for x in range(CommonKnowledge.adjMtxMidGraph.size())] for y in range(CommonKnowledge.adjMtxMidGraph.size())]
         
     @staticmethod
     def set_pheromones(x, y, value):
@@ -58,6 +58,20 @@ class CommonKnowledge:
         Return a copy of the adjacency pheromone matrix
         """
         return CommonKnowledge.adjPheroMtx
+    
+    @staticmethod
+    def get_adjMtxGraph():
+        """
+        
+        """
+        return CommonKnowledge.adjMtxGraph
+    
+    @staticmethod
+    def adjMtxMidGraph():
+        """
+        
+        """
+        return CommonKnowledge.adjMtxMidGraph
     
     @staticmethod
     def get_vtxOptimalPath():
@@ -85,7 +99,7 @@ class CommonKnowledge:
         Calculate the evaporation rate of pheromones for the given edge, according to the following equation:
         [(1-p) * PheromoneStrength] + turnSize
         """
-        pheromeij = CommonKnowledge.adjPheroMtx[CommonKnowledge.adjMtxGraph.get_vtxIdx(edg_p.get_vtx_begin())][CommonKnowledge.adjMtxGraph.get_vtxIdx(edg_p.get_vtx_end())]
+        pheromeij = CommonKnowledge.adjPheroMtx[CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg_p.get_vtx_begin())][CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg_p.get_vtx_end())]
         return (pheromeij + ( (totalDist_p) * (1.0 / SOC_p) ) )
     
     @staticmethod
@@ -106,7 +120,7 @@ class CommonKnowledge:
         del CommonKnowledge.optimalPath_edg[:]
         del CommonKnowledge.optimalPath_vtx[:]
         del CommonKnowledge.__optimalPath_vtx_tmp[:]
-        del CommonKnowledge.adjMtxGraph[:]
+        del CommonKnowledge.adjMtxMidGraph[:]
     
     @staticmethod
     def optimalPath_VTX_toString():

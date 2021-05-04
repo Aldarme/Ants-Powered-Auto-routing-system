@@ -6,7 +6,8 @@ Created on 4 mai 2020
 from Algorithms.VRP.ACO.Ant import Ant, State
 from Algorithms.VRP.ACO.CommonKnowledge import CommonKnowledge
 from pathlib import Path
-import sys
+from Simulator.DEBUG import DEBUG_MODE
+
 
 class AntCo:
     
@@ -20,7 +21,7 @@ class AntCo:
         Create an list containing all ants of the colony,
         the ant number is equals to the vertices number
         """
-        for i in range(0, CommonKnowledge.adjMtxGraph.size()*antFactor_p):
+        for i in range(0, CommonKnowledge.adjMtxMidGraph.size()*antFactor_p):
             self.antArray.append(Ant(i))
     
     def search(self):
@@ -28,6 +29,8 @@ class AntCo:
         Execute the research process of all ants, one by one
         """
         for ant in self.antArray:
+            if DEBUG_MODE:
+                print("ant ID:{}".format(ant.ID))
             ant.run()
     
     def getBack(self):
@@ -42,8 +45,8 @@ class AntCo:
         for ant in self.antArray:
             if ant.antState == State.RETURNING:
                 for edg in ant.edg_tabuList:
-                    CommonKnowledge.set_pheromones(CommonKnowledge.adjMtxGraph.get_vtxIdx(edg.get_vtx_begin()),
-                                                   CommonKnowledge.adjMtxGraph.get_vtxIdx(edg.get_vtx_end()),
+                    CommonKnowledge.set_pheromones(CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg.get_vtx_begin()),
+                                                   CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg.get_vtx_end()),
                                                    CommonKnowledge.pheromone_update(edg, ant.distTravelled, ant.nrj_capacity)
                                                    )
 
@@ -81,13 +84,13 @@ class AntCo:
                     localIdxPerf = ant.perfIdx
                     ant_idxPerf[ant] = localIdxPerf
                     
-                if(DEBUG_p == True):
+                if(DEBUG_p == False):
                     print(ant.normDst)
                     print("{} \r\n".format(ant.normNRJ))
         
         if(DEBUG_p == True):
             print("ant idx perf: {}".format(ant_idxPerf))
-    
+            
     
     def localSearch(self):
         """
