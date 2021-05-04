@@ -7,6 +7,7 @@ from Algorithms.VRP.ACO.Ant import Ant, State
 from Algorithms.VRP.ACO.CommonKnowledge import CommonKnowledge
 from pathlib import Path
 from Simulator.DEBUG import DEBUG_MODE
+from _operator import itemgetter
 
 
 class AntCo:
@@ -36,7 +37,7 @@ class AntCo:
     def getBack(self):
         """
         Update the pheromone strength of all edges in the graph
-        Allow each ant to add pheromone on the arcs it has visited
+        Allow each ant to add pheromones on the arcs it has visited
         Put in return state, all ants that have finished its tour
         """
         
@@ -64,12 +65,14 @@ class AntCo:
         print("Optimal path: {}".format(CommonKnowledge.optimalPath_VTX_toString()))
         print("Optimal length: {}".format(CommonKnowledge.optimalPath_length))
     
-    def ScoringMultiObj(self, DEBUG_p):
+    def ScoringMultiObj(self, consoleLog=False, fileLog=False):
         """
-        Create an objective score based on all edge constrain used by ants
+        Create a data set containing all ant tour sort by performance index
+        Log the data set on consol and on file 
         """
-        localIdxPerf = 0        
-        ant_idxPerf = {}
+        localIdxPerf = 0.0  #score of a given ant, evaluating it's path quality
+        betterPath = {}     #dict. containing data of the best path
+        dataSet = []        #dataSet of all sorted solution provided
         
         #normalize all constrains to fit [0;100]%
         for ant in self.antArray:
@@ -78,19 +81,34 @@ class AntCo:
                 ant.normDst = ant.distTravelled * 100 / 100 #after basedon the max dist travelled on one of the ants
                 ant.perfIdx = ant.normNRJ * ant.normDst
                 
-                #Analysis of NRJ, Dist couple
+                #Analysis of optimization criterion to identify the best path
                 if(ant.perfIdx > localIdxPerf):
-                    ant_idxPerf.clear()
-                    localIdxPerf = ant.perfIdx
-                    ant_idxPerf[ant] = localIdxPerf
-                    
-                if(DEBUG_p == False):
-                    print(ant.normDst)
-                    print("{} \r\n".format(ant.normNRJ))
+                    betterPath.clear()                  #clear betterPath dict
+                    localIdxPerf = ant.perfIdx          #log the best local perf. index
+                    betterPath["IdxPerf"]   = ant.perfIdx
+                    betterPath["NRJ_Wh"]    = ant.nrj_capacity
+                    betterPath["Distance_km"] = ant.distTravelled
+                    betterPath["time_min"]  = ant.timeTravalled
+                    betterPath["Path"]     = ant.get_tabuList_asString()
+                
+                #log current data path
+                tmpDict = {}
+                tmpDict["IdxPerf"]  = ant.perfIdx        
+                tmpDict["NRJ_Wh"]   = ant.nrj_capacity   
+                tmpDict["Distance_km"]  = ant.distTravelled
+                tmpDict["time_min"]     = ant.timeTravalled
+                tmpDict["Path"]     = ant.get_tabuList_asString()
+                
+                #feed the dataSet
+                dataSet.append(tmpDict)
+                
+        #sort the dataSet by "IdxPerf"
+        dataSet = sorted(dataSet, key=itemgetter("IdxPerf"))
         
-        if(DEBUG_p == True):
-            print("ant idx perf: {}".format(ant_idxPerf))
-            
+        #print and log data set
+        self.dataSet_log(consoleLog, fileLog, dataSet)
+        
+
     
     def localSearch(self):
         """
@@ -135,6 +153,40 @@ class AntCo:
                     
                 # Close opened file
                 fo.close()
+                
+    def dataSet_log(self, consoleLog=False, fileLog=False, dataSet_p=None):
+        """
+        Log the data set on consol and on file
+        """
+        if consoleLog == True:
+            for elm in dataSet_p:
+                print("#####################################")
+                print("Perf. indx: {}".format(elm["IdxPerf"]))
+                print("Energy consumed: {}".format(elm["NRJ_Wh"]))
+                print("Distance travelled: {}".format(elm["Distance_km"]))
+                print("Time travalled: {}".format(elm["time_min"]))
+                print("delivery Path: {}".format(elm["Path"]))
+                print("#####################################")
+                print("\r\n")
+            
+        if fileLog == True:
+            
+            #build the relative path leading to "roundLog.txt" file
+            path = Path(__file__).parent
+            path = "{}{}".format(path.parents[2], "/Logs/")
+            
+            fo = open(path +"dataSet.txt", "a")
+                
+            fo.write("#####################################"            + "\r\n")
+            fo.write("Perf. indx: {}".format(elm["IdxPerf"])            + "\r\n")
+            fo.write("Energy consumed: {}".format(elm["NRJ_Wh"])        + "\r\n")
+            fo.write("Distance travelled: {}".format(elm["Distance_km"])+ "\r\n")
+            fo.write("Time travalled: {}".format(elm["time_min"])       + "\r\n")
+            fo.write("delivery Path: {}".format(elm["Path"])            + "\r\n")
+            fo.write("#####################################"            + "\r\n")
+            fo.write("\r\n"                                             + "\r\n")
+            # Close opened file
+            fo.close()
         
                 
                 
