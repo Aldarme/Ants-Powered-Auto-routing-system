@@ -43,4 +43,11 @@ class Label:
     def set_prevVtx_String(self, str_p):
         self.__prevVtx_Str = str_p
         
+    def flusher(self):
+        self.__nrj = 0.0
+        self.__dist = 0.0
+        self.__time = 0.0
+        self.__labelPerf = float("inf")
+        self.__prevVtx_Str = "empty"
+        
     

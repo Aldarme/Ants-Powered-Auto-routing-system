@@ -3,7 +3,7 @@ Created on 25 mai 2020
 
 @author: promet
 '''
-from __builtin__ import staticmethod
+
 from Crypto.Random.random import randint
 
 class Delivery:

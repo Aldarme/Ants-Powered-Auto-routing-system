@@ -4,7 +4,6 @@ Created on 25 mai 2020
 @author: promet
 '''
 from Strategies.Delivery import Delivery
-from __builtin__ import staticmethod
 
 class Engine:
     

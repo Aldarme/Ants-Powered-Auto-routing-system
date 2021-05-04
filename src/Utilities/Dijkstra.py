@@ -33,12 +33,12 @@ class Dijkstra:
             #add current vertex to his vtx tabu list
             #vtxWk.get_label().set_vtxList(vtxWk)
                   
-            print("vtx: {}, labelPerf: {}, nrj: {}, dist: {}, time: {}".format( vtxWk.get_ID(),
-                                                                                vtxWk.get_label().get_labelPerf(),
-                                                                                vtxWk.get_label().get_nrj(),
-                                                                                vtxWk.get_label().get_dist(),
-                                                                                vtxWk.get_label().get_time()
-                                                                                ))
+            #print("vtx: {}, labelPerf: {}, nrj: {}, dist: {}, time: {}".format( vtxWk.get_ID(),
+            #                                                                    vtxWk.get_label().get_labelPerf(),
+            #                                                                    vtxWk.get_label().get_nrj(),
+            #                                                                    vtxWk.get_label().get_dist(),
+            #                                                                    vtxWk.get_label().get_time()
+            #                                                                    ))
                 
             
             #remove the vtx from "vtxList"

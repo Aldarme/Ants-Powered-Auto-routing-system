@@ -34,3 +34,7 @@ class Vertex:
         Set the ID of the current Vertex
         """
         self.__label.setLabel(localLabel)
+        
+    def labelFlusher(self):
+        self.__label.flusher()
+        
