@@ -22,9 +22,9 @@ class CommonKnowledge:
     adjMtxMidGraph      = MtxGraph      #Adjacency matrix of Middle Graph
     adjPheroMtx         = []            #Adjacency pheromone matrix
     #Param. of SOC & SOH algorithm
-    AntInitNrjCapacity  = 64000         #Kona electri electric capacity (wh)
-    nrjCapacityMin      = 0.20          #minumum allowed % capacity
-    nrjCapacityMax      = 0.80          #maximum allowed % capacity
+    AntInitNrjCapacity  = 64000                             #Kona electri electric capacity (wh)
+    nrjCapacityMin      = AntInitNrjCapacity * 20 /100      #minumum allowed % capacity
+    nrjCapacityMax      = AntInitNrjCapacity * 80 /100      #maximum allowed % capacity
     
     
     
@@ -100,7 +100,7 @@ class CommonKnowledge:
         [(1-p) * PheromoneStrength] + turnSize
         """
         pheromeij = CommonKnowledge.adjPheroMtx[CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg_p.get_vtx_begin())][CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg_p.get_vtx_end())]
-        return (pheromeij + ( (totalDist_p) * (1.0 / SOC_p) ) )
+        return (pheromeij + ( (1.0 / totalDist_p) * (1.0 / SOC_p) ) )
     
     @staticmethod
     def interationCnt():
