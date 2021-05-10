@@ -26,9 +26,10 @@ class Ant:
         self.edg_tabuList   = []                #Revoir cette element de dorigo prob, si vraiment utile ? Collection of all visited edges by the ant    
         self.neigb_tabuList = []                #Collection of ant tested neighbors
         self.SOE            = CommonKnowledge.initSOE #Energy capacity of the electric vehicle, [20;80]
-        self.normNRJ        = 0
-        self.normDst        = 0
-        self.perfIdx        = 0
+        self.normNRJ        = 0.0
+        self.normDst        = 0.0
+        self.normTime       = 0.0
+        self.perfIdx        = 0.0
         self.toVisit()                          #Create the list of delivery point, an ant have to visit
     
     def run(self):
@@ -106,9 +107,10 @@ class Ant:
         del self.edg_tabuList[:]        #flush the edge tabu List
         del self.neigb_tabuList[:]      #flush the tested neighbors tabu list
         self.SOE            = CommonKnowledge.initSOE #Energy capacity of the electric vehicle, [20;80]
-        self.normNRJ        = 0
-        self.normDst        = 0
-        self.perfIdx        = 0
+        self.normNRJ        = 0.0
+        self.normDst        = 0.0
+        self.normTime       = 0.0
+        self.perfIdx        = 0.0
         self.toVisit()                  #recreate the list of delivery point to visit
             
     def toReach_NCUD(self):

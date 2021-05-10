@@ -98,13 +98,13 @@ class CommonKnowledge:
                 CommonKnowledge.adjPheroMtx[i][j] = ((1.0-CommonKnowledge.evaporation_rate) * CommonKnowledge.adjPheroMtx[i][j])
     
     @staticmethod
-    def pheromone_update(edg_p, totalDist_p, SOC_p):
+    def pheromone_update(edg_p, totalDist_p, SOC_p, totalTime_p):
         """
         Calculate the evaporation rate of pheromones for the given edge, according to the following equation:
         [(1-p) * PheromoneStrength] + turnSize
         """
         pheromeij = CommonKnowledge.adjPheroMtx[CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg_p.get_vtx_begin())][CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg_p.get_vtx_end())]
-        return (pheromeij + ( (1.0 / totalDist_p) * (1.0 / SOC_p) ) )
+        return (pheromeij + ( (1.0 / totalDist_p) * (1.0 / SOC_p) * (1/totalTime_p) ))
     
     @staticmethod
     def interationCnt():

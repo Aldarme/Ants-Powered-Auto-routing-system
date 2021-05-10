@@ -50,7 +50,7 @@ class AntCo:
                 for edg in ant.edg_tabuList:
                     CommonKnowledge.set_pheromones(CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg.get_vtx_begin()),
                                                    CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg.get_vtx_end()),
-                                                   CommonKnowledge.pheromone_update(edg, ant.distTravelled, ant.SOE)
+                                                   CommonKnowledge.pheromone_update(edg, ant.distTravelled, ant.SOE, ant.timeTravalled)
                                                    )
 
     def ScoringDistance(self):
@@ -72,33 +72,23 @@ class AntCo:
         Create a data set containing all ant tour sort by performance index
         Log the data set on consol and on file 
         """
-        localIdxPerf = 0.0  #score of a given ant, evaluating it's path quality
-        betterPath = {}     #dict. containing data of the best path
-        dataSet = []        #dataSet of all sorted solution provided
         
-        #normalize all constrains to fit [0;100]%
+        dataSet = []    #dataSet of all sorted solution provided
+        
+        #normalize all constrains to fit [0;100]% TODO
         for ant in self.antArray:
             if(ant.antState != State.KILLED):
-                ant.normNRJ = ant.SOE * 100 / CommonKnowledge.initSOE
-                ant.normDst = ant.distTravelled * 100 / 100 #after basedon the max dist travelled on one of the ants
-                ant.perfIdx = ant.normNRJ * ant.normDst
-                
-                #Analysis of optimization criterion to identify the best path
-                if(ant.perfIdx > localIdxPerf):
-                    betterPath.clear()                  #clear betterPath dict
-                    localIdxPerf = ant.perfIdx          #log the best local perf. index
-                    betterPath["IdxPerf"]   = ant.perfIdx
-                    betterPath["NRJ_Wh"]    = ant.SOE
-                    betterPath["Distance_km"] = ant.distTravelled
-                    betterPath["time_min"]  = ant.timeTravalled
-                    betterPath["Path"]     = ant.get_tabuList_asString()
+                ant.normNRJ     = ant.SOE * 100 / CommonKnowledge.initSOE
+                ant.normDst     = ant.distTravelled * 100 / 100 #after based on the max dist travelled on one of the ants
+                ant.normTime    = ant.timeTravalled * 100 / 100 #after based on the max dist travelled on one of the ants
+                ant.perfIdx     = ant.normNRJ * ant.normDst * ant.normTime
                 
                 #log current data path
                 tmpDict = {}
                 tmpDict["IdxPerf"]  = ant.perfIdx        
                 tmpDict["NRJ_Wh"]   = ant.SOE   
                 tmpDict["Distance_km"]  = ant.distTravelled
-                tmpDict["time_min"]     = ant.timeTravalled
+                tmpDict["Time_min"]     = ant.timeTravalled
                 tmpDict["Path"]     = ant.get_tabuList_asString()
                 
                 #feed the dataSet
@@ -138,6 +128,7 @@ class AntCo:
                     print("ant's round vertices:{}".format(ant.visitedVtx_toString()))
                     print("ant's round distance: {}".format(ant.distTravelled))
                     print("ant's round energy  : {}".format(ant.SOE))
+                    print("ant's rounf time: {}".format(ant.timeTravalled))
                     print("\r\n")
                 
             if fileLog == True:
@@ -148,11 +139,14 @@ class AntCo:
                 
                 fo = open(path +"roundLog.txt", "a")
                 
+                fo.write("Algorithm iteration: {}".format(iterationNbr_p+1) + "\r\n")
+                
                 if(ant.antState != State.KILLED):
-                    fo.write("Ant {}".format(i) + "\r\n")
+                    fo.write("ant {}".format(i) + "\r\n")
                     fo.write("ant's round vertices:{},{} {}".format(CommonKnowledge.vtx_init.get_ID() ,ant.visitedVtx_toString(), CommonKnowledge.vtx_init.get_ID()) + "\r\n")
-                    fo.write("Ant's round distance: {}".format(ant.distTravelled) + "\r\n")
-                    fo.write("Ant's round energy  : {}".format(ant.SOE) + "\r\n")
+                    fo.write("ant's round distance: {}".format(ant.distTravelled) + "\r\n")
+                    fo.write("ant's round energy  : {}".format(ant.SOE) + "\r\n")
+                    fo.write("ant's round time    : {}".format(ant.timeTravalled) + "\r\n" )
                     fo.write("\r\n")
                     
                 # Close opened file
@@ -163,15 +157,28 @@ class AntCo:
         Log the data set on consol and on file
         """
         if consoleLog == True:
+            
+            print("All ant delivery path: \r\n")
+            
             for elm in dataSet_p:
                 print("#####################################")
                 print("Perf. indx: {}".format(elm["IdxPerf"]))
                 print("Energy consumed: {}".format(elm["NRJ_Wh"]))
                 print("Distance travelled: {}".format(elm["Distance_km"]))
-                print("Time travalled: {}".format(elm["time_min"]))
+                print("Time travalled: {}".format(elm["Time_min"]))
                 print("delivery Path: {}".format(elm["Path"]))
                 print("#####################################")
                 print("\r\n")
+                
+            print("#####################################")
+            print("The best path is: \r\n")
+            print("Perf. indx: {}".format(dataSet_p[0]["IdxPerf"]))
+            print("Energy consumed: {}".format(dataSet_p[0]["NRJ_Wh"]))
+            print("Distance travelled: {}".format(dataSet_p[0]["Distance_km"]))
+            print("Time travalled: {}".format(dataSet_p[0]["Time_min"]))
+            print("delivery Path: {}".format(dataSet_p[0]["Path"]))
+            print("#####################################")
+            print("\r\n")
             
         if fileLog == True:
             
@@ -180,15 +187,29 @@ class AntCo:
             path = "{}{}".format(path.parents[2], "/Logs/")
             
             fo = open(path +"dataSet.txt", "a")
+            
+            fo.write("All ant delivery path:" + "\r\n")
+            
+            for elm in dataSet_p:
+                fo.write("#####################################"            + "\r\n")
+                fo.write("Perf. indx: {}".format(elm["IdxPerf"])            + "\r\n")
+                fo.write("Energy consumed: {}".format(elm["NRJ_Wh"])        + "\r\n")
+                fo.write("Distance travelled: {}".format(elm["Distance_km"])+ "\r\n")
+                fo.write("Time travalled: {}".format(elm["Time_min"])       + "\r\n")
+                fo.write("delivery Path: {}".format(elm["Path"])            + "\r\n")
+                fo.write("#####################################"            + "\r\n")
+                fo.write("\r\n"                                             + "\r\n")
                 
-            fo.write("#####################################"            + "\r\n")
-            fo.write("Perf. indx: {}".format(elm["IdxPerf"])            + "\r\n")
-            fo.write("Energy consumed: {}".format(elm["NRJ_Wh"])        + "\r\n")
-            fo.write("Distance travelled: {}".format(elm["Distance_km"])+ "\r\n")
-            fo.write("Time travalled: {}".format(elm["time_min"])       + "\r\n")
-            fo.write("delivery Path: {}".format(elm["Path"])            + "\r\n")
-            fo.write("#####################################"            + "\r\n")
-            fo.write("\r\n"                                             + "\r\n")
+            fo.write("#####################################"                + "\r\n")
+            fo.write("The best path is:"                                    + "\r\n")
+            fo.write("Perf. indx: {}".format(dataSet_p[0]["IdxPerf"])       + "\r\n")
+            fo.write("Energy consumed: {}".format(dataSet_p[0]["NRJ_Wh"])   + "\r\n")
+            fo.write("Distance travelled: {}".format(dataSet_p[0]["Distance_km"]) + "\r\n")
+            fo.write("Time travalled: {}".format(dataSet_p[0]["Time_min"])  + "\r\n")
+            fo.write("delivery Path: {}".format(dataSet_p[0]["Path"])       + "\r\n")
+            fo.write("#####################################"                + "\r\n")
+            fo.write("\r\n"                                                 + "\r\n")
+
             # Close opened file
             fo.close()
         
