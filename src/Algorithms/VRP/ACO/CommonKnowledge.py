@@ -21,12 +21,16 @@ class CommonKnowledge:
     adjMtxGraph         = MtxGraph      #Adjacency matrix of Belfort Graph
     adjMtxMidGraph      = MtxGraph      #Adjacency matrix of Middle Graph
     adjPheroMtx         = []            #Adjacency pheromone matrix
+    #Param. for delivery point list
+    deliveryList        = ["Madrid", "Foch", "République", "Briand", "Mairie", "Follereau"]
     #Param. of SOC & SOH algorithm
-    AntInitNrjCapacity  = 64000                             #Kona electri electric capacity (wh)
-    nrjCapacityMin      = AntInitNrjCapacity * 20 /100      #minumum allowed % capacity
-    nrjCapacityMax      = AntInitNrjCapacity * 80 /100      #maximum allowed % capacity
+    initSOE = 82000                     #(SOE) State of energy - Tesla model S 90-D 2017
+    minSOE      = initSOE * 20 /100     #minumum allowed % capacity
+    maxSOE      = initSOE * 80 /100     #maximum allowed % capacity
     
-    
+    #initSOE = 64000                     #(SOE) State of energy - Kona electri 2019 64 kWh
+    #minSOE      = initSOE * 20 /100     #minumum allowed % capacity   
+    #maxSOE      = initSOE * 80 /100     #maximum allowed % capacity
     
     
     @staticmethod

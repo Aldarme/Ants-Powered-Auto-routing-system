@@ -48,7 +48,7 @@ class AntCo:
                 for edg in ant.edg_tabuList:
                     CommonKnowledge.set_pheromones(CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg.get_vtx_begin()),
                                                    CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg.get_vtx_end()),
-                                                   CommonKnowledge.pheromone_update(edg, ant.distTravelled, ant.nrj_capacity)
+                                                   CommonKnowledge.pheromone_update(edg, ant.distTravelled, ant.SOE)
                                                    )
 
     def ScoringDistance(self):
@@ -77,7 +77,7 @@ class AntCo:
         #normalize all constrains to fit [0;100]%
         for ant in self.antArray:
             if(ant.antState != State.KILLED):
-                ant.normNRJ = ant.nrj_capacity * 100 / CommonKnowledge.AntInitNrjCapacity
+                ant.normNRJ = ant.SOE * 100 / CommonKnowledge.initSOE
                 ant.normDst = ant.distTravelled * 100 / 100 #after basedon the max dist travelled on one of the ants
                 ant.perfIdx = ant.normNRJ * ant.normDst
                 
@@ -86,7 +86,7 @@ class AntCo:
                     betterPath.clear()                  #clear betterPath dict
                     localIdxPerf = ant.perfIdx          #log the best local perf. index
                     betterPath["IdxPerf"]   = ant.perfIdx
-                    betterPath["NRJ_Wh"]    = ant.nrj_capacity
+                    betterPath["NRJ_Wh"]    = ant.SOE
                     betterPath["Distance_km"] = ant.distTravelled
                     betterPath["time_min"]  = ant.timeTravalled
                     betterPath["Path"]     = ant.get_tabuList_asString()
@@ -94,7 +94,7 @@ class AntCo:
                 #log current data path
                 tmpDict = {}
                 tmpDict["IdxPerf"]  = ant.perfIdx        
-                tmpDict["NRJ_Wh"]   = ant.nrj_capacity   
+                tmpDict["NRJ_Wh"]   = ant.SOE   
                 tmpDict["Distance_km"]  = ant.distTravelled
                 tmpDict["time_min"]     = ant.timeTravalled
                 tmpDict["Path"]     = ant.get_tabuList_asString()
@@ -131,9 +131,9 @@ class AntCo:
             if consoleLog == True:
                 if(ant.antState != State.KILLED):
                     print("ant {}".format(i))
-                    print("ant's round vertices:{},{} {}".format(CommonKnowledge.vtx_init.get_ID() ,ant.visitedVtx_toString(), CommonKnowledge.vtx_init.get_ID()))
+                    print("ant's round vertices:{}".format(ant.visitedVtx_toString()))
                     print("ant's round distance: {}".format(ant.distTravelled))
-                    print("ant's round energy  : {}".format(ant.nrj_capacity))
+                    print("ant's round energy  : {}".format(ant.SOE))
                     print("\r\n")
                 
             if fileLog == True:
@@ -148,7 +148,7 @@ class AntCo:
                     fo.write("Ant {}".format(i) + "\r\n")
                     fo.write("ant's round vertices:{},{} {}".format(CommonKnowledge.vtx_init.get_ID() ,ant.visitedVtx_toString(), CommonKnowledge.vtx_init.get_ID()) + "\r\n")
                     fo.write("Ant's round distance: {}".format(ant.distTravelled) + "\r\n")
-                    fo.write("Ant's round energy  : {}".format(ant.nrj_capacity) + "\r\n")
+                    fo.write("Ant's round energy  : {}".format(ant.SOE) + "\r\n")
                     fo.write("\r\n")
                     
                 # Close opened file
