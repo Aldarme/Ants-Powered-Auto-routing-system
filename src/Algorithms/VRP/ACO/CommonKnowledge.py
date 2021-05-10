@@ -37,7 +37,7 @@ class CommonKnowledge:
     def comnKldg_init(vtx_init_p, evaporationRate_p = 0.2):
         CommonKnowledge.vtx_init = vtx_init_p
         CommonKnowledge.optimalPath_length = sys.maxsize
-        CommonKnowledge.evaporation_rate = evaporationRate_p    #by default is 0.8
+        CommonKnowledge.evaporation_rate = evaporationRate_p
         
         #Init the adjacency pheromone matrix at the same size that the adjacency matrix, with all elements at "0.0"
         CommonKnowledge.adjPheroMtx = [[0.0 for x in range(CommonKnowledge.adjMtxMidGraph.size())] for y in range(CommonKnowledge.adjMtxMidGraph.size())]

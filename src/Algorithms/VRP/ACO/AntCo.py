@@ -20,7 +20,7 @@ class AntCo:
     def create_ants(self, antFactor_p):
         """
         Create an list containing all ants of the colony,
-        the ant number is equals to the vertices number
+        the ant number is equals to the vertices number multiply by the number of criterion to optimize
         """
         for i in range(0, CommonKnowledge.adjMtxMidGraph.size()*antFactor_p):
             self.antArray.append(Ant(i))
@@ -32,6 +32,8 @@ class AntCo:
         for ant in self.antArray:
             if DEBUG_MODE:
                 print("ant ID:{}".format(ant.ID))
+            
+            #run ant research
             ant.run()
     
     def getBack(self):
@@ -123,7 +125,9 @@ class AntCo:
         for ant in self.antArray:
             print("ant: {}".format(ant.get_antVertices_toString()))
             
-    def antRound_log(self, consoleLog=False, fileLog=False):
+    def antRound_log(self, consoleLog=False, fileLog=False, iterationNbr_p=0):
+        
+        print('iteration: {}'.format(iterationNbr_p+1))
         i = 0
         for ant in self.antArray:
             i += 1

@@ -83,8 +83,8 @@ class MiddleGraph:
         
         #init adapted commonKnowledge
         CommonKnowledge.comnKldg_init(MiddleGraph.getVtx(myVtx))
-    
-    
+        
+        
     @staticmethod
     def getVtx(vtx_p):
         for vtx in MiddleGraph.vtxList:
