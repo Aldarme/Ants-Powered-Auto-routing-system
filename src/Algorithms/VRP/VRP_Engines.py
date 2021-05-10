@@ -17,26 +17,33 @@ class VRP_Engines:
         """
         SOC & SOH Vehicle Routing Problem
         """
+        
+        #Instantiate the ant colony
+        antCo = AntCo(nbrOfCriterion_p)
+        
         #determine the appropriate number of iterations
         for i in range(0, EnvBased.termCond() * nbrOfCriterion_p):
             
-            CommonKnowledge.interationCnt()
-            if DEBUG_MODE:
-                print("iteration: {}".format(CommonKnowledge.iterationNbr))
-            
-            #Instantiate the ant colony
-            antCo = AntCo(nbrOfCriterion_p)
+            #reset properties of each ant
+            for elm in antCo.antArray:
+                elm.resetter()
             
             #let all ants construct a turn (one by one)
             antCo.search()
             
-            #log in console and file generated path of each ant (consolog, filog)
-            antCo.antRound_log(False, False)
+            #log in console and/or file generated path of each ant (consolog, filog)
+            antCo.antRound_log(True, False, i)
             
-            #Update pheromone trail and set all ants at the initial deposit location
+            #update pheromone trail and set all ants at the initial deposit location
             antCo.getBack()
             
-            #Check all ants to find the most appropriate energy/distance couple
-            antCo.ScoringMultiObj(True, False)
+            #display the adj. pheromone matrix to see update
+            
+        
+        #Check all ants to find the most appropriate energy/distance couple
+        print('##################################')
+        print('Final result')
+        print('##################################')
+        antCo.ScoringMultiObj(True, False)
             
             
