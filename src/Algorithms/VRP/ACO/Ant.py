@@ -37,19 +37,89 @@ class Ant:
         Start the research process for an ant
         """
         self.antState =State.SEARCHING_PATH
-        while(self.toReach_CUG()):
+        while(self.toReach_CUG()): #self.toReach_CUG()
             pass
         
         if DEBUG_MODE:
             for elm in self.vtx_tabuList:
                 print(elm.get_ID())
             print("#####################")
-    
+            
     def toReach_CUG(self):
         '''
         Define how an ant build a turn in a Complete Undirected Graph
         '''
-        #when we are shure that the current ant visited all point, allow he to return at the deposit
+        #when we are sure that the current ant visited all point, allow he to return at the deposit
+        if len(self.vtx_tabuList) < len(CommonKnowledge.deliveryList):
+            #Return the heuristic edge destination determined by the DorigoProb
+            self.vtx_Next = self.dorigo_prob(self.vtx_current).get_vtx_end()
+        else:
+            #if all delivery point has been visited, allow the ant to come back to the delivery point
+            self.vtx_toVisit.append(CommonKnowledge.vtx_init)
+            self.vtx_Next = CommonKnowledge.vtx_init
+        
+        #Test if the next vertex can be reach
+        if self.vtx_Next in self.vtx_toVisit:
+            
+            self.vtx_tabuList.append(self.vtx_current)
+            self.vtx_toVisit.remove(self.vtx_current)
+            self.distTravelled  += CommonKnowledge.adjMtxMidGraph.get_edglength(self.vtx_current, self.vtx_Next)
+            self.timeTravalled  += CommonKnowledge.adjMtxMidGraph.get_edgTime(self.vtx_current, self.vtx_Next)
+            self.SOE            -= CommonKnowledge.adjMtxMidGraph.get_edgNrjCost(self.vtx_current, self.vtx_Next)
+            
+            #Stop the research if the ant come back to the the deposit point
+            if(self.vtx_Next.get_ID() == CommonKnowledge.vtx_init.get_ID() ):
+                self.antState       = State.RETURNING
+                self.vtx_current    = self.vtx_Next
+                self.vtx_tabuList.append(self.vtx_current)
+                self.vtx_toVisit.remove(self.vtx_current)
+                
+                #Debug line
+                #print("Ant: {}, Path: {}, length: {}".format(self.ID, self.vtx_tabuList, self.distTravelled))
+                return False
+            
+            self.vtx_current = self.vtx_Next   #the ant have to find the next vertex to reach
+            self.vtx_Next = None
+            del self.neigb_tabuList[:]
+              
+            return True
+            
+        else: #The vertex can't be reach, have to find a new one
+            
+            neigbs = CommonKnowledge.adjMtxMidGraph.get_Neighboor_VTX(self.vtx_current)
+            
+            for elm in neigbs:
+                if elm.get_vtx_end() in self.vtx_toVisit:
+                    
+                    self.vtx_tabuList.append(self.vtx_current)
+                    self.vtx_toVisit.remove(self.vtx_current)
+                    self.distTravelled  += CommonKnowledge.adjMtxMidGraph.get_edglength(self.vtx_current, elm.get_vtx_end())
+                    self.timeTravalled  += CommonKnowledge.adjMtxMidGraph.get_edgTime(self.vtx_current, elm.get_vtx_end())
+                    self.SOE            -= CommonKnowledge.adjMtxMidGraph.get_edgNrjCost(self.vtx_current, elm.get_vtx_end())
+                    
+                    #Stop the research if the ant come back to the the deposit point
+                    if(elm.get_vtx_end().get_ID() == CommonKnowledge.vtx_init.get_ID() ):
+                        self.antState       = State.RETURNING
+                        self.vtx_current    = elm.get_vtx_end()
+                        self.vtx_tabuList.append(self.vtx_current)
+                        self.vtx_toVisit.remove(self.vtx_current)
+                        
+                        #Debug line
+                        #print("Ant: {}, Path: {}, length: {}".format(self.ID, self.vtx_tabuList, self.distTravelled))
+                        return False
+                    
+                    self.vtx_current = elm.get_vtx_end()   #the ant have to find the next vertex to reach
+                    self.vtx_Next = None
+                    del self.neigb_tabuList[:]
+                      
+                    return True
+        
+    
+    def toReach_CUG_lowPerf(self):
+        '''
+        Define how an ant build a turn in a Complete Undirected Graph
+        '''
+        #when we are sure that the current ant visited all point, allow he to return at the deposit
         if len(self.vtx_tabuList) < len(CommonKnowledge.deliveryList):
             #Return the heuristic edge destination determined by the DorigoProb
             self.vtx_Next = self.dorigo_prob(self.vtx_current).get_vtx_end()
