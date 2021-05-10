@@ -29,8 +29,7 @@ class Ant:
         self.normNRJ        = 0
         self.normDst        = 0
         self.perfIdx        = 0
-        
-        self.toVisit()
+        self.toVisit()                          #Create the list of delivery point, an ant have to visit
     
     def run(self):
         """
@@ -94,6 +93,23 @@ class Ant:
             
             else:
                 return True
+    
+    def resetter(self):
+        
+        self.vtx_current    = CommonKnowledge.vtx_init
+        self.antState       = State.HANDLE
+        self.vtx_Next       = Vertex()
+        self.distTravelled  = 0.0
+        self.timeTravalled  = 0.0
+        del self.vtx_toVisit[:]         #flush the to visit list
+        del self.vtx_tabuList[:]        #flush the tabu list
+        del self.edg_tabuList[:]        #flush the edge tabu List
+        del self.neigb_tabuList[:]      #flush the tested neighbors tabu list
+        self.SOE            = CommonKnowledge.initSOE #Energy capacity of the electric vehicle, [20;80]
+        self.normNRJ        = 0
+        self.normDst        = 0
+        self.perfIdx        = 0
+        self.toVisit()                  #recreate the list of delivery point to visit
             
     def toReach_NCUD(self):
         """
@@ -257,90 +273,3 @@ class State:
     SEARCHING_PATH  = 2
     RETURNING       = 3
     KILLED          = 4
-    
-
-
-######################################################
-# backUp ant behavior
-'''
-def toReach(self):
-        """
-        Define how an ant build a turn
-        """
-        
-        #Return the heuristic edge destination determined by the DorigoProb
-        self.vtx_Next = self.dorigo_prob(self.vtx_current).get_vtx_end()
-        
-        #Test if the next vertex can be reach
-        if self.vtx_Next in self.vtx_toVisit:
-            
-            #check that the next point to reach is different from the starting one (deposit)
-            if self.vtx_Next.get_ID == CommonKnowledge.vtx_init.get_ID():
-                self.distTravelled += CommonKnowledge.adjMtxMidGraph.get_edglength(self.vtx_current, self.vtx_Next)
-                self.timeTravalled += CommonKnowledge.adjMtxMidGraph.get_edgTime(self.vtx_current, self.vtx_Next)
-            
-            else:
-                #check if ant is at it's starting point
-                if self.vtx_current.get_ID() == CommonKnowledge.vtx_init.get_ID():
-                    self.distTravelled += CommonKnowledge.adjMtxMidGraph.get_edglength(self.vtx_current, self.vtx_Next)
-                    self.timeTravalled += CommonKnowledge.adjMtxMidGraph.get_edgTime(self.vtx_current, self.vtx_Next)
-                    
-                else:
-                    self.vtx_tabuList.append(self.vtx_current)
-                    self.vtx_toVisit.remove(self.vtx_current)
-                    self.distTravelled  += CommonKnowledge.adjMtxMidGraph.get_edglength(self.vtx_current, self.vtx_Next)
-                    self.timeTravalled  += CommonKnowledge.adjMtxMidGraph.get_edgTime(self.vtx_current, self.vtx_Next)
-                    self.SOE            -= CommonKnowledge.adjMtxMidGraph.get_edgNrjCost(self.vtx_current, self.vtx_Next)
-                    
-                    #Kill the current ant if its nrj capacity get lower than 20%
-                    if(self.SOE <= CommonKnowledge.minSOE):
-                        print("Current ant Kills, due to nrj Capacity Min < 20% of battery capacity")
-                        self.antState       = State.KILLED
-                        self.vtx_current    = CommonKnowledge.vtx_init
-                        del self.vtx_tabuList[:]        #flush the tabu list
-                        del self.vtx_toVisit[:]         #flush the to visit list
-                        self.distTravelled  = sys.maxsize #flush the total dist. travel
-                        return False
-                        
-            
-            #Stop the research if the ant return to the init. vertex
-            if(self.vtx_Next.get_ID() == CommonKnowledge.vtx_init.get_ID() ):
-                self.antState       = State.RETURNING
-                self.vtx_current    = self.vtx_Next
-                #Debug line
-                #print("Ant: {}, Path: {}, length: {}".format(self.ID, self.vtx_tabuList, self.distTravelled))
-                return False
-            
-            #Kill the ant if it is in dead end (No neighbors to visit)
-            #Warning, this case work only for directed graph
-            if len(CommonKnowledge.adjMtxMidGraph.get_Neighboor_VTX(self.vtx_Next)) == 0:
-                self.antState       = State.KILLED
-                self.vtx_current    = CommonKnowledge.vtx_init
-                del self.vtx_tabuList[:]        #flush the tabu list
-                del self.vtx_toVisit[:]         #flush the to visit list
-                self.distTravelled  = sys.maxsize #flush the total dist. travel
-                return False
-        
-            self.vtx_current = self.vtx_Next   #the ant have to find the next vertex to reach
-            self.vtx_Next = None             
-            return True
-        
-        else: #The vertex can't be reach, have to find a new one
-            
-            #Fill the tabu list of tested neighbors
-            if ( len(self.neigb_tabuList) < len(CommonKnowledge.adjMtxMidGraph.get_Neighboor_VTX(self.vtx_current))
-                and (self.vtx_Next not in self.neigb_tabuList) ):
-                self.neigb_tabuList.append(self.vtx_Next)
-                return True
-            
-            else:
-                #The tested neighbors list is full, we kill the ant
-                self.antState = State.KILLED
-                self.vtx_current  = CommonKnowledge.vtx_init
-                del self.vtx_tabuList[:]        #flush the tabu list
-                del self.vtx_toVisit[:]         #flush the to visit list
-                del self.neigb_tabuList[:]      #flush the tested neighbors tabu list
-                self.distTravelled = sys.maxsize #flush the total dist. travel
-                return False             
-'''
-    
