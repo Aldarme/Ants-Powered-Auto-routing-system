@@ -37,7 +37,7 @@ class Ant:
         Start the research process for an ant
         """
         self.antState =State.SEARCHING_PATH
-        while(self.toReach_CUG()): #self.toReach_CUG()
+        while(self.toReach_CUG()):
             pass
         
         if DEBUG_MODE:
@@ -84,8 +84,47 @@ class Ant:
               
             return True
             
-        else: #The vertex can't be reach, have to find a new one
+        else: #The vertex can't be reach, have to test its neighbors to find one reachable
             
+            #get neighbors list of the current vertex 
+            neigbs = CommonKnowledge.adjMtxMidGraph.get_Neighboor_VTX(self.vtx_current)
+            
+            while len(neigbs) >= 0:
+            
+                #chose an elm randomly
+                item = random.choice(neigbs)
+                
+                #test if the neighbor is reachable
+                if item.get_vtx_end() in self.vtx_toVisit:
+                    
+                    self.vtx_tabuList.append(self.vtx_current)
+                    self.vtx_toVisit.remove(self.vtx_current)
+                    self.distTravelled  += CommonKnowledge.adjMtxMidGraph.get_edglength(self.vtx_current, item.get_vtx_end())
+                    self.timeTravalled  += CommonKnowledge.adjMtxMidGraph.get_edgTime(self.vtx_current, item.get_vtx_end())
+                    self.SOE            -= CommonKnowledge.adjMtxMidGraph.get_edgNrjCost(self.vtx_current, item.get_vtx_end())
+                    
+                    #Stop the research if the ant come back to the the deposit point
+                    if(item.get_vtx_end().get_ID() == CommonKnowledge.vtx_init.get_ID() ):
+                        self.antState       = State.RETURNING
+                        self.vtx_current    = item.get_vtx_end()
+                        self.vtx_tabuList.append(self.vtx_current)
+                        self.vtx_toVisit.remove(self.vtx_current)
+                        del neigbs[:]
+                        
+                        #Debug line
+                        #print("Ant: {}, Path: {}, length: {}".format(self.ID, self.vtx_tabuList, self.distTravelled))
+                        return False
+                    
+                    self.vtx_current = item.get_vtx_end()   #the ant have to find the next vertex to reach
+                    self.vtx_Next = None
+                    del self.neigb_tabuList[:]
+                    del neigbs[:]
+                      
+                    return True
+                
+                neigbs.remove(item)
+            
+            '''
             neigbs = CommonKnowledge.adjMtxMidGraph.get_Neighboor_VTX(self.vtx_current)
             
             for elm in neigbs:
@@ -113,6 +152,7 @@ class Ant:
                     del self.neigb_tabuList[:]
                       
                     return True
+            '''
         
     
     def toReach_CUG_lowPerf(self):
