@@ -7,6 +7,7 @@ Created on 4 mai 2020
 from Graph.MtxGraph import MtxGraph
 from Graph.Vertex import Vertex
 import sys
+from numpy import empty
 
 class CommonKnowledge:
     
@@ -21,17 +22,17 @@ class CommonKnowledge:
     adjMtxGraph         = MtxGraph      #Adjacency matrix of Belfort Graph
     adjMtxMidGraph      = MtxGraph      #Adjacency matrix of Middle Graph
     adjPheroMtx         = []            #Adjacency pheromone matrix
-    #Param. for delivery point list
-    deliveryList        = ["Madrid", "Foch", "République", "Briand", "Mairie", "Follereau"]
     #Param. of SOC & SOH algorithm
-    initSOE = 82000                     #(SOE) State of energy - Tesla model S 90-D 2017
+    initSOE     = 82000                 #(SOE) State of energy - Tesla model S 90-D 2017
     minSOE      = initSOE * 20 /100     #minumum allowed % capacity
     maxSOE      = initSOE * 80 /100     #maximum allowed % capacity
+    packgVolume = 4.42                  #unit cubic meter
+    curbWeight  = 2199                  #unit Kg
     
-    #initSOE = 64000                     #(SOE) State of energy - Kona electri 2019 64 kWh
+    #initSOE     = 64000                 #(SOE) State of energy - Kona electri 2019 64 kWh
     #minSOE      = initSOE * 20 /100     #minumum allowed % capacity   
     #maxSOE      = initSOE * 80 /100     #maximum allowed % capacity
-    
+    #VolumeCapa  = 3.77                  #unit cubic meter
     
     @staticmethod
     def comnKldg_init(vtx_init_p, evaporationRate_p = 0.2):
@@ -104,7 +105,7 @@ class CommonKnowledge:
         [(1-p) * PheromoneStrength] + turnSize
         """
         pheromeij = CommonKnowledge.adjPheroMtx[CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg_p.get_vtx_begin())][CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg_p.get_vtx_end())]
-        return (pheromeij + ( (1.0 / totalDist_p) * (1.0 / SOC_p) * (1/totalTime_p) ))
+        return (pheromeij + ( (totalDist_p) * (1.0 / SOC_p) * (totalTime_p) ))
     
     @staticmethod
     def interationCnt():
