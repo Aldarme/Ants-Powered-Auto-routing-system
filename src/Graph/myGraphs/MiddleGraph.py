@@ -7,6 +7,7 @@ from Simulator.DEBUG import DEBUG_MODE
 from Graph.Edge import Edge
 from Graph.Vertex import Vertex
 from Utilities.Dijkstra import Dijkstra
+from Utilities.PackgListGen import PackgListGen
 from Algorithms.VRP.ACO.CommonKnowledge import CommonKnowledge
 from locale import currency
 from Graph.MtxGraph import MtxGraph
@@ -21,7 +22,15 @@ class MiddleGraph:
         
         #create vertices list
         for elm in deliveryList_string_p:
-            MiddleGraph.vtxList.append(CommonKnowledge.get_adjMtxGraph().get_vtx(elm))
+            
+            #get the wanted vertex
+            tmpVtx = CommonKnowledge.get_adjMtxGraph().get_vtx(elm)
+            
+            #set package list into it
+            tmpVtx.set_packageList(PackgListGen.run())
+            
+            #add the vertex in the MiddleGraph vertices list
+            MiddleGraph.vtxList.append(tmpVtx)
         
         #get vtx corresponding to "InitID_p", which is the deposit point
         myVtx = CommonKnowledge.get_adjMtxGraph().get_vtx(InitID_p)
