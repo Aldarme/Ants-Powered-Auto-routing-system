@@ -10,6 +10,7 @@ from Graph.Edge import Edge
 import random
 import sys
 from Simulator.DEBUG import DEBUG_MODE
+from Utilities.DelivListGen import DelivListGen
 
 
 class Ant:
@@ -25,7 +26,9 @@ class Ant:
         self.vtx_tabuList   = []                #Collection of all visited Vertices, by the ant
         self.edg_tabuList   = []                #Revoir cette element de dorigo prob, si vraiment utile ? Collection of all visited edges by the ant    
         self.neigb_tabuList = []                #Collection of ant tested neighbors
-        self.SOE            = CommonKnowledge.initSOE #Energy capacity of the electric vehicle, [20;80]
+        self.SOE            = CommonKnowledge.initSOE       #Energy capacity of the electric vehicle, [20;80]
+        self.packgVolume    = CommonKnowledge.packgVolume   #Volume (m3) to transport packages
+        self.curbWeight     = CommonKnowledge.curbWeight    #Weight (kg) of the vehicle
         self.normNRJ        = 0.0
         self.normDst        = 0.0
         self.normTime       = 0.0
@@ -37,7 +40,7 @@ class Ant:
         Start the research process for an ant
         """
         self.antState =State.SEARCHING_PATH
-        while(self.toReach_CUG()):
+        while(self.turnGenerator_CUG()):
             pass
         
         if DEBUG_MODE:
@@ -45,12 +48,84 @@ class Ant:
                 print(elm.get_ID())
             print("#####################")
             
-    def toReach_CUG(self):
+    def turnGenerator_CUG(self): #turnGenerator with VolumeCapa, Nrj SOE & SOH, distance, time
         '''
         Define how an ant build a turn in a Complete Undirected Graph
         '''
+        
+        #Return the heuristic edge destination determined by the DorigoProb
+        self.vtx_Next = self.dorigo_prob(self.vtx_current).get_vtx_end()
+        
+        #if the ant return to the deposit, get path data
+        if self.vtx_Next.get_ID() == CommonKnowledge.vtx_init.get_ID():
+            self.antState = State.RETURNING
+            self.vtx_tabuList.append(self.vtx_current)
+            self.vtx_toVisit.remove(self.vtx_current)
+            self.vtx_tabuList.append(self.vtx_Next)
+            
+            self.distTravelled  += CommonKnowledge.adjMtxMidGraph.get_edglength(self.vtx_current, self.vtx_Next)
+            self.SOE            -= CommonKnowledge.adjMtxMidGraph.get_edgNrjCost(self.vtx_current, self.vtx_Next)
+            self.timeTravalled  += CommonKnowledge.adjMtxMidGraph.get_edgTime(self.vtx_current, self.vtx_Next)
+            self.packgVolume    -= self.vtx_Next.get_packagesTotalVol()
+            self.curbWeight     += self.vtx_Next.get_packagesTotalWgt()
+            
+            self.vtx_current = CommonKnowledge.vtx_init
+            
+            #Debug line
+            #print("Ant: {}, Path: {}, length: {}".format(self.ID, self.vtx_tabuList, self.distTravelled))
+            return False
+        
+        #Test if the next vertex can be reach
+        if self.vtx_Next in self.vtx_toVisit:
+            
+            self.vtx_tabuList.append(self.vtx_current)
+            self.vtx_toVisit.remove(self.vtx_current)
+            self.distTravelled  += CommonKnowledge.adjMtxMidGraph.get_edglength(self.vtx_current, self.vtx_Next)
+            self.SOE            -= CommonKnowledge.adjMtxMidGraph.get_edgNrjCost(self.vtx_current, self.vtx_Next)
+            self.timeTravalled  += CommonKnowledge.adjMtxMidGraph.get_edgTime(self.vtx_current, self.vtx_Next)
+            self.packgVolume    -= self.vtx_Next.get_packagesTotalVol()
+            self.curbWeight     += self.vtx_Next.get_packagesTotalWgt()
+                    
+            
+            #Kill the current ant if its nrj capacity get lower than 20%
+            #if(self.SOE <= CommonKnowledge.minSOE):
+            #    print("Current ant Kill, due to nrj Capacity Min < 20%")
+            #    self.antState   = State.KILLED
+            #    self.vtx_current  = CommonKnowledge.vtx_init
+            #    del self.vtx_tabuList[:]                        #flush the tabu list
+            #    del self.vtx_toVisit[:]                         #flush the to visit list
+            #    self.distTravelled = 0.0                        #flush the total dist. travel
+            #    self.SOE           = CommonKnowledge.initSOE    #reset SOE to init. state
+            #    self.timeTravalled = 0.0                        #flush the time travel
+            #    return False
+            
+            #Kill the current ant if its volume capacity is overloaded
+            
+            
+            #Current ant have to find the next vertex to reach
+            self.vtx_current = self.vtx_Next   
+            self.vtx_Next = None             
+            return True
+        
+        else: #The vertex can't be reach, have to find a new one
+
+            #Fill the tabu list of tested neighbors
+            if self.vtx_Next not in self.neigb_tabuList:
+                if len(self.neigb_tabuList) < len(CommonKnowledge.adjMtxMidGraph.get_Neighboor_VTX(self.vtx_current)):
+                    self.neigb_tabuList.append(self.vtx_Next)
+                    return True
+            
+            else:
+                return True
+    
+    
+    
+    def toReach_VRP_CUG(self):
+        '''
+        Define how an ant build VRP in a Complete Undirected Graph
+        '''
         #when we are sure that the current ant visited all point, allow he to return at the deposit
-        if len(self.vtx_tabuList) < len(CommonKnowledge.deliveryList):
+        if len(self.vtx_tabuList) < len(DelivListGen.debugList): #len(DelivListGen.buStop)
             #Return the heuristic edge destination determined by the DorigoProb
             self.vtx_Next = self.dorigo_prob(self.vtx_current).get_vtx_end()
         else:
@@ -123,41 +198,11 @@ class Ant:
                     return True
                 
                 neigbs.remove(item)
-            
-            '''
-            neigbs = CommonKnowledge.adjMtxMidGraph.get_Neighboor_VTX(self.vtx_current)
-            
-            for elm in neigbs:
-                if elm.get_vtx_end() in self.vtx_toVisit:
-                    
-                    self.vtx_tabuList.append(self.vtx_current)
-                    self.vtx_toVisit.remove(self.vtx_current)
-                    self.distTravelled  += CommonKnowledge.adjMtxMidGraph.get_edglength(self.vtx_current, elm.get_vtx_end())
-                    self.timeTravalled  += CommonKnowledge.adjMtxMidGraph.get_edgTime(self.vtx_current, elm.get_vtx_end())
-                    self.SOE            -= CommonKnowledge.adjMtxMidGraph.get_edgNrjCost(self.vtx_current, elm.get_vtx_end())
-                    
-                    #Stop the research if the ant come back to the the deposit point
-                    if(elm.get_vtx_end().get_ID() == CommonKnowledge.vtx_init.get_ID() ):
-                        self.antState       = State.RETURNING
-                        self.vtx_current    = elm.get_vtx_end()
-                        self.vtx_tabuList.append(self.vtx_current)
-                        self.vtx_toVisit.remove(self.vtx_current)
-                        
-                        #Debug line
-                        #print("Ant: {}, Path: {}, length: {}".format(self.ID, self.vtx_tabuList, self.distTravelled))
-                        return False
-                    
-                    self.vtx_current = elm.get_vtx_end()   #the ant have to find the next vertex to reach
-                    self.vtx_Next = None
-                    del self.neigb_tabuList[:]
-                      
-                    return True
-            '''
         
     
-    def toReach_CUG_lowPerf(self):
+    def toReach_VRP_CUG_lowPerf(self):
         '''
-        Define how an ant build a turn in a Complete Undirected Graph
+        Define how an ant build VRP in a Complete Undirected Graph
         '''
         #when we are sure that the current ant visited all point, allow he to return at the deposit
         if len(self.vtx_tabuList) < len(CommonKnowledge.deliveryList):
@@ -216,7 +261,9 @@ class Ant:
         del self.vtx_tabuList[:]        #flush the tabu list
         del self.edg_tabuList[:]        #flush the edge tabu List
         del self.neigb_tabuList[:]      #flush the tested neighbors tabu list
-        self.SOE            = CommonKnowledge.initSOE #Energy capacity of the electric vehicle, [20;80]
+        self.SOE            = CommonKnowledge.initSOE       #Energy capacity of the electric vehicle, [20;80]
+        self.packgVolume    = CommonKnowledge.packgVolume   #
+        self.curbWeight     = CommonKnowledge.curbWeight    #
         self.normNRJ        = 0.0
         self.normDst        = 0.0
         self.normTime       = 0.0
