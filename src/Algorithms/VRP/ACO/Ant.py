@@ -27,6 +27,7 @@ class Ant:
         self.edg_tabuList   = []                #Revoir cette element de dorigo prob, si vraiment utile ? Collection of all visited edges by the ant    
         self.neigb_tabuList = []                #Collection of ant tested neighbors
         self.SOE            = CommonKnowledge.initSOE       #Energy capacity of the electric vehicle, [20;80]
+        self.SOHmarker      = 0.0                           #State of Health marker of the battery
         self.packgVolume    = CommonKnowledge.packgVolume   #Volume (m3) to transport packages
         self.curbWeight     = CommonKnowledge.curbWeight    #Weight (kg) of the vehicle
         self.normNRJ        = 0.0
@@ -87,20 +88,15 @@ class Ant:
             self.curbWeight     += self.vtx_Next.get_packagesTotalWgt()
                     
             
-            #Kill the current ant if its nrj capacity get lower than 20%
-            #if(self.SOE <= CommonKnowledge.minSOE):
-            #    print("Current ant Kill, due to nrj Capacity Min < 20%")
-            #    self.antState   = State.KILLED
-            #    self.vtx_current  = CommonKnowledge.vtx_init
-            #    del self.vtx_tabuList[:]                        #flush the tabu list
-            #    del self.vtx_toVisit[:]                         #flush the to visit list
-            #    self.distTravelled = 0.0                        #flush the total dist. travel
-            #    self.SOE           = CommonKnowledge.initSOE    #reset SOE to init. state
-            #    self.timeTravalled = 0.0                        #flush the time travel
-            #    return False
-            
-            #Kill the current ant if its volume capacity is overloaded
-            
+            #Kill and reset the current ant if its volume capacity is overload
+            if(self.packgVolume < 0):
+                self.kill_resetter("volume")
+                return False
+
+            #kill and reset the current ant if its energy capacity get lower that 20%
+            if(self.SOE < (self.SOE * 20 / 100)):
+                self.kill_resetter("energy")
+                return False
             
             #Current ant have to find the next vertex to reach
             self.vtx_current = self.vtx_Next   
@@ -262,6 +258,7 @@ class Ant:
         del self.edg_tabuList[:]        #flush the edge tabu List
         del self.neigb_tabuList[:]      #flush the tested neighbors tabu list
         self.SOE            = CommonKnowledge.initSOE       #Energy capacity of the electric vehicle, [20;80]
+        self.SOHmarker      = 0.0
         self.packgVolume    = CommonKnowledge.packgVolume   #
         self.curbWeight     = CommonKnowledge.curbWeight    #
         self.normNRJ        = 0.0
@@ -269,6 +266,29 @@ class Ant:
         self.normTime       = 0.0
         self.perfIdx        = 0.0
         self.toVisit()                  #recreate the list of delivery point to visit
+        
+    def kill_resetter(self, killParam_p=""):
+        '''
+        Reset all parameter of killed ant
+        '''
+        print("Ant: {} was kill due to {} level overload".format(self.ID, killParam_p))
+        self.antState       = State.KILLED
+        self.vtx_current    = CommonKnowledge.vtx_init
+        self.vtx_Next       = Vertex()
+        self.SOE            = CommonKnowledge.initSOE    #reset SOE to init. state
+        self.distTravelled  = 0.0                        #flush the total dist. travel
+        self.timeTravalled  = 0.0                        #flush the time travel
+        self.packgVolume    = CommonKnowledge.packgVolume
+        self.curbWeight     = CommonKnowledge.curbWeight
+        del self.vtx_toVisit[:]         #flush the to visit list
+        del self.vtx_tabuList[:]        #flush the tabu list
+        del self.edg_tabuList[:]        #flush the edge tabu List
+        del self.neigb_tabuList[:]      #flush the tested neighbors tabu list
+        self.normNRJ        = 0.0
+        self.normDst        = 0.0
+        self.normTime       = 0.0
+        self.perfIdx        = 0.0
+        self.toVisit()
             
     def toReach_NCUD(self):
         """
@@ -419,10 +439,19 @@ class Ant:
         return str
     
     def get_tabuList_asString(self):
+        '''
+        Return the tabu list as a list of string
+        '''
         tmpList = []
         for elm in self.vtx_tabuList:
             tmpList.append(elm.get_ID())
         return tmpList
+    
+    def SOH_calculator(self):
+        '''
+        Calculate the State of Health (SOH) maker of the turn
+        '''
+        
 
 class State:
     """

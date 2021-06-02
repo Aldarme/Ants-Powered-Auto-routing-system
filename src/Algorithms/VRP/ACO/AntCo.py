@@ -35,6 +35,20 @@ class AntCo:
             
             #run ant research
             ant.run()
+            
+    def SOHmarkers_calc(self):
+        '''
+        Calculate State of Health (SOH) marker of each turn
+        '''
+        totalEnergy = 0.0
+        checkSum = 0.0
+        
+        for ant in self.antArray:
+            totalEnergy += (CommonKnowledge.initSOE - ant.SOE)
+            
+        for ant in self.antArray:
+            ant.SOHmarker = (CommonKnowledge.initSOE - ant.SOE) * 100 / totalEnergy
+            checkSum += ant.SOHmarker
     
     def getBack(self):
         """
@@ -43,14 +57,16 @@ class AntCo:
         Put in return state, all ants that have finished its tour
         """
         
+        #automatic decrease of all pheromones into the graph
         CommonKnowledge.pheromone_lowering()
         
+        #calculate pheromone update of each available ant
         for ant in self.antArray:
             if ant.antState == State.RETURNING:
                 for edg in ant.edg_tabuList:
                     CommonKnowledge.set_pheromones(CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg.get_vtx_begin()),
                                                    CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg.get_vtx_end()),
-                                                   CommonKnowledge.pheromone_update(edg, ant.distTravelled, ant.SOE, ant.timeTravalled)
+                                                   CommonKnowledge.pheromone_update(edg, (CommonKnowledge.initSOE - ant.SOE), ant.SOHmarker, ant.distTravelled, ant.timeTravalled, ant.packgVolume)
                                                    )
 
     def ScoringDistance(self):
@@ -69,7 +85,7 @@ class AntCo:
     
     def ScoringMultiObj(self, consoleLog=False, fileLog=False):
         """
-        Create a data set containing all ant tour sort by performance index
+        Create a data set containing all ant turn sort by performance index
         Log the data set on consol and on file 
         """
         
@@ -127,8 +143,10 @@ class AntCo:
                     print("ant {}".format(i))
                     print("ant's round vertices:{}".format(ant.visitedVtx_toString()))
                     print("ant's round distance: {}".format(ant.distTravelled))
-                    print("ant's round energy  : {}".format(ant.SOE))
-                    print("ant's rounf time: {}".format(ant.timeTravalled))
+                    print("ant's round energy  : {}".format(CommonKnowledge.initSOE - ant.SOE))
+                    print("ant's round SOH marker : {}".format(ant.SOHmarker))
+                    print("ant's round time: {}".format(ant.timeTravalled))
+                    print("ant's remaining volume: {}".format(ant.packgVolume))
                     print("\r\n")
                 
             if fileLog == True:
@@ -145,8 +163,10 @@ class AntCo:
                     fo.write("ant {}".format(i) + "\r\n")
                     fo.write("ant's round vertices:{},{} {}".format(CommonKnowledge.vtx_init.get_ID() ,ant.visitedVtx_toString(), CommonKnowledge.vtx_init.get_ID()) + "\r\n")
                     fo.write("ant's round distance: {}".format(ant.distTravelled) + "\r\n")
-                    fo.write("ant's round energy  : {}".format(ant.SOE) + "\r\n")
+                    fo.write("ant's round energy  : {}".format(CommonKnowledge.initSOE - ant.SOE) + "\r\n")
+                    fo.write("ant's round SOH marker : {}".format(ant.SOHmarker) + "\r\n")
                     fo.write("ant's round time    : {}".format(ant.timeTravalled) + "\r\n" )
+                    fo.write("ant's remaining Volume  : {}".format(ant.packgVolume) + "\r\n" )
                     fo.write("\r\n")
                     
                 # Close opened file
@@ -154,7 +174,7 @@ class AntCo:
                 
     def dataSet_log(self, consoleLog=False, fileLog=False, dataSet_p=None):
         """
-        Log the data set on consol and on file
+        Log the data set on console and on file
         """
         if consoleLog == True:
             
@@ -164,6 +184,7 @@ class AntCo:
                 print("#####################################")
                 print("Perf. indx: {}".format(elm["IdxPerf"]))
                 print("Energy consumed: {}".format(elm["NRJ_Wh"]))
+                print("SOH marker: {}".format(elm["TODO"]))
                 print("Distance travelled: {}".format(elm["Distance_km"]))
                 print("Time travalled: {}".format(elm["Time_min"]))
                 print("delivery Path: {}".format(elm["Path"]))
@@ -174,6 +195,7 @@ class AntCo:
             print("The best path is: \r\n")
             print("Perf. indx: {}".format(dataSet_p[0]["IdxPerf"]))
             print("Energy consumed: {}".format(dataSet_p[0]["NRJ_Wh"]))
+            print("SOH marker: {}".format(elm["TODO"]))
             print("Distance travelled: {}".format(dataSet_p[0]["Distance_km"]))
             print("Time travalled: {}".format(dataSet_p[0]["Time_min"]))
             print("delivery Path: {}".format(dataSet_p[0]["Path"]))
@@ -194,6 +216,7 @@ class AntCo:
                 fo.write("#####################################"            + "\r\n")
                 fo.write("Perf. indx: {}".format(elm["IdxPerf"])            + "\r\n")
                 fo.write("Energy consumed: {}".format(elm["NRJ_Wh"])        + "\r\n")
+                fo.write("SOH marker: {}".format(elm["TODO"])               + "\r\n")
                 fo.write("Distance travelled: {}".format(elm["Distance_km"])+ "\r\n")
                 fo.write("Time travalled: {}".format(elm["Time_min"])       + "\r\n")
                 fo.write("delivery Path: {}".format(elm["Path"])            + "\r\n")
@@ -204,6 +227,7 @@ class AntCo:
             fo.write("The best path is:"                                    + "\r\n")
             fo.write("Perf. indx: {}".format(dataSet_p[0]["IdxPerf"])       + "\r\n")
             fo.write("Energy consumed: {}".format(dataSet_p[0]["NRJ_Wh"])   + "\r\n")
+            fo.write("SOH marker: {}".format(elm["TODO"])                   + "\r\n")
             fo.write("Distance travelled: {}".format(dataSet_p[0]["Distance_km"]) + "\r\n")
             fo.write("Time travalled: {}".format(dataSet_p[0]["Time_min"])  + "\r\n")
             fo.write("delivery Path: {}".format(dataSet_p[0]["Path"])       + "\r\n")

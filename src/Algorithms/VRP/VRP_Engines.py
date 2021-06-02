@@ -22,7 +22,7 @@ class VRP_Engines:
         antCo = AntCo(nbrOfCriterion_p)
         
         #determine the appropriate number of iterations
-        for i in range(0, EnvBased.termCond() * nbrOfCriterion_p):
+        for i in range(0, EnvBased.termCond() * nbrOfCriterion_p): 
             
             #reset properties of each ant
             for elm in antCo.antArray:
@@ -30,6 +30,9 @@ class VRP_Engines:
             
             #let all ants construct a turn (one by one)
             antCo.search()
+            
+            #calculate SOH maker turn
+            antCo.SOHmarkers_calc()
             
             #log in console and/or file generated path of each ant (consolog, filog)
             antCo.antRound_log(True, False, i)
@@ -44,6 +47,8 @@ class VRP_Engines:
         print('##################################')
         print('Final result')
         print('##################################')
-        antCo.ScoringMultiObj(True, False)
+        
+        #log in console and/or file, final path of each ant and the best path (consoleLog, fileLog)
+        # TODO antCo.ScoringMultiObj(True, False)
             
             
