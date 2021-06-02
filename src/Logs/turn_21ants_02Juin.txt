@@ -1,0 +1,187 @@
+ant 1
+ant's round vertices: Gare, Madrid, Gare,
+ant's round distance: 1.48
+ant's round energy  : 191.43999999947846
+ant's round SOH marker : 2.464825000509806
+ant's round time: 6.359999999999999
+ant's remaining volume: 3.9861025
+
+
+ant 2
+ant's round vertices: Gare, Madrid, Gare,
+ant's round distance: 1.48
+ant's round energy  : 191.43999999947846
+ant's round SOH marker : 2.464825000509806
+ant's round time: 6.359999999999999
+ant's remaining volume: 3.9861025
+
+
+ant 3
+ant's round vertices: Gare, Foch, République, Briand, Follereau, Madrid, Gare,
+ant's round distance: 8.52
+ant's round energy  : 1084.3799999998882
+ant's round SOH marker : 13.961590754595848
+ant's round time: 29.58
+ant's remaining volume: 2.4722275000000002
+
+
+ant 4
+ant's round vertices: Gare, Foch, République, Gare,
+ant's round distance: 2.62
+ant's round energy  : 316.0800000000745
+ant's round SOH marker : 4.0695877881500495
+ant's round time: 10.28
+ant's remaining volume: 3.3911875
+
+
+ant 5
+ant's round vertices: Gare, République, Foch, Follereau, Madrid, Gare,
+ant's round distance: 5.46
+ant's round energy  : 750.2400000002235
+ant's round SOH marker : 9.659477164584546
+ant's round time: 22.22
+ant's remaining volume: 2.4798175
+
+
+ant 6
+ant's round vertices: Gare, Foch, République, Gare,
+ant's round distance: 2.62
+ant's round energy  : 316.0800000000745
+ant's round SOH marker : 4.0695877881500495
+ant's round time: 10.28
+ant's remaining volume: 3.3911875
+
+
+ant 7
+ant's round vertices: Gare, Foch, République, Gare,
+ant's round distance: 2.62
+ant's round energy  : 316.0800000000745
+ant's round SOH marker : 4.0695877881500495
+ant's round time: 10.28
+ant's remaining volume: 3.3911875
+
+
+ant 8
+ant's round vertices: Gare, Madrid, Gare,
+ant's round distance: 1.48
+ant's round energy  : 191.43999999947846
+ant's round SOH marker : 2.464825000509806
+ant's round time: 6.359999999999999
+ant's remaining volume: 3.9861025
+
+
+ant 9
+ant's round vertices: Gare, Madrid, Gare,
+ant's round distance: 1.48
+ant's round energy  : 191.43999999947846
+ant's round SOH marker : 2.464825000509806
+ant's round time: 6.359999999999999
+ant's remaining volume: 3.9861025
+
+
+ant 10
+ant's round vertices: Gare, Foch, République, Gare,
+ant's round distance: 2.62
+ant's round energy  : 316.0800000000745
+ant's round SOH marker : 4.0695877881500495
+ant's round time: 10.28
+ant's remaining volume: 3.3911875
+
+
+ant 11
+ant's round vertices: Gare, Madrid, Follereau, Gare,
+ant's round distance: 3.0
+ant's round energy  : 414.160000000149
+ant's round SOH marker : 5.3323857198824145
+ant's round time: 12.879999999999999
+ant's remaining volume: 3.50863
+
+
+ant 12
+ant's round vertices: Gare, Madrid, Gare,
+ant's round distance: 1.48
+ant's round energy  : 191.43999999947846
+ant's round SOH marker : 2.464825000509806
+ant's round time: 6.359999999999999
+ant's remaining volume: 3.9861025
+
+
+ant 13
+ant's round vertices: Gare, Foch, République, Gare,
+ant's round distance: 2.62
+ant's round energy  : 316.0800000000745
+ant's round SOH marker : 4.0695877881500495
+ant's round time: 10.28
+ant's remaining volume: 3.3911875
+
+
+ant 14
+ant's round vertices: Gare, Madrid, Gare,
+ant's round distance: 1.48
+ant's round energy  : 191.43999999947846
+ant's round SOH marker : 2.464825000509806
+ant's round time: 6.359999999999999
+ant's remaining volume: 3.9861025
+
+
+ant 15
+ant's round vertices: Gare, Foch, République, Mairie, Follereau, Madrid, Gare,
+ant's round distance: 11.41
+ant's round energy  : 1515.7800000002608
+ant's round SOH marker : 19.515944626429032
+ant's round time: 39.8
+ant's remaining volume: 2.3926675000000004
+
+
+ant 16
+ant's round vertices: Gare, Madrid, Gare,
+ant's round distance: 1.48
+ant's round energy  : 191.43999999947846
+ant's round SOH marker : 2.464825000509806
+ant's round time: 6.359999999999999
+ant's remaining volume: 3.9861025
+
+
+ant 17
+ant's round vertices: Gare, Madrid, Gare,
+ant's round distance: 1.48
+ant's round energy  : 191.43999999947846
+ant's round SOH marker : 2.464825000509806
+ant's round time: 6.359999999999999
+ant's remaining volume: 3.9861025
+
+
+ant 18
+ant's round vertices: Gare, Madrid, Gare,
+ant's round distance: 1.48
+ant's round energy  : 191.43999999947846
+ant's round SOH marker : 2.464825000509806
+ant's round time: 6.359999999999999
+ant's remaining volume: 3.9861025
+
+
+ant 19
+ant's round vertices: Gare, Madrid, Gare,
+ant's round distance: 1.48
+ant's round energy  : 191.43999999947846
+ant's round SOH marker : 2.464825000509806
+ant's round time: 6.359999999999999
+ant's remaining volume: 3.9861025
+
+
+ant 20
+ant's round vertices: Gare, Foch, République, Gare,
+ant's round distance: 2.62
+ant's round energy  : 316.0800000000745
+ant's round SOH marker : 4.0695877881500495
+ant's round time: 10.28
+ant's remaining volume: 3.3911875
+
+
+ant 21
+ant's round vertices: Gare, Madrid, Gare,
+ant's round distance: 1.48
+ant's round energy  : 191.43999999947846
+ant's round SOH marker : 2.464825000509806
+ant's round time: 6.359999999999999
+ant's remaining volume: 3.9861025
