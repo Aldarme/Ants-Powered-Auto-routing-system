@@ -11,13 +11,13 @@ from Utilities.CSVFile import CSVFile
 class ParetoFront:
     
     @staticmethod
-    def fst():
+    def fst(genFileName=""):
         
         #read csv file to access data
         #fileName = "2021-06-03 14:47:45.430862.csv"
-        fileName = "2021-06-03 14:39:21.656270.csv"
+        #fileName = "Reduce_2021-06-10 16:35:02.621682.csv"
         
-        dataList = CSVFile.readFile( fileName )
+        dataList = CSVFile.readFile( genFileName )
         
         xData = []
         yData = []
@@ -39,13 +39,13 @@ class ParetoFront:
         pyplot.show()
         
     @staticmethod
-    def scd():
+    def scd(genFileName=""):
         
         #read csv file to access data
         #fileName = "2021-06-03 14:47:45.430862.csv"
-        fileName = "2021-06-03 14:39:21.656270.csv"
+        #fileName = "2021-06-03 14:39:21.656270.csv"
         
-        dataList = CSVFile.readFile( fileName )
+        dataList = CSVFile.readFile( genFileName )
         
         xData = []
         yData = []
@@ -59,9 +59,3 @@ class ParetoFront:
         pyplot.plot(xData, yData, 'ro')
         pyplot.axis([0, 5, 0, 1000])
         pyplot.show()
-
-
-
-
-# debug
-ParetoFront.fst()()

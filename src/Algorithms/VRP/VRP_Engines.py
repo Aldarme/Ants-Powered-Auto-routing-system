@@ -7,6 +7,9 @@ Created on 18 mai 2020
 from Algorithms.VRP.Term_Condition.EnvBased import EnvBased
 from Algorithms.VRP.ACO.CommonKnowledge import CommonKnowledge 
 from Algorithms.VRP.ACO.AntCo import AntCo
+from Analyses.SolOptim import SolOptim
+from Analyses.ParetoFront import ParetoFront
+from Analyses.LexicoRule import LexicoRule
 from Simulator.DEBUG import DEBUG_MODE
 
 class VRP_Engines:
@@ -47,6 +50,20 @@ class VRP_Engines:
         print('##################################')
         print('Final result')
         print('##################################')
+        
+        #log result as usable CSV file
+        fileName = antCo.csv_log(False)
+        
+        #Reduce number of solution by deleting multiple identical solution
+        reduceFile = SolOptim.reducing(fileName)
+        
+        ######### Optimization ##########
+        
+        #Lexicographic rules
+        LexicoRule.run(reduceFile)
+        
+        #Pareto front analyse
+        ParetoFront.fst(reduceFile)
         
         #log in console and/or file, final path of each ant and the best path (consoleLog, fileLog)
         # TODO antCo.ScoringMultiObj(True, False)
