@@ -102,13 +102,57 @@ class CommonKnowledge:
                 CommonKnowledge.adjPheroMtx[i][j] = ((1.0-CommonKnowledge.evaporation_rate) * CommonKnowledge.adjPheroMtx[i][j])
     
     @staticmethod
-    def pheromone_update(edg_p, SOE_p, SOHmarker_p, totalDist_p, totalTime_p, packgVolume_p):
+    def pheromone_update(edg_p, SOE_p, SOHmarker_p, totalDist_p, totalTime_p, remainingVolume_p):
+        """
+        Calculate the evaporation rate of pheromones for the given edge, according to the following equation:
+        [(1-p) * PheromoneStrength] + turnSize
+        """
+        print("SOE: {}".format(SOE_p))
+        print("SOHmarker: {}".format(SOHmarker_p))
+        print("totalDist: {}".format(totalDist_p))
+        print("totalTime: {}".format(totalTime_p))
+        print("remainingVolume: {}".format(remainingVolume_p))
+        
+        pheromeij = CommonKnowledge.adjPheroMtx[CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg_p.get_vtx_begin())][CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg_p.get_vtx_end())]
+        return (pheromeij + ( (1.0 / SOE_p) * (1.0/SOHmarker_p) * (1/remainingVolume_p) * (totalDist_p) * (totalTime_p)  ))
+    
+    
+    @staticmethod
+    def pheroUpdt_objFct(edg_p, SOE_p, SOHmarker_p, totalDist_p, totalTime_p, remainingVolume_p):
+        """
+        Calculate the evaporation rate of pheromones for the given edge, according to objective function,
+        using normalize parameters and a linear function
+        """
+        
+        #normalize all marker between [0; 100]
+        SOE     = CommonKnowledge.norm(SOE_p, 0, 82000, 0, 100)
+        SOH     = CommonKnowledge.norm(SOHmarker_p, 0, 70, 0, 100)
+        Dist    = CommonKnowledge.norm(totalDist_p, 0, 130, 0, 100)
+        Time    = CommonKnowledge.norm(totalTime_p, 0, 468, 0, 100)
+        Vol     = CommonKnowledge.norm(remainingVolume_p, 0, 4.42, 0, 100)
+        
+        if False:
+            print("SOE_p: {}, SOE: {}".format(SOE_p, SOE))
+            print("SOHmarker_p: {}, SOHmarker: {}".format(SOHmarker_p, SOH))
+            print("totalDist_p: {}, totalDist: {}".format(totalDist_p, Dist))
+            print("totalTime_p: {}, totalTime: {}".format(totalTime_p, Time))
+            print("remainingVolume_p: {}, remainingVolume: {}".format(remainingVolume_p, Vol))
+        
+        #linear objective function between [0; 500] to normalize between [0; 1]
+        linObjFct = ( (SOE * 0.004) + (SOH * 0.003) + (Dist * 0.001) + (Time * 0.001) + (Vol * 0.001) )
+        print(linObjFct)
+        
+        pheromeij = CommonKnowledge.adjPheroMtx[CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg_p.get_vtx_begin())][CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg_p.get_vtx_end())]
+        return (pheromeij + ( 1/linObjFct ))
+    
+    @staticmethod
+    def pheromone_normUpd(edg_p, SOE_p, SOHmarker_p, totalDist_p, totalTime_p, remainingVolume_p):
         """
         Calculate the evaporation rate of pheromones for the given edge, according to the following equation:
         [(1-p) * PheromoneStrength] + turnSize
         """
         pheromeij = CommonKnowledge.adjPheroMtx[CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg_p.get_vtx_begin())][CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg_p.get_vtx_end())]
-        return (pheromeij + ( (1.0 / SOE_p) * (1.0/SOHmarker_p) * (totalDist_p) * (totalTime_p) * (packgVolume_p) ))
+        return (pheromeij + ( (1.0 / SOE_p) * (1.0/SOHmarker_p) * (1/remainingVolume_p) * (totalDist_p) * (totalTime_p)  ))
     
     @staticmethod
     def interationCnt():
@@ -171,3 +215,17 @@ class CommonKnowledge:
         print("Adjacency phero mtx:")
         for elmt in CommonKnowledge.adjPheroMtx:
             print(elmt)
+            
+    @staticmethod
+    def norm(x, in_min, in_max, out_min, out_max):
+        """
+        Normalize value between new data range
+        """
+        if x > in_max:
+            out_max = 100
+            
+        return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+    
+    
+    
+    
