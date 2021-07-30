@@ -11,7 +11,8 @@ from numpy import empty
 
 class CommonKnowledge:
     
-    vtx_init            = Vertex        #Beginning vertex of all ants (of the AC(O/S) algorithm)
+    warehouse_vertex    = "Gare"        #Beginning vertex of all ants (of the AC(O/S) algorithm)
+    #vtx_init            = Vertex        #Beginning vertex of all ants (of the AC(O/S) algorithm)
     nbrOfVtx            = 0             #Total number of vertices in the graph
     iterationNbr        = 0             #Current number of iteration for the ant colony algorithm
     #Param. of Ant Colony Algo. 
@@ -26,7 +27,10 @@ class CommonKnowledge:
     FEC_lost    = 0.06                      #(FEC) Full Equivalent Cycle - energy lost (%)
     FEC_cnt     = 0                         #(FEC) Full Equivalent Cycle - count number of FEC done by the vehicle
     initSOH     = 100 - (FEC_cnt*FEC_lost)  #(SOH) State of Health of the battery (%) - Tesla model S 90-D 2017
-    initSOE     = 82000 * initSOH           #(SOE) State of energy of the battery - Tesla model S 90-D 2017
+    fullSOE     = 82000                     #100% energy capacity curve
+    middleSOE   = 82000 * 80 /100           #80% energy capacity curve
+    lowSOE      = 82000 * 60 /100           #60% energy capacity curve
+    initSOE     = middleSOE * initSOH       #(SOE) State of energy of the battery - Tesla model S 90-D 2017
     minSOE      = initSOE * 20 /100         #minumum allowed % capacity
     maxSOE      = initSOE * 80 /100         #maximum allowed % capacity
     packgVolume = 4.42                      #unit cubic meter
@@ -38,8 +42,7 @@ class CommonKnowledge:
     #VolumeCapa  = 3.77                  #unit cubic meter
     
     @staticmethod
-    def comnKldg_init(vtx_init_p, evaporationRate_p = 0.2):
-        CommonKnowledge.vtx_init = vtx_init_p
+    def comnKldg_init(evaporationRate_p = 0.2):
         CommonKnowledge.optimalPath_length = sys.maxsize
         CommonKnowledge.evaporation_rate = evaporationRate_p
         
@@ -116,6 +119,36 @@ class CommonKnowledge:
         pheromeij = CommonKnowledge.adjPheroMtx[CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg_p.get_vtx_begin())][CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg_p.get_vtx_end())]
         return (pheromeij + ( (1.0 / SOE_p) * (1.0/SOHmarker_p) * (1/remainingVolume_p) * (totalDist_p) * (totalTime_p)  ))
     
+    @staticmethod
+    def pheroUpdt_objFct_VRP_SOE(edg_p, NRJConsumed_p, totalDist_p, totalTime_p, remainingVolume_p):
+        """
+        Calculate the evaporation rate of pheromones for the given edge, according to objective function,
+        using normalize parameters and a linear function
+        """
+        
+        #normalize all marker between [0; 100]
+        NRJCsm  = CommonKnowledge.norm(NRJConsumed_p, 0, CommonKnowledge.fullSOE, 0, 100)
+        Dist    = CommonKnowledge.norm(totalDist_p, 0, 150, 0, 100)
+        Time    = CommonKnowledge.norm(totalTime_p, 0, 468, 0, 100)
+        Vol     = CommonKnowledge.norm(remainingVolume_p, 0, 4.42, 0, 100)
+        
+        if False:
+            print("SOE_p: {}, SOE: {}".format(NRJConsumed_p, NRJCsm))
+            print("totalDist_p: {}, totalDist: {}".format(totalDist_p, Dist))
+            print("totalTime_p: {}, totalTime: {}".format(totalTime_p, Time))
+            print("remainingVolume_p: {}, remainingVolume: {}".format(remainingVolume_p, Vol))
+        
+        #linear objective function between [0; 400] to normalize between [0; 1]
+        linObjFct = ( (NRJCsm * 0.005) + (Vol * 0.003) + (Dist * 0.001) + (Time * 0.001) )
+        #print(linObjFct)
+        
+        #find vertices thank to ID
+        inVtx = CommonKnowledge.adjMtxMidGraph.get_vtx(edg_p.get_vtx_begin().get_ID())
+        outVtx = CommonKnowledge.adjMtxMidGraph.get_vtx(edg_p.get_vtx_end().get_ID())
+        
+        #get pheromone length of the given edge and return its updated value
+        pheromeij = CommonKnowledge.adjPheroMtx[CommonKnowledge.adjMtxMidGraph.get_vtxIdx(inVtx)][CommonKnowledge.adjMtxMidGraph.get_vtxIdx(outVtx)]
+        return (pheromeij + ( 1/linObjFct ))
     
     @staticmethod
     def pheroUpdt_objFct(edg_p, SOE_p, SOHmarker_p, totalDist_p, totalTime_p, remainingVolume_p):

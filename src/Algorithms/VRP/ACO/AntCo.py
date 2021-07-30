@@ -55,9 +55,8 @@ class AntCo:
     
     def getBack(self):
         """
-        Update the pheromone strength of all edges in the graph
-        Allow each ant to add pheromones on the arcs it has visited
-        Put in return state, all ants that have finished its tour
+        Update the pheromone strength of all edges in the graph based on objective function
+        An ant have to be in "Returning" state, to be used to update pheromone strength
         """
         
         #automatic decrease of all pheromones into the graph
@@ -67,10 +66,30 @@ class AntCo:
         for ant in self.antArray:
             if ant.antState == State.RETURNING:
                 for edg in ant.edg_tabuList:
-                    CommonKnowledge.set_pheromones(CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg.get_vtx_begin()),
-                                                   CommonKnowledge.adjMtxMidGraph.get_vtxIdx(edg.get_vtx_end()),
-                                                   CommonKnowledge.pheroUpdt_objFct(edg, (CommonKnowledge.initSOE - ant.SOE), ant.SOHmarker, ant.distTravelled, ant.timeTravalled, ant.packgVolume)
+                    #find vertices thank to ID
+                    inVtx = CommonKnowledge.adjMtxMidGraph.get_vtx(edg.get_vtx_begin().get_ID())
+                    outVtx = CommonKnowledge.adjMtxMidGraph.get_vtx(edg.get_vtx_end().get_ID())
+                    
+                    #update pheromone
+                    CommonKnowledge.set_pheromones(CommonKnowledge.adjMtxMidGraph.get_vtxIdx(inVtx),
+                                                   CommonKnowledge.adjMtxMidGraph.get_vtxIdx(outVtx),
+                                                   CommonKnowledge.pheroUpdt_objFct_VRP_SOE(edg, (CommonKnowledge.initSOE - ant.SOE), ant.distTravelled, ant.timeTravalled, ant.remainVolume)
                                                    )
+    
+    def turnCounter(self):
+        '''
+        Determine the number of turn my by each ant
+        '''
+        for ant in self.antArray:
+            for vtx in ant.vtx_tabuList:
+                if vtx.get_ID() == ant.get_warehouse_vtx().get_ID():
+                    ant.turnCnt += 1
+            #we count the number of return to the deposit to have the number of turn,
+            #but there is one deposit at the beginning and at the end to delete
+            ant.turnCnt = ant.turnCnt - 1
+            
+        #for ant in self.antArray:
+        #    print(ant.turnCnt)
 
     def ScoringDistance(self):
         """
@@ -149,7 +168,7 @@ class AntCo:
                     print("ant's round energy  : {}".format(CommonKnowledge.initSOE - ant.SOE))
                     print("ant's round SOH marker : {}".format(ant.SOHmarker))
                     print("ant's round time: {}".format(ant.timeTravalled))
-                    print("ant's remaining volume: {}".format(ant.packgVolume))
+                    print("ant's remaining volume: {}".format(ant.remainVolume))
                     print("\r\n")
                 
             if fileLog == True:
@@ -169,7 +188,7 @@ class AntCo:
                     fo.write("ant's round energy  : {}".format(CommonKnowledge.initSOE - ant.SOE) + "\r\n")
                     fo.write("ant's round SOH marker : {}".format(ant.SOHmarker) + "\r\n")
                     fo.write("ant's round time    : {}".format(ant.timeTravalled) + "\r\n" )
-                    fo.write("ant's remaining Volume  : {}".format(ant.packgVolume) + "\r\n" )
+                    fo.write("ant's remaining Volume  : {}".format(ant.remainVolume) + "\r\n" )
                     fo.write("\r\n")
                     
                 # Close opened file
@@ -258,7 +277,8 @@ class AntCo:
                                     str(CommonKnowledge.initSOE - ant.SOE),
                                     str(ant.SOHmarker),
                                     str(ant.timeTravalled),
-                                    str(ant.packgVolume),
+                                    str(ant.remainVolume),
+                                    str(ant.turnCnt),
                                     ant.visitedVtx_toString()
                                     )
             return (str(date)+".csv")
