@@ -11,7 +11,7 @@ from Utilities.CSVFile import CSVFile
 class ParetoFront:
     
     @staticmethod
-    def fst(genFileName=""):
+    def threeD(genFileName=""):
         
         #read csv file to access data
         #fileName = "2021-06-03 14:47:45.430862.csv"
@@ -24,22 +24,22 @@ class ParetoFront:
         zData = []
         
         for elm in dataList:
-            xData.append(elm.volume)
-            yData.append(elm.energy)
+            xData.append(elm.energy)
+            yData.append(elm.turnCnt)
             zData.append(elm.SOH_marker)
         
         fig = pyplot.figure()
         Axes3D = fig.add_subplot(projection='3d')
         
-        Axes3D.set_xlabel('Volume')
-        Axes3D.set_ylabel('Energy consumed')
-        Axes3D.set_zlabel('State of Energy')
+        Axes3D.set_xlabel('Energy consumed')
+        Axes3D.set_ylabel('Turn number')
+        Axes3D.set_zlabel('SOH marker')
         
         Axes3D.scatter3D(xData, yData, zData, zdir='z', s=21, c=None, depthshade=True)
         pyplot.show()
         
     @staticmethod
-    def scd(genFileName=""):
+    def twoD(genFileName=""):
         
         #read csv file to access data
         #fileName = "2021-06-03 14:47:45.430862.csv"
@@ -49,13 +49,17 @@ class ParetoFront:
         
         xData = []
         yData = []
-        zData = []
         
         for elm in dataList:
-            xData.append(elm.volume)
-            yData.append(elm.energy)
-            zData.append(elm.SOH_marker)
+            xData.append(elm.energy)
+            yData.append(elm.turnCnt)
         
         pyplot.plot(xData, yData, 'ro')
-        pyplot.axis([0, 5, 0, 1000])
+        #pyplot.axis([0, 5, 0, 1000])
+        pyplot.xlabel("energy consumed")
+        pyplot.ylabel("number of turn")
         pyplot.show()
+
+#################################
+
+ParetoFront.twoD("2021-07-21 00:18:06.995083.csv")
