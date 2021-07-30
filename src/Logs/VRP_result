@@ -1,0 +1,439 @@
+ant 1
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Marseille,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Hatry,Gare,Foch,Colmar,Ferrette,Parmentier,Mermoz,Prés d'Aumont,Beurrerie,Nallet,Paquis,Mairie,Salbert,Blumberg,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Verdoyeux,Rosemontoise,Route de Sermamagny,Chaume,Gare,Techn' Hom 1 UTBM,IUT,Bosmont,Varonne,Multiplexe,Trévenans,Conforama,Bascule,Rte de Bermont,Gare TGV,Châtenois Forges,Centre Commercial,Romaine,Gare,Mieg,Saget,Hôpital,Ballon,Martinet,Courbet,Chemin de la ferme,Ballinamuck,Frezard,Gare,
+ant's round distance: 174.80999999999997
+ant's round energy  : 28241.580000000075
+ant's round SOH marker : 0.0
+ant's round time: 559.0400000000002
+ant's remaining volume: 1.3486749999999996
+
+
+ant 4
+ant's round vertices:Gare,Multiplexe,Varonne,Frezard,Conforama,Rte de Bermont,Gare TGV,Châtenois Forges,Bascule,Trévenans,Beurrerie,Nallet,Mermoz,Rosemontoise,Route de Sermamagny,Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Marseille,Gare,Foch,Colmar,Hatry,Hôpital,Mieg,Saget,Martinet,Paquis,Mairie,Salbert,Blumberg,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Gare,Ballon,Romaine,Centre Commercial,Courbet,Parmentier,Ferrette,Prés d'Aumont,Bosmont,Laurencie,Cimetière Militaire,Altkirch,Gare,Chaume,Verdoyeux,Ballinamuck,Chemin de la ferme,Techn' Hom 1 UTBM,IUT,Sellier,Gare,
+ant's round distance: 190.86999999999995
+ant's round energy  : 29902.299999999814
+ant's round SOH marker : 0.0
+ant's round time: 620.7099999999998
+ant's remaining volume: 0.6116049999999993
+
+
+ant 7
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Foch,Hôpital,Rabin,Gare,Techn' Hom 1 UTBM,IUT,Terrasses,Follereau,Hatry,Martinet,Paquis,Mairie,Salbert,Blumberg,Courbet,Parmentier,Ferrette,Colmar,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Gare,Multiplexe,Varonne,Frezard,Ballinamuck,Chemin de la ferme,Bosmont,Mieg,Saget,Chaume,Verdoyeux,Route de Sermamagny,Rosemontoise,Beurrerie,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Centre Commercial,Romaine,Ballon,Nallet,Prés d'Aumont,Mermoz,Gare TGV,Gare,Rte de Bermont,Bascule,Trévenans,Châtenois Forges,Conforama,Clemenceau,Marseille,Gare,
+ant's round distance: 196.56
+ant's round energy  : 31048.63000000082
+ant's round SOH marker : 0.0
+ant's round time: 622.1599999999999
+ant's remaining volume: 1.4907850000000002
+
+
+ant 8
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Hôpital,Gare,Techn' Hom 1 UTBM,IUT,Bosmont,Varonne,Multiplexe,Rte de Bermont,Conforama,Bascule,Trévenans,Châtenois Forges,Gare TGV,Ballon,Gare,Foch,Colmar,Ferrette,Parmentier,Courbet,Martinet,Paquis,Mairie,Salbert,Blumberg,Mieg,Saget,Hatry,Follereau,La Poste,Terrasses,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Chaume,Nallet,Beurrerie,Prés d'Aumont,Mermoz,Rosemontoise,Gare,Marseille,Centre Commercial,Romaine,Route de Sermamagny,Verdoyeux,Frezard,Ballinamuck,Chemin de la ferme,Gare,
+ant's round distance: 178.64000000000004
+ant's round energy  : 28446.91999999713
+ant's round SOH marker : 0.0
+ant's round time: 577.3700000000001
+ant's remaining volume: 1.7939574999999999
+
+
+ant 10
+ant's round vertices:Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Gare,Marseille,Foch,Hôpital,Mieg,Saget,Blumberg,Mairie,Salbert,Ferrette,Parmentier,Courbet,Martinet,Paquis,Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Gare,Multiplexe,Varonne,Colmar,Hatry,Follereau,IUT,Techn' Hom 1 UTBM,Bosmont,Centre Commercial,Romaine,Ballon,Beurrerie,Nallet,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Rte de Bermont,Conforama,Bascule,Trévenans,Châtenois Forges,Gare TGV,Gare,Route de Sermamagny,Verdoyeux,Chaume,Prés d'Aumont,Mermoz,Rosemontoise,Frezard,Chemin de la ferme,Ballinamuck,Terrasses,Gare,
+ant's round distance: 181.8400000000001
+ant's round energy  : 29479.83999999799
+ant's round SOH marker : 0.0
+ant's round time: 584.2300000000001
+ant's remaining volume: 1.3069975
+
+
+ant 16
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Hôpital,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Conforama,Trévenans,Châtenois Forges,Gare TGV,Parmentier,Courbet,Martinet,Gare,Multiplexe,Varonne,Follereau,Hatry,Foch,Mieg,Saget,Techn' Hom 1 UTBM,IUT,Bosmont,Rte de Bermont,Bascule,Centre Commercial,Nallet,Gare,Marseille,Colmar,Ferrette,Salbert,Blumberg,Mairie,Paquis,Beurrerie,Prés d'Aumont,Mermoz,Gare,Ballon,Romaine,Route de Sermamagny,Verdoyeux,Chaume,Rosemontoise,Frezard,Ballinamuck,Chemin de la ferme,Terrasses,Gare,
+ant's round distance: 185.50000000000006
+ant's round energy  : 29295.58999999985
+ant's round SOH marker : 0.0
+ant's round time: 596.84
+ant's remaining volume: 0.9185724999999996
+
+
+ant 17
+ant's round vertices:Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Gare,Foch,Hôpital,Mieg,Saget,Hatry,Rabin,Clemenceau,Marseille,Centre Commercial,Romaine,Gare,Sernam,Strotz,Jaurès Hôpital,Courbet,Martinet,Paquis,Mairie,Salbert,Gare,Multiplexe,Varonne,Colmar,Ferrette,Parmentier,Beurrerie,Nallet,Prés d'Aumont,Mermoz,Rosemontoise,Route de Sermamagny,Verdoyeux,Gare,Techn' Hom 1 UTBM,IUT,Blumberg,Cimetière Militaire,Laurencie,Ballon,Gare TGV,Châtenois Forges,Conforama,Rte de Bermont,Bascule,Gare,Altkirch,Sellier,Bosmont,Trévenans,Chaume,Frezard,Chemin de la ferme,Ballinamuck,Gare,
+ant's round distance: 190.75000000000003
+ant's round energy  : 30883.88000000082
+ant's round SOH marker : 0.0
+ant's round time: 597.5500000000002
+ant's remaining volume: 1.3676499999999998
+
+
+ant 25
+ant's round vertices:Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Gare,Sernam,Strotz,Jaurès Hôpital,Foch,Mieg,Saget,Hôpital,Gare,Rte de Bermont,Conforama,Bascule,Trévenans,Châtenois Forges,Gare TGV,Altkirch,Sellier,Cimetière Militaire,Laurencie,Gare,Techn' Hom 1 UTBM,IUT,Blumberg,Mairie,Salbert,Ferrette,Parmentier,Courbet,Martinet,Paquis,Rosemontoise,Mermoz,Prés d'Aumont,Gare,Hatry,Rabin,Clemenceau,Marseille,Centre Commercial,Romaine,Ballon,Nallet,Beurrerie,Chaume,Gare,Multiplexe,Varonne,Colmar,Ballinamuck,Chemin de la ferme,Bosmont,Route de Sermamagny,Verdoyeux,Frezard,Gare,
+ant's round distance: 175.81999999999996
+ant's round energy  : 28639.30999999959
+ant's round SOH marker : 0.0
+ant's round time: 578.18
+ant's remaining volume: 1.6784125
+
+
+ant 29
+ant's round vertices:Gare,Foch,Hôpital,Mieg,Saget,Ferrette,Parmentier,Courbet,Martinet,Paquis,Mairie,Salbert,Blumberg,IUT,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Rte de Bermont,Conforama,Bascule,Trévenans,Châtenois Forges,Gare TGV,Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Verdoyeux,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Hatry,Gare,Techn' Hom 1 UTBM,Ballinamuck,Chemin de la ferme,Frezard,Bosmont,Varonne,Multiplexe,Ballon,Romaine,Centre Commercial,Nallet,Prés d'Aumont,Beurrerie,Gare,Route de Sermamagny,Chaume,Rosemontoise,Mermoz,Marseille,Colmar,Gare,
+ant's round distance: 183.2
+ant's round energy  : 30177.139999999665
+ant's round SOH marker : 0.0
+ant's round time: 574.65
+ant's remaining volume: 1.6120225000000006
+
+
+ant 30
+ant's round vertices:Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Gare,Foch,Colmar,Saget,Ballon,Romaine,Centre Commercial,Martinet,Paquis,Gare,Multiplexe,Varonne,Frezard,Ballinamuck,Chemin de la ferme,Techn' Hom 1 UTBM,IUT,Bosmont,Mieg,Hôpital,Rabin,Clemenceau,Gare,Sernam,Strotz,Jaurès Hôpital,Marseille,Chaume,Verdoyeux,Nallet,Gare,Hatry,Courbet,Parmentier,Ferrette,Salbert,Blumberg,Mairie,Beurrerie,Prés d'Aumont,Rosemontoise,Route de Sermamagny,Mermoz,Gare TGV,Rte de Bermont,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Conforama,Bascule,Trévenans,Châtenois Forges,Gare,
+ant's round distance: 178.5
+ant's round energy  : 28338.37999999989
+ant's round SOH marker : 0.0
+ant's round time: 561.12
+ant's remaining volume: 1.4888875
+
+
+ant 33
+ant's round vertices:Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Conforama,Bascule,Trévenans,Châtenois Forges,Rte de Bermont,Gare,Foch,Colmar,Ferrette,Salbert,Blumberg,Mairie,Courbet,Parmentier,Martinet,Paquis,Beurrerie,Nallet,Gare,Multiplexe,Varonne,Frezard,Ballinamuck,Chemin de la ferme,Techn' Hom 1 UTBM,IUT,Bosmont,Mieg,Saget,Hatry,Marseille,Clemenceau,Hôpital,Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Centre Commercial,Romaine,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Gare,Ballon,Chaume,Route de Sermamagny,Verdoyeux,Mermoz,Rosemontoise,Prés d'Aumont,Gare TGV,Gare,
+ant's round distance: 181.24000000000004
+ant's round energy  : 28609.419999998994
+ant's round SOH marker : 0.0
+ant's round time: 573.17
+ant's remaining volume: 1.075795000000001
+
+
+ant 36
+ant's round vertices:Gare,Marseille,Centre Commercial,Romaine,Ballon,Martinet,Paquis,Prés d'Aumont,Beurrerie,Nallet,Mermoz,Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Gare,Multiplexe,Varonne,Colmar,Ferrette,Salbert,Blumberg,Mieg,Saget,Hatry,Hôpital,Foch,Techn' Hom 1 UTBM,IUT,Bosmont,Châtenois Forges,Bascule,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Conforama,Rte de Bermont,Gare TGV,Ballinamuck,Chemin de la ferme,Frezard,Gare,Route de Sermamagny,Verdoyeux,Chaume,Rosemontoise,Courbet,Parmentier,Trévenans,Mairie,Gare,
+ant's round distance: 208.02000000000004
+ant's round energy  : 35085.4899999965
+ant's round SOH marker : 0.0
+ant's round time: 656.1300000000002
+ant's remaining volume: 1.547575
+
+
+ant 42
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Foch,Hôpital,Hatry,Follereau,IUT,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Rte de Bermont,Trévenans,Bascule,Conforama,Châtenois Forges,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Gare,Multiplexe,Varonne,Mermoz,Rosemontoise,Route de Sermamagny,Verdoyeux,Chaume,Prés d'Aumont,Beurrerie,Nallet,Gare,Mieg,Saget,Paquis,Mairie,Salbert,Blumberg,Colmar,Ferrette,Centre Commercial,Romaine,Ballon,Gare,Techn' Hom 1 UTBM,Bosmont,Ballinamuck,Chemin de la ferme,Frezard,Marseille,Courbet,Parmentier,Martinet,Rabin,Clemenceau,Gare TGV,Gare,
+ant's round distance: 184.81000000000003
+ant's round energy  : 30039.7099999981
+ant's round SOH marker : 0.0
+ant's round time: 586.2900000000002
+ant's remaining volume: 1.2198474999999995
+
+
+ant 46
+ant's round vertices:Gare,Hatry,Rabin,Clemenceau,Hôpital,Marseille,Centre Commercial,Romaine,Ballon,Martinet,Gare,Foch,Colmar,Ferrette,Parmentier,Courbet,Nallet,Beurrerie,Prés d'Aumont,Mermoz,Rosemontoise,Route de Sermamagny,Gare,Sernam,Strotz,Jaurès Hôpital,Salbert,Blumberg,Mairie,Techn' Hom 1 UTBM,Bosmont,Varonne,Multiplexe,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Gare,Chaume,Verdoyeux,Frezard,Ballinamuck,Chemin de la ferme,Mieg,Saget,Paquis,Conforama,Bascule,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Rte de Bermont,Gare TGV,Châtenois Forges,Trévenans,IUT,Gare,
+ant's round distance: 182.47
+ant's round energy  : 29185.620000001974
+ant's round SOH marker : 0.0
+ant's round time: 566.6099999999999
+ant's remaining volume: 0.6172975
+
+
+ant 47
+ant's round vertices:Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Marseille,Gare,Multiplexe,Varonne,Frezard,Bosmont,Rte de Bermont,Bascule,Conforama,Châtenois Forges,Trévenans,Gare TGV,Route de Sermamagny,Verdoyeux,Chaume,Gare,Foch,Colmar,Ferrette,Parmentier,Courbet,Martinet,Paquis,Mairie,Salbert,Blumberg,IUT,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Prés d'Aumont,Mermoz,Rosemontoise,Beurrerie,Nallet,Gare,Hatry,Saget,Mieg,Hôpital,Ballon,Romaine,Centre Commercial,Chemin de la ferme,Ballinamuck,Techn' Hom 1 UTBM,Gare,
+ant's round distance: 170.56
+ant's round energy  : 27590.83999999892
+ant's round SOH marker : 0.0
+ant's round time: 566.4
+ant's remaining volume: 0.9924399999999995
+
+
+ant 52
+ant's round vertices:Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Marseille,Gare,Multiplexe,Techn' Hom 1 UTBM,IUT,Blumberg,Salbert,Ferrette,Centre Commercial,Romaine,Ballon,Paquis,Mairie,Courbet,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Prés d'Aumont,Mermoz,Rosemontoise,Route de Sermamagny,Verdoyeux,Gare,Hôpital,Hatry,Saget,Mieg,Ballinamuck,Chemin de la ferme,Frezard,Bosmont,Varonne,Follereau,Chaume,Nallet,Beurrerie,Martinet,Parmentier,Colmar,Gare,Foch,Conforama,Bascule,Trévenans,Châtenois Forges,Rte de Bermont,Gare TGV,Gare,
+ant's round distance: 168.25000000000006
+ant's round energy  : 27434.25
+ant's round SOH marker : 0.0
+ant's round time: 553.83
+ant's remaining volume: 2.002345
+
+
+ant 53
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Marseille,Clemenceau,Hôpital,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Gare,Hatry,Saget,Mieg,Colmar,Foch,Centre Commercial,Martinet,Prés d'Aumont,Mermoz,Rosemontoise,Route de Sermamagny,Gare,Rte de Bermont,Conforama,Bascule,Trévenans,Châtenois Forges,Gare TGV,Bosmont,Varonne,Multiplexe,Techn' Hom 1 UTBM,IUT,Ballinamuck,Chemin de la ferme,Frezard,Laurencie,Gare,Altkirch,Sellier,Cimetière Militaire,Verdoyeux,Chaume,Nallet,Beurrerie,Gare,Ballon,Romaine,Courbet,Parmentier,Ferrette,Salbert,Blumberg,Mairie,Paquis,Rabin,Gare,
+ant's round distance: 161.63999999999996
+ant's round energy  : 26652.539999999106
+ant's round SOH marker : 0.0
+ant's round time: 526.0
+ant's remaining volume: 1.3050999999999993
+
+
+ant 55
+ant's round vertices:Gare,Foch,Hôpital,Hatry,Follereau,IUT,Techn' Hom 1 UTBM,Terrasses,La Poste,Ballinamuck,Chemin de la ferme,Frezard,Bosmont,Varonne,Multiplexe,Ballon,Romaine,Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Marseille,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Rosemontoise,Route de Sermamagny,Verdoyeux,Chaume,Gare,Mieg,Saget,Blumberg,Courbet,Martinet,Paquis,Mairie,Salbert,Ferrette,Parmentier,Colmar,Beurrerie,Gare,Rte de Bermont,Trévenans,Châtenois Forges,Bascule,Conforama,Gare TGV,Prés d'Aumont,Mermoz,Nallet,Centre Commercial,Gare,
+ant's round distance: 182.17000000000004
+ant's round energy  : 29382.969999998808
+ant's round SOH marker : 0.0
+ant's round time: 590.67
+ant's remaining volume: 1.4680149999999998
+
+
+ant 57
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Marseille,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Gare,Chaume,Route de Sermamagny,Verdoyeux,Rosemontoise,Mermoz,Prés d'Aumont,Beurrerie,Nallet,Paquis,Mairie,Gare,Hatry,Hôpital,Mieg,Saget,Ballon,Romaine,Centre Commercial,Martinet,Courbet,Parmentier,Ferrette,Salbert,Blumberg,IUT,Gare,Multiplexe,Varonne,Frezard,Ballinamuck,Chemin de la ferme,Gare TGV,Bosmont,Rte de Bermont,Conforama,Bascule,Trévenans,Châtenois Forges,Follereau,Terrasses,Techn' Hom 1 UTBM,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Colmar,Foch,Gare,
+ant's round distance: 154.29999999999998
+ant's round energy  : 24675.55999999959
+ant's round SOH marker : 0.0
+ant's round time: 511.71
+ant's remaining volume: 1.1895100000000003
+
+
+ant 61
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Hôpital,Gare,Foch,Colmar,Ferrette,Parmentier,Salbert,Blumberg,Cimetière Militaire,Laurencie,Prés d'Aumont,Mermoz,Rosemontoise,Verdoyeux,Gare,Multiplexe,Varonne,Follereau,Gardey,La Poste,Terrasses,Ballinamuck,Chemin de la ferme,Frezard,Bosmont,Mieg,Saget,Hatry,Ballon,Romaine,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Sellier,Altkirch,Gare,Techn' Hom 1 UTBM,IUT,Marseille,Centre Commercial,Martinet,Paquis,Mairie,Courbet,Chaume,Nallet,Gare,Beurrerie,Route de Sermamagny,Trévenans,Châtenois Forges,Gare TGV,Rte de Bermont,Conforama,Bascule,Gare,
+ant's round distance: 197.02
+ant's round energy  : 31193.530000001192
+ant's round SOH marker : 0.0
+ant's round time: 623.9600000000003
+ant's remaining volume: 1.443415
+
+
+ant 70
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Marseille,Gare,Multiplexe,Varonne,Follereau,IUT,Techn' Hom 1 UTBM,Gardey,La Poste,Terrasses,Ballinamuck,Chemin de la ferme,Frezard,Blumberg,Salbert,Ferrette,Parmentier,Martinet,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Sellier,Gare,Altkirch,Cimetière Militaire,Laurencie,Mieg,Saget,Hôpital,Hatry,Ballon,Centre Commercial,Romaine,Courbet,Nallet,Beurrerie,Gare,Foch,Colmar,Mairie,Paquis,Chaume,Verdoyeux,Rosemontoise,Mermoz,Gare,Route de Sermamagny,Bosmont,Rte de Bermont,Conforama,Bascule,Trévenans,Châtenois Forges,Gare TGV,Prés d'Aumont,Gare,
+ant's round distance: 198.63999999999996
+ant's round energy  : 31179.14999999758
+ant's round SOH marker : 0.0
+ant's round time: 628.6299999999999
+ant's remaining volume: 1.4415175000000002
+
+
+ant 74
+ant's round vertices:Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Hatry,Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Marseille,Gare,Multiplexe,Varonne,Frezard,Ballinamuck,Chemin de la ferme,Bosmont,Rte de Bermont,Bascule,Trévenans,Conforama,Châtenois Forges,Gare TGV,Beurrerie,Nallet,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Colmar,Ferrette,Parmentier,Courbet,Martinet,Gare,Foch,Hôpital,Mieg,Saget,Ballon,Romaine,Centre Commercial,Prés d'Aumont,Mermoz,Rosemontoise,Gare,Techn' Hom 1 UTBM,IUT,Blumberg,Salbert,Mairie,Paquis,Chaume,Verdoyeux,Route de Sermamagny,Gare,
+ant's round distance: 171.08
+ant's round energy  : 27338.159999998286
+ant's round SOH marker : 0.0
+ant's round time: 553.3999999999999
+ant's remaining volume: 0.8068224999999994
+
+
+ant 83
+ant's round vertices:Gare,Hatry,Follereau,IUT,Techn' Hom 1 UTBM,Ballinamuck,Chemin de la ferme,Bosmont,Varonne,Mermoz,Rosemontoise,Route de Sermamagny,Verdoyeux,Chaume,Nallet,Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Marseille,Gare,Multiplexe,Rte de Bermont,Bascule,Trévenans,Châtenois Forges,Gare TGV,Conforama,Centre Commercial,Romaine,Ballon,Martinet,Gare,Foch,Colmar,Ferrette,Salbert,Blumberg,Mairie,Courbet,Parmentier,Beurrerie,Prés d'Aumont,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Mieg,Saget,Hôpital,Frezard,Paquis,Gare,
+ant's round distance: 176.15999999999997
+ant's round energy  : 28248.499999998137
+ant's round SOH marker : 0.0
+ant's round time: 586.4899999999998
+ant's remaining volume: 0.5055474999999997
+
+
+ant 85
+ant's round vertices:Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Gare,Techn' Hom 1 UTBM,IUT,Blumberg,Salbert,Ferrette,Parmentier,Courbet,Martinet,Paquis,Mairie,Colmar,Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Marseille,Gare,Multiplexe,Varonne,Frezard,Ballinamuck,Chemin de la ferme,Bosmont,Trévenans,Châtenois Forges,Conforama,Rte de Bermont,Bascule,Gare TGV,Beurrerie,Nallet,Verdoyeux,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Centre Commercial,Romaine,Ballon,Chaume,Gare,Foch,Hôpital,Mieg,Saget,Hatry,Follereau,Route de Sermamagny,Rosemontoise,Mermoz,Prés d'Aumont,Gare,
+ant's round distance: 179.72000000000003
+ant's round energy  : 29739.57000000123
+ant's round SOH marker : 0.0
+ant's round time: 579.21
+ant's remaining volume: 1.4377224999999996
+
+
+ant 86
+ant's round vertices:Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Rte de Bermont,Conforama,Bascule,Trévenans,Châtenois Forges,Gare TGV,Bosmont,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Gare,Multiplexe,Varonne,Colmar,Ferrette,Parmentier,Courbet,Martinet,Paquis,Mairie,Salbert,Blumberg,IUT,Techn' Hom 1 UTBM,Follereau,Hatry,Gare,Foch,Hôpital,Rabin,Clemenceau,Marseille,Mieg,Saget,Ballon,Romaine,Gare,Sernam,Strotz,Jaurès Hôpital,Verdoyeux,Chaume,Route de Sermamagny,Gare,Beurrerie,Nallet,Mermoz,Rosemontoise,Prés d'Aumont,Frezard,Ballinamuck,Chemin de la ferme,Centre Commercial,Gare,
+ant's round distance: 162.07
+ant's round energy  : 26269.359999998473
+ant's round SOH marker : 0.0
+ant's round time: 526.7600000000001
+ant's remaining volume: 1.7389975
+
+
+ant 90
+ant's round vertices:Gare,Multiplexe,Varonne,Follereau,Route de Sermamagny,Verdoyeux,Chaume,Blumberg,Ferrette,Salbert,Colmar,Marseille,Foch,Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Hôpital,Hatry,Saget,Gare,Techn' Hom 1 UTBM,IUT,Terrasses,Mieg,Centre Commercial,Romaine,Ballon,Beurrerie,Nallet,Prés d'Aumont,Mermoz,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Rte de Bermont,Bascule,Trévenans,Châtenois Forges,Gare TGV,Bosmont,Ballinamuck,Chemin de la ferme,Gare,Paquis,Mairie,Courbet,Martinet,Parmentier,Rosemontoise,Frezard,Conforama,Gare,
+ant's round distance: 198.07
+ant's round energy  : 31522.13000000082
+ant's round SOH marker : 0.0
+ant's round time: 645.57
+ant's remaining volume: 1.9473849999999993
+
+
+ant 92
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Hôpital,Gare,Foch,Colmar,Ferrette,Parmentier,Courbet,Martinet,Paquis,Mairie,Techn' Hom 1 UTBM,IUT,Blumberg,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Hatry,Saget,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Verdoyeux,Route de Sermamagny,Rosemontoise,Mermoz,Prés d'Aumont,Gare,Beurrerie,Nallet,Ballon,Romaine,Centre Commercial,Chaume,Salbert,Bosmont,Varonne,Multiplexe,Rte de Bermont,Conforama,Gare,Mieg,Ballinamuck,Chemin de la ferme,Frezard,Gare TGV,Châtenois Forges,Trévenans,Bascule,Marseille,Gare,
+ant's round distance: 182.95999999999998
+ant's round energy  : 29312.069999996573
+ant's round SOH marker : 0.0
+ant's round time: 576.5400000000001
+ant's remaining volume: 2.1028225
+
+
+ant 94
+ant's round vertices:Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Sellier,Gare,Sernam,Strotz,Jaurès Hôpital,Marseille,Foch,Hôpital,Gare,Multiplexe,Varonne,Frezard,Ballinamuck,Chemin de la ferme,Bosmont,Rte de Bermont,Bascule,Trévenans,Châtenois Forges,Conforama,Gare TGV,Beurrerie,Nallet,Prés d'Aumont,Mermoz,Gare,Altkirch,Cimetière Militaire,Laurencie,Centre Commercial,Ballon,Romaine,Route de Sermamagny,Verdoyeux,Chaume,Rosemontoise,Gare,Hatry,Rabin,Clemenceau,Colmar,Ferrette,Parmentier,Courbet,Martinet,Paquis,Mairie,Salbert,Blumberg,Gare,Techn' Hom 1 UTBM,IUT,Terrasses,Follereau,Gardey,La Poste,Saget,Mieg,Gare,
+ant's round distance: 166.81000000000003
+ant's round energy  : 27691.319999999367
+ant's round SOH marker : 0.0
+ant's round time: 544.0899999999998
+ant's remaining volume: 1.5608574999999996
+
+
+ant 97
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Hôpital,Hatry,Follereau,IUT,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Gare,Multiplexe,Varonne,Route de Sermamagny,Chaume,Verdoyeux,Nallet,Blumberg,Mairie,Salbert,Ferrette,Parmentier,Courbet,Centre Commercial,Romaine,Ballon,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Prés d'Aumont,Mermoz,Rosemontoise,Beurrerie,Gare,Mieg,Saget,Techn' Hom 1 UTBM,Bosmont,Rte de Bermont,Bascule,Trévenans,Châtenois Forges,Gare TGV,Ballinamuck,Chemin de la ferme,Frezard,Marseille,Gare,Colmar,Clemenceau,Martinet,Paquis,Conforama,Foch,Gare,
+ant's round distance: 193.83
+ant's round energy  : 30271.599999998696
+ant's round SOH marker : 0.0
+ant's round time: 619.8000000000002
+ant's remaining volume: 1.0246974999999998
+
+
+ant 98
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Conforama,Bascule,Trévenans,Châtenois Forges,Gare TGV,Rte de Bermont,Gare,Techn' Hom 1 UTBM,IUT,Blumberg,Salbert,Ferrette,Parmentier,Courbet,Martinet,Paquis,Mairie,Colmar,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Hatry,Gare,Foch,Hôpital,Mieg,Saget,Ballon,Romaine,Centre Commercial,Chaume,Verdoyeux,Gare,Multiplexe,Varonne,Frezard,Ballinamuck,Chemin de la ferme,Bosmont,Prés d'Aumont,Mermoz,Rosemontoise,Route de Sermamagny,Nallet,Beurrerie,Marseille,Gare,
+ant's round distance: 170.33
+ant's round energy  : 27126.44000000041
+ant's round SOH marker : 0.0
+ant's round time: 537.4699999999999
+ant's remaining volume: 1.0285374999999997
+
+
+ant 106
+ant's round vertices:Gare,Foch,Marseille,Centre Commercial,Romaine,Ballon,Chaume,Verdoyeux,Route de Sermamagny,Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Hôpital,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Hatry,Saget,Gare,Multiplexe,Varonne,Mermoz,Prés d'Aumont,Beurrerie,Nallet,Paquis,Mairie,Salbert,Ferrette,Parmentier,Courbet,Martinet,Chemin de la ferme,Ballinamuck,Frezard,Bosmont,Laurencie,Gare,Altkirch,Sellier,Cimetière Militaire,Mieg,Colmar,Blumberg,IUT,Gare,Techn' Hom 1 UTBM,Bascule,Conforama,Rte de Bermont,Trévenans,Châtenois Forges,Gare TGV,Rosemontoise,Gare,
+ant's round distance: 176.02
+ant's round energy  : 28226.80999999866
+ant's round SOH marker : 0.0
+ant's round time: 567.5300000000001
+ant's remaining volume: 1.5627549999999997
+
+
+ant 108
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Marseille,Gare,Multiplexe,Varonne,Follereau,IUT,Techn' Hom 1 UTBM,Bosmont,Gare TGV,Parmentier,Courbet,Martinet,Paquis,Mairie,Salbert,Ferrette,Colmar,Hatry,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Gare,Hôpital,Mieg,Saget,Ballon,Romaine,Centre Commercial,Prés d'Aumont,Mermoz,Rosemontoise,Route de Sermamagny,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Conforama,Bascule,Trévenans,Châtenois Forges,Rte de Bermont,Gare,Foch,Nallet,Beurrerie,Verdoyeux,Chaume,Blumberg,Terrasses,Ballinamuck,Chemin de la ferme,Frezard,Gare,
+ant's round distance: 178.19000000000003
+ant's round energy  : 28398.569999997504
+ant's round SOH marker : 0.0
+ant's round time: 574.72
+ant's remaining volume: 1.7087049999999993
+
+
+ant 110
+ant's round vertices:Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Rte de Bermont,Bascule,Trévenans,Châtenois Forges,Conforama,Gare TGV,Gare,Hatry,Follereau,IUT,Techn' Hom 1 UTBM,Ballinamuck,Chemin de la ferme,Bosmont,Varonne,Multiplexe,Hôpital,Rabin,Clemenceau,Marseille,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Gare,Foch,Colmar,Ferrette,Parmentier,Courbet,Romaine,Centre Commercial,Martinet,Paquis,Mairie,Salbert,Blumberg,Gare,Sernam,Strotz,Jaurès Hôpital,Verdoyeux,Chaume,Prés d'Aumont,Mermoz,Gare,Beurrerie,Nallet,Rosemontoise,Route de Sermamagny,Saget,Mieg,Ballon,Frezard,Gare,
+ant's round distance: 194.17000000000004
+ant's round energy  : 31424.86999999825
+ant's round SOH marker : 0.0
+ant's round time: 620.1199999999997
+ant's remaining volume: 1.4396199999999997
+
+
+ant 113
+ant's round vertices:Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Verdoyeux,Route de Sermamagny,Rosemontoise,Mermoz,Prés d'Aumont,Gare,Hatry,Foch,Hôpital,Rabin,Clemenceau,Marseille,Courbet,Parmentier,Ferrette,Salbert,Blumberg,Mairie,Techn' Hom 1 UTBM,Gare,Sernam,Strotz,Jaurès Hôpital,Trévenans,Châtenois Forges,Gare TGV,Rte de Bermont,Gare,Multiplexe,Varonne,Frezard,Ballinamuck,Chemin de la ferme,Centre Commercial,Romaine,Ballon,Martinet,Paquis,Beurrerie,Nallet,Gare,Colmar,Saget,Mieg,IUT,Bosmont,Chaume,Bascule,Conforama,Follereau,Gare,
+ant's round distance: 197.46999999999997
+ant's round energy  : 31602.110000000335
+ant's round SOH marker : 0.0
+ant's round time: 635.9900000000005
+ant's remaining volume: 1.4850925000000004
+
+
+ant 123
+ant's round vertices:Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Gare,Multiplexe,Varonne,Frezard,Chemin de la ferme,Ballinamuck,Bosmont,Rte de Bermont,Conforama,Bascule,Trévenans,Châtenois Forges,Gare TGV,Prés d'Aumont,Mermoz,Rosemontoise,Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Hôpital,Gare,Hatry,Marseille,Courbet,Martinet,Paquis,Mairie,Salbert,Blumberg,Colmar,Ferrette,Parmentier,Beurrerie,Nallet,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Centre Commercial,Romaine,Ballon,Chaume,Gare,Foch,Mieg,Saget,Techn' Hom 1 UTBM,IUT,Route de Sermamagny,Verdoyeux,Gare,
+ant's round distance: 183.13
+ant's round energy  : 29944.169999998063
+ant's round SOH marker : 0.0
+ant's round time: 582.6099999999999
+ant's remaining volume: 1.5229749999999995
+
+
+ant 130
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Marseille,Gare,Foch,Colmar,Ferrette,Salbert,Blumberg,Courbet,Parmentier,Martinet,Paquis,Mairie,Techn' Hom 1 UTBM,Follereau,Hatry,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Ballon,Romaine,Centre Commercial,Rosemontoise,Gare,Multiplexe,Varonne,Frezard,Ballinamuck,Chemin de la ferme,Bosmont,Trévenans,Châtenois Forges,Rte de Bermont,Conforama,Bascule,Gare TGV,Route de Sermamagny,Chaume,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Gare,Hôpital,Mieg,Saget,Nallet,Beurrerie,Prés d'Aumont,Mermoz,Verdoyeux,IUT,Gare,
+ant's round distance: 174.73000000000002
+ant's round energy  : 28749.349999998696
+ant's round SOH marker : 0.0
+ant's round time: 563.1099999999997
+ant's remaining volume: 1.4263374999999998
+
+
+ant 134
+ant's round vertices:Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Colmar,Foch,Hôpital,Hatry,Follereau,Gare,Multiplexe,Varonne,Frezard,Chemin de la ferme,Ballinamuck,Bosmont,Rte de Bermont,Bascule,Trévenans,Châtenois Forges,Conforama,Chaume,Verdoyeux,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Gare,Sernam,Strotz,Jaurès Hôpital,Courbet,Parmentier,Martinet,Paquis,Mairie,Gare,Ballon,Romaine,Centre Commercial,Prés d'Aumont,Beurrerie,Nallet,Rosemontoise,Route de Sermamagny,Mermoz,Gare TGV,Marseille,Gare,Techn' Hom 1 UTBM,IUT,Blumberg,Salbert,Ferrette,Saget,Mieg,Rabin,Clemenceau,Gare,
+ant's round distance: 181.4
+ant's round energy  : 29045.12999999989
+ant's round SOH marker : 0.0
+ant's round time: 586.8099999999998
+ant's remaining volume: 1.6272474999999997
+
+
+ant 143
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Marseille,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Hatry,Saget,Gare,Foch,Mieg,Colmar,Ferrette,Salbert,Blumberg,IUT,Techn' Hom 1 UTBM,Bosmont,Varonne,Multiplexe,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Rte de Bermont,Trévenans,Châtenois Forges,Conforama,Bascule,Gare,Hôpital,Ballon,Romaine,Centre Commercial,Nallet,Beurrerie,Prés d'Aumont,Mermoz,Rosemontoise,Route de Sermamagny,Gare,Paquis,Mairie,Courbet,Parmentier,Martinet,Chemin de la ferme,Ballinamuck,Frezard,Chaume,Verdoyeux,Gare TGV,Gare,
+ant's round distance: 189.32000000000005
+ant's round energy  : 30049.759999997914
+ant's round SOH marker : 0.0
+ant's round time: 594.57
+ant's remaining volume: 1.2160524999999993
+
+
+ant 144
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Parmentier,Courbet,Martinet,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Hatry,Gare,Foch,Mieg,Saget,Hôpital,Chemin de la ferme,Ballinamuck,Frezard,Châtenois Forges,Bascule,Trévenans,Conforama,Rte de Bermont,Gare TGV,Gare,Multiplexe,Varonne,Colmar,Ferrette,Salbert,Blumberg,IUT,Techn' Hom 1 UTBM,Mairie,Nallet,Beurrerie,Prés d'Aumont,Mermoz,Rosemontoise,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Centre Commercial,Ballon,Romaine,Route de Sermamagny,Gare,Chaume,Verdoyeux,Paquis,Bosmont,Clemenceau,Marseille,Gare,
+ant's round distance: 197.41999999999996
+ant's round energy  : 31984.039999998175
+ant's round SOH marker : 0.0
+ant's round time: 617.1600000000001
+ant's remaining volume: 1.4131224999999996
+
+
+ant 151
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Foch,Hôpital,Rabin,Gare,Multiplexe,Centre Commercial,Romaine,Ballon,Nallet,Beurrerie,Prés d'Aumont,Mermoz,Rosemontoise,Verdoyeux,Route de Sermamagny,Gare,Colmar,Ferrette,Parmentier,Courbet,Martinet,Paquis,Mairie,Salbert,Blumberg,Mieg,Saget,Marseille,Gare,Hatry,Follereau,IUT,Techn' Hom 1 UTBM,Terrasses,La Poste,Ballinamuck,Chemin de la ferme,Bosmont,Varonne,Frezard,Conforama,Rte de Bermont,Bascule,Trévenans,Châtenois Forges,Gare TGV,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Chaume,Clemenceau,Gare,
+ant's round distance: 189.79000000000002
+ant's round energy  : 30461.82999999635
+ant's round SOH marker : 0.0
+ant's round time: 617.51
+ant's remaining volume: 1.4926825
+
+
+ant 157
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Marseille,Gare,Foch,Colmar,Ferrette,Salbert,Blumberg,Mairie,Martinet,Paquis,Prés d'Aumont,Mermoz,Rosemontoise,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Hatry,Saget,Gare,Multiplexe,Varonne,Frezard,Ballinamuck,Chemin de la ferme,Bosmont,Rte de Bermont,Conforama,Bascule,Trévenans,Châtenois Forges,Gare TGV,Route de Sermamagny,Verdoyeux,Gare,Techn' Hom 1 UTBM,IUT,Ballon,Romaine,Centre Commercial,Nallet,Beurrerie,Chaume,Hôpital,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Courbet,Parmentier,Mieg,Gare,
+ant's round distance: 175.61999999999995
+ant's round energy  : 28444.289999998175
+ant's round SOH marker : 0.0
+ant's round time: 566.0600000000001
+ant's remaining volume: 1.55896
+
+
+ant 160
+ant's round vertices:Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Marseille,Gare,Multiplexe,Varonne,Frezard,Ballinamuck,Chemin de la ferme,Bosmont,Mieg,Saget,Techn' Hom 1 UTBM,IUT,Blumberg,Salbert,Ferrette,Parmentier,Courbet,Martinet,Gare,Foch,Hôpital,Hatry,Colmar,Beurrerie,Prés d'Aumont,Mermoz,Rosemontoise,Route de Sermamagny,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Conforama,Rte de Bermont,Bascule,Trévenans,Châtenois Forges,Gare TGV,Mairie,Gare,Ballon,Romaine,Centre Commercial,Chaume,Verdoyeux,Nallet,Paquis,Gare,
+ant's round distance: 172.55
+ant's round energy  : 27520.230000000447
+ant's round SOH marker : 0.0
+ant's round time: 556.4999999999999
+ant's remaining volume: 1.0852824999999995
+
+
+ant 161
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Hôpital,Gare,Hatry,Blumberg,Salbert,Colmar,Ferrette,Parmentier,Courbet,Martinet,Paquis,Mairie,Nallet,Beurrerie,Prés d'Aumont,Mermoz,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Gare,Foch,Mieg,Saget,Ballon,Romaine,Centre Commercial,Chaume,Verdoyeux,Route de Sermamagny,Gare,Multiplexe,Varonne,Frezard,Ballinamuck,Chemin de la ferme,Bosmont,Rte de Bermont,Bascule,Trévenans,Châtenois Forges,Conforama,Gare TGV,Marseille,Rosemontoise,Laurencie,Gare,Altkirch,Sellier,Cimetière Militaire,IUT,Techn' Hom 1 UTBM,Gare,
+ant's round distance: 171.13999999999996
+ant's round energy  : 28001.309999997728
+ant's round SOH marker : 0.0
+ant's round time: 553.7900000000001
+ant's remaining volume: 1.6158175000000001
+
+
+ant 169
+ant's round vertices:Gare,Foch,Colmar,Ferrette,Salbert,Blumberg,Mairie,Paquis,Martinet,Ballon,Romaine,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Hatry,Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Hôpital,Gare,Mieg,Saget,Frezard,Ballinamuck,Chemin de la ferme,Bosmont,Varonne,Multiplexe,Centre Commercial,Courbet,Parmentier,Beurrerie,Nallet,Mermoz,Prés d'Aumont,Rosemontoise,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Rte de Bermont,Conforama,Bascule,Trévenans,Châtenois Forges,Gare TGV,Gare,Techn' Hom 1 UTBM,IUT,Chaume,Verdoyeux,Route de Sermamagny,Marseille,Gare,
+ant's round distance: 179.20999999999998
+ant's round energy  : 28956.049999999814
+ant's round SOH marker : 0.0
+ant's round time: 559.4300000000001
+ant's remaining volume: 1.5665499999999999
+
+
+ant 172
+ant's round vertices:Gare,Multiplexe,Varonne,Blumberg,IUT,Techn' Hom 1 UTBM,Mieg,Saget,Bosmont,Rte de Bermont,Bascule,Trévenans,Châtenois Forges,Conforama,Gare TGV,Gare,Foch,Hôpital,Rabin,Clemenceau,Marseille,Centre Commercial,Romaine,Ballon,Nallet,Gare,Sernam,Strotz,Jaurès Hôpital,Ferrette,Parmentier,Courbet,Martinet,Paquis,Mairie,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Prés d'Aumont,Beurrerie,Verdoyeux,Route de Sermamagny,Gare,Hatry,Follereau,Terrasses,Ballinamuck,Chemin de la ferme,Frezard,Chaume,Rosemontoise,Mermoz,Colmar,Salbert,Gare,
+ant's round distance: 191.97000000000006
+ant's round energy  : 31471.619999997318
+ant's round SOH marker : 0.0
+ant's round time: 602.7300000000001
+ant's remaining volume: 1.6708224999999997
+
+
+ant 177
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Marseille,Gare,Foch,Colmar,Ferrette,Parmentier,Courbet,Martinet,Paquis,Mairie,Salbert,Blumberg,IUT,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Hatry,Gare,Multiplexe,Varonne,Frezard,Ballinamuck,Chemin de la ferme,Bosmont,Laurencie,Cimetière Militaire,Sellier,Altkirch,Conforama,Bascule,Trévenans,Châtenois Forges,Gare TGV,Gare,Mieg,Saget,Hôpital,Rosemontoise,Route de Sermamagny,Verdoyeux,Chaume,Nallet,Beurrerie,Prés d'Aumont,Mermoz,Gare,Techn' Hom 1 UTBM,Centre Commercial,Romaine,Ballon,Rte de Bermont,Gare,
+ant's round distance: 182.60999999999996
+ant's round energy  : 29229.98000000138
+ant's round SOH marker : 0.0
+ant's round time: 569.6200000000001
+ant's remaining volume: 1.76545
+
+
+ant 178
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Hôpital,Gare,Ballon,Romaine,Centre Commercial,Martinet,Paquis,Mairie,Salbert,Blumberg,Colmar,Ferrette,Parmentier,Courbet,Gare,Altkirch,Sellier,Bosmont,Trévenans,Châtenois Forges,Rte de Bermont,Bascule,Conforama,Gare TGV,Route de Sermamagny,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Gare,Multiplexe,Varonne,Frezard,Ballinamuck,Chemin de la ferme,Techn' Hom 1 UTBM,IUT,Chaume,Verdoyeux,Nallet,Beurrerie,Prés d'Aumont,Mermoz,Gare,Hatry,Saget,Mieg,Foch,Marseille,Rosemontoise,Laurencie,Cimetière Militaire,Gare,
+ant's round distance: 177.51
+ant's round energy  : 28706.269999999553
+ant's round SOH marker : 0.0
+ant's round time: 559.9699999999999
+ant's remaining volume: 1.9606674999999996
+
+
+ant 180
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Rabin,Clemenceau,Marseille,Gare,Altkirch,Sellier,Cimetière Militaire,Laurencie,Mieg,Saget,Hatry,Foch,Colmar,Ferrette,Parmentier,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,La Poste,Terrasses,Follereau,Gare,Multiplexe,Varonne,Frezard,Ballinamuck,Chemin de la ferme,Bosmont,Rte de Bermont,Conforama,Bascule,Trévenans,Châtenois Forges,Gare TGV,Rosemontoise,Verdoyeux,Gare,Route de Sermamagny,Chaume,Prés d'Aumont,Mermoz,Nallet,Beurrerie,Paquis,Mairie,Salbert,Blumberg,IUT,Gare,Techn' Hom 1 UTBM,Ballon,Romaine,Centre Commercial,Courbet,Martinet,Hôpital,Gare,
+ant's round distance: 162.82000000000002
+ant's round energy  : 26242.539999998175
+ant's round SOH marker : 0.0
+ant's round time: 530.82
+ant's remaining volume: 1.634725
+
+
+ant 183
+ant's round vertices:Gare,Sernam,Strotz,Jaurès Hôpital,Foch,Colmar,Ferrette,Parmentier,Gare,Multiplexe,Varonne,Follereau,IUT,Techn' Hom 1 UTBM,Terrasses,La Poste,Ballinamuck,Chemin de la ferme,Frezard,Marseille,Clemenceau,Rabin,Hôpital,Gare,Mieg,Saget,Ballon,Romaine,Centre Commercial,Prés d'Aumont,Mermoz,Rosemontoise,Route de Sermamagny,Verdoyeux,Nallet,Gare,Madrid,Poincaré,Pierre Engel,Marcel Braun,La Dame,Pont Canal,La Belle,Gardey,Gare,Hatry,Martinet,Paquis,Mairie,Salbert,Blumberg,Courbet,Chaume,Bosmont,Laurencie,Cimetière Militaire,Altkirch,Gare,Beurrerie,Conforama,Bascule,Trévenans,Châtenois Forges,Rte de Bermont,Gare TGV,Sellier,Gare,
+ant's round distance: 174.25
+ant's round energy  : 27584.659999997355
+ant's round SOH marker : 0.0
+ant's round time: 563.1799999999998
+ant's remaining volume: 0.6589750000000001
