@@ -11,7 +11,7 @@ from Utilities.OptimData import OptimData
 class CSVFile:
     
     @staticmethod
-    def addLine(fileName_p, antID_p, distance_p, energy_p, SOH_marker_p, time_p, volume_p):
+    def addLine(fileName_p, antID_p, distance_p, energy_p, SOH_marker_p, time_p, volume_p, turnCnt_p, deliveryPath_p):
         '''
         add line in csv file, compose of above parameters
         all parameters are string
@@ -24,8 +24,27 @@ class CSVFile:
         
             file = csv.writer(csvFile)
             
-            file.writerow( [ antID_p, distance_p, energy_p, SOH_marker_p, time_p, volume_p ] )
+            file.writerow( [ antID_p, distance_p, energy_p, SOH_marker_p, time_p, volume_p, turnCnt_p, deliveryPath_p ] )
             
+    @staticmethod
+    def feedColm(fileName_p, data_p):
+        '''
+        fill column to with data 
+        '''
+        root = "/media/Stock/Workspaces/Py_WS/Ants Powered Auto-routing system/src/Logs/"
+        fileName = str(fileName_p)
+
+        with open(root+fileName+"_SOH", "a", newline="" ) as csvFile:  # output csv file
+            outFile = csv.writer(csvFile)
+            with open(root+fileName,'r') as csvfile: # input csv file
+                reader = csv.reader(csvfile, delimiter=',')
+                i = 0
+                for row in reader:  
+                    row[3] = data_p[i]
+                    outFile.writerow(row)
+                    i += 1
+                    
+        
     @staticmethod
     def readFile(fileName_p):
         '''
@@ -42,13 +61,16 @@ class CSVFile:
         
         file = csv.reader(toRead)
         
+        #create a list of object containing ant's data
         for row in file:
             dataList.append(OptimData(int(row[0]),
                                      float(row[1]),
                                      float(row[2]),
                                      float(row[3]),
                                      float(row[4]),
-                                     float(row[5])
+                                     float(row[5]),
+                                     int(row[6]),
+                                     str(row[7])
                                      )
             )
         
@@ -61,7 +83,7 @@ class CSVFile:
         #    print(elm.volume)
     
     
-        return dataList
+        return dataList #return the object list
     
     
     

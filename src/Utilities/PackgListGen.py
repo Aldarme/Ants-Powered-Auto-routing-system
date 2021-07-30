@@ -34,7 +34,8 @@ class PackgListGen:
                 print("Package Type: {}".format(elm.type))
                 print("Package Volume: {}".format(elm.volume))
                 print("Package Weight: {}".format(elm.weight))
-                print("################")
+        
+        print("################")
             
         return pgList
     
@@ -121,6 +122,6 @@ class PackageType(enum.Enum):
     
 #####################################
 #debug part
-for i in range(0, 100):
-    PackgListGen.run()
+#for i in range(0, 100):
+#    PackgListGen.run()
 
