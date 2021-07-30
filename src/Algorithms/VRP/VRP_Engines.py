@@ -35,7 +35,7 @@ class VRP_Engines:
             antCo.search()
             
             #calculate SOH maker turn
-            antCo.SOHmarkers_calc()
+            #antCo.SOHmarkers_calc()
             
             #log in console and/or file generated path of each ant (consolog, filog)
             antCo.antRound_log(True, False, i)
@@ -44,28 +44,30 @@ class VRP_Engines:
             antCo.getBack()
             
             #display the adj. pheromone matrix to see update
-            
-        
+
+
         #Check all ants to find the most appropriate energy/distance couple
         print('##################################')
         print('Final result')
         print('##################################')
         
+        #determine the number of turn for each ant
+        antCo.turnCounter()
+        
         #log result as usable CSV file
-        fileName = antCo.csv_log(False)
+        fileName = antCo.csv_log(True)
         
         #Reduce number of solution by deleting multiple identical solution
-        reduceFile = SolOptim.reducing(fileName)
+        #reduceFile = SolOptim.reducing(fileName)
         
         ######### Optimization ##########
         
         #Lexicographic rules
-        LexicoRule.run(reduceFile)
+        #LexicoRule.run(fileName)
         
         #Pareto front analyse
-        ParetoFront.fst(reduceFile)
+        ParetoFront.threeD(fileName)
         
         #log in console and/or file, final path of each ant and the best path (consoleLog, fileLog)
         # TODO antCo.ScoringMultiObj(True, False)
-            
-            
+        
