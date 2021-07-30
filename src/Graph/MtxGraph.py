@@ -41,13 +41,13 @@ class MtxGraph:
         """
         return self.__numbering.get_vtxFromID(vtx_ID_p)
     
-    def insert_edg_VERTICES(self, vtx_begin_p, vtx_end_p, length_p):
+    def insert_edg_VERTICES(self, vtx_begin_p, vtx_end_p, dataDic_p):
         """
         Insert an edge into the adjacency matrix, thank to its begin & end vertices
         """
         self.insert_vtx(vtx_begin_p)
         self.insert_vtx(vtx_end_p)
-        self.__adjMtx[self.get_vtxIdx(vtx_begin_p)][self.get_vtxIdx(vtx_end_p)] = Edge(length_p, vtx_begin_p, vtx_end_p)
+        self.__adjMtx[self.get_vtxIdx(vtx_begin_p)][self.get_vtxIdx(vtx_end_p)] = Edge( vtx_begin_p, vtx_end_p, dataDic_p )
         
 
     def insert_edg_EDGE(self, edg_p):
@@ -109,17 +109,44 @@ class MtxGraph:
         """
         return self.__adjMtx[self.get_vtxIdx(vtx_begin_p)][self.get_vtxIdx(vtx_end_p)].get_length()
     
+    def get_edglength_vtxID(self, vtx_begin_ID_p, vtx_end_ID_p):
+        """
+        Return the distance of the given Edge, thanks to given vtx ID
+        """
+        beginVtx = self.get_vtx(vtx_begin_ID_p)
+        endVtx  = self.get_vtx(vtx_end_ID_p)
+        
+        return self.__adjMtx[self.get_vtxIdx(beginVtx)][self.get_vtxIdx(endVtx)].get_length()
+    
     def get_edgNrjCost(self, vtx_begin_p, vtx_end_p):
         """
         Return the Nrj Cost of the given Edge
         """
         return self.__adjMtx[self.get_vtxIdx(vtx_begin_p)][self.get_vtxIdx(vtx_end_p)].get_nrj_cost()
     
+    def get_edgNrjCost_vtxID(self, vtx_begin_ID_p, vtx_end_ID_p):
+        """
+        Return the Nrj Cost of the given Edge, thanks to given vtx ID
+        """
+        beginVtx = self.get_vtx(vtx_begin_ID_p)
+        endVtx  = self.get_vtx(vtx_end_ID_p)
+        
+        return self.__adjMtx[self.get_vtxIdx(beginVtx)][self.get_vtxIdx(endVtx)].get_nrj_cost()
+    
     def get_edgTime(self, vtx_begin_p, vtx_end_p):
         """
         Return the time of the given Edge
         """
         return self.__adjMtx[self.get_vtxIdx(vtx_begin_p)][self.get_vtxIdx(vtx_end_p)].get_time()
+    
+    def get_edgTime_vtxID(self, vtx_begin_ID_p, vtx_end_ID_p):
+        """
+        Return the time of the given Edge
+        """
+        beginVtx = self.get_vtx(vtx_begin_ID_p)
+        endVtx  = self.get_vtx(vtx_end_ID_p)
+        
+        return self.__adjMtx[self.get_vtxIdx(beginVtx)][self.get_vtxIdx(endVtx)].get_time()
     
     def modify_length(self, edg_p, length_p):
         """
@@ -141,7 +168,19 @@ class MtxGraph:
         The case of the edge appear as "None"
         """
         self.__adjMtx[self.get_vtxIdx(vtx_begin_p)][self.get_vtxIdx(vtx_end_p)] = None
-    
+        
+    def kickOut_vtx(self, vtx_p):
+        """
+        Delete all edges linking given vertex to others
+        """
+        i = 0
+        for i in range(0, len(self.__adjMtx)-1):
+            self.__adjMtx[self.get_vtxIdx(vtx_p)][i] = None
+        
+        i = 0
+        for i in range(0, len(self.__adjMtx)-1):
+            self.__adjMtx[i][self.get_vtxIdx(vtx_p)] = None
+
     def get_Neighboor_EDG(self, edge_p):
         """
         Return a list of all the neighbors of the beginning Vertex of the given edge
@@ -179,7 +218,7 @@ class MtxGraph:
                     nbrOfNeigb += 1    
                 else:
                     print("echec")
-        return nbrOfNeigb 
+        return nbrOfNeigb
     
     def contain_vtx(self, ID_p):
         """

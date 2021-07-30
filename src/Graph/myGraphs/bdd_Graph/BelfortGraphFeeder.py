@@ -20,7 +20,7 @@ client = pymongo.MongoClient('localhost', DBPORT)
 myDb = client.GraphBelfort
 
 #target the working collection
-myCollec = myDb.Optimo_meanDay
+myCollec = myDb.Optimo_meanDay_TeslaS
  
         
 ####################################################
@@ -29,7 +29,7 @@ myCollec = myDb.Optimo_meanDay
 #
 ####################################################
 
-db_csv = '/media/Stock/Projets/Suratram/Ressources/Traces_WS/GoogleEarth/lineSynth_data/db_traces.csv'
+db_csv = '/media/Stock/Projets/Suratram/Ressources/Traces_WS/GoogleEarth/lineSynth_data/Tesla_data/db_traces.csv'
 
 #detect what the character encoding is
 with open(db_csv, 'rb') as rawdata:

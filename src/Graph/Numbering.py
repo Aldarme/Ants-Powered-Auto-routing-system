@@ -29,6 +29,20 @@ class Numbering:
             return True
         else:
             return False
+        
+    def delete_element(self, vtx_p):
+        '''
+        Delete given vertex
+        '''
+        if vtx_p in self.__dicVtxIdx:
+            del self.__dicVtxIdx[vtx_p]
+        else:
+            print("issue occur deleting vertex from __dicVtxIdx in Numbering")
+        
+        if vtx_p in self.__arrayVtx:
+            self.__arrayVtx.remove(vtx_p)
+        else:
+            print("issue occur deleting vertex from self.__arrayVtx in Numbering")
     
     def get_Idx(self, vtx_p):
         """

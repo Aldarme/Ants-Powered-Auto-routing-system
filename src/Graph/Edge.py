@@ -28,12 +28,6 @@ class Edge:
         self.__time         = dataDict_p["time_min"]    #time unit: minute
         self.path_vertex    = path_vertices_p
     
-    def set_length(self, length_p):
-        """
-        Set the length value
-        """
-        self.__length = length_p
-    
     def set_vtx_begin(self, vtx_p):
         """
         Set the beginning vertex object
@@ -45,6 +39,24 @@ class Edge:
         Set the ending vertex object
         """
         self.__vtx_end = vtx_p
+    
+    def set_nrj_cost(self, nrj_cost_p):
+        """
+        Set the nrj_cost value
+        """
+        self.__nrj_cost = nrj_cost_p
+        
+    def set_length(self, length_p):
+        """
+        Set the length value
+        """
+        self.__length = length_p
+        
+    def set_time(self, time_p):
+        """
+        Set the time value
+        """
+        self.__time = time_p
     
     def get_nrj_cost(self):
         """
